@@ -33,9 +33,9 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 60px;
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,.3);
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(0,0,0,.08);
 z-index:10;
 }
 
@@ -47,10 +47,15 @@ font-weight:500;
 }
 
 .lang button{
-border:none;
-background:none;
-margin-left:8px;
+border:1px solid rgba(0,0,0,.2);
+background:white;
+margin-left:6px;
+padding:6px 12px;
+border-radius:6px;
 cursor:pointer;
+font-size:13px;
+font-weight:500;
+color:#0f172a;
 }
 
 .hero{
@@ -59,13 +64,13 @@ display:flex;
 align-items:center;
 background:
 linear-gradient(180deg,
-rgba(15,23,42,.75) 0%,
-rgba(15,23,42,.55) 40%,
-rgba(15,23,42,.45) 100%),
+rgba(8,12,25,.85) 0%,
+rgba(8,12,25,.65) 40%,
+rgba(8,12,25,.55) 100%),
 url("img/background.jpg");
 background-size:cover;
 background-position:center;
-padding:140px 60px;
+padding:150px 60px;
 color:white;
 }
 
@@ -162,98 +167,4 @@ ul{grid-template-columns:1fr;}
 </nav>
 
 <div class="lang">
-<button onclick="setLang('pl')">PL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-</div>
-</header>
-
-<div class="hero">
-<div>
-<h1 data-pl="Konrad Czachor Advisory & Partners"
-data-en="Konrad Czachor Advisory & Partners"
-data-de="Konrad Czachor Advisory & Partners">
-Konrad Czachor Advisory & Partners
-</h1>
-
-<p data-pl="Szkolenia • Audyty • Interim Management dla firm przemysłowych i usługowych."
-data-en="Training • Audits • Interim Management for industrial and service companies."
-data-de="Training • Audits • Interim Management für Industrie- und Dienstleistungsunternehmen.">
-</p>
-</div>
-</div>
-
-<section id="services">
-
-<h2>Services</h2>
-
-<div class="services">
-
-<div class="card">
-<h3>Training</h3>
-<p data-pl="Szkolenia techniczne i jakościowe w PL / EN / DE."
-data-en="Technical and quality trainings in PL / EN / DE."
-data-de="Technische und Qualitäts-Trainings in PL / EN / DE."></p>
-</div>
-
-<div class="card">
-<h3>Audits</h3>
-<p data-pl="Audyty systemowe, procesowe i dostawców."
-data-en="System, process and supplier audits."
-data-de="System-, Prozess- und Lieferantenaudits."></p>
-</div>
-
-<div class="card">
-<h3>Interim Management</h3>
-<p data-pl="Czasowe wsparcie managerskie w modelu B2B."
-data-en="Temporary management support in B2B model."
-data-de="Temporäre Managementunterstützung im B2B-Modell."></p>
-</div>
-
-</div>
-</section>
-
-<section class="why" id="about">
-
-<h2>Why working with us</h2>
-
-<ul>
-<li>B2B cooperation</li>
-<li>International projects</li>
-<li>Practical consulting</li>
-<li>Partner TÜV Nord Academy</li>
-</ul>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact</h2>
-
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-<input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email" required>
-<textarea name="message" rows="5" placeholder="Message"></textarea>
-<button type="submit">Send</button>
-</form>
-
-<p style="margin-top:30px">
-Email: info@kc-adp.com
-</p>
-
-</section>
-
-<footer>
-© 2026 Konrad Czachor Advisory & Partners
-</footer>
-
-<script>
-function setLang(lang){
-document.querySelectorAll('[data-pl]').forEach(el=>{
-el.innerText = el.dataset[lang];
-});
-}
-</script>
-
-</body>
-</html>
+<button onclick="setLang('
