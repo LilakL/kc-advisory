@@ -33,8 +33,9 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 60px;
-background:rgba(255,255,255,.9);
-border-bottom:1px solid #e5e7eb;
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.3);
 z-index:10;
 }
 
@@ -57,17 +58,21 @@ min-height:100vh;
 display:flex;
 align-items:center;
 background:
-linear-gradient(rgba(15,23,42,.6),rgba(15,23,42,.6)),
+linear-gradient(180deg,
+rgba(15,23,42,.75) 0%,
+rgba(15,23,42,.55) 40%,
+rgba(15,23,42,.45) 100%),
 url("img/background.jpg");
 background-size:cover;
 background-position:center;
-padding:120px 60px;
+padding:140px 60px;
 color:white;
 }
 
 .hero h1{
 font-size:46px;
 margin:0;
+letter-spacing:.4px;
 }
 
 .hero p{
