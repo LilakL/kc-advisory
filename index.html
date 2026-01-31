@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Konrad Czachor Advisory & Partners – Training • Audits • Interim Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+font-family: Arial, sans-serif;
+margin:0;
+color:#111;
+line-height:1.6;
+}
+
+header {
+padding:30px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #eee;
+}
+
+nav a {
+margin-left:20px;
+text-decoration:none;
+color:#111;
+}
+
+section {
+padding:80px 60px;
+max-width:1100px;
+margin:auto;
+}
+
+h1 {font-size:42px;margin-bottom:10px;}
+h2 {margin-top:60px;}
+
+.services {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.box {
+border:1px solid #ddd;
+padding:30px;
+}
+
+footer {
+border-top:1px solid #eee;
+padding:40px 60px;
+text-align:center;
+}
+
+button,input,textarea {
+padding:10px;
+border:1px solid #111;
+background:white;
+width:100%;
+margin-top:10px;
+font-size:14px;
+}
+
+form {max-width:500px;}
+
+.lang button {
+margin-left:10px;
+width:auto;
+}
+
+@media(max-width:800px){
+.services{grid-template-columns:1fr;}
+section{padding:40px 20px;}
+header{padding:20px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div><strong>Konrad Czachor Advisory & Partners</strong></div>
+
+<nav>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="lang">
+<button onclick="setLang('pl')">PL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
+</div>
+</header>
+
+<section>
+
+<h1 data-pl="Konrad Czachor Advisory & Partners"
+data-en="Konrad Czachor Advisory & Partners"
+data-de="Konrad Czachor Advisory & Partners">
+Konrad Czachor Advisory & Partners
+</h1>
+
+<p data-pl="Szkolenia • Audyty • Interim Management"
+data-en="Training • Audits • Interim Management"
+data-de="Training • Audits • Interim Management">
+Szkolenia • Audyty • Interim Management
+</p>
+
+<p data-pl="Praktyczne wsparcie dla firm przemysłowych i usługowych."
+data-en="Practical support for industrial and service companies."
+data-de="Praxisnahe Unterstützung für Industrie- und Dienstleistungsunternehmen.">
+Praktyczne wsparcie dla firm przemysłowych i usługowych.
+</p>
+
+</section>
+
+<section id="services">
+
+<h2>Services</h2>
+
+<div class="services">
+
+<div class="box">
+<h3>Training</h3>
+<p data-pl="Szkolenia techniczne i jakościowe (PL / EN / DE)."
+data-en="Technical and quality trainings (PL / EN / DE)."
+data-de="Technische und Qualitäts-Trainings (PL / EN / DE)."></p>
+</div>
+
+<div class="box">
+<h3>Audits</h3>
+<p data-pl="Audyty systemowe, procesowe i dostawców z planem działań."
+data-en="System, process and supplier audits with action plan."
+data-de="System-, Prozess- und Lieferantenaudits mit Maßnahmenplan."></p>
+</div>
+
+<div class="box">
+<h3>Interim Management</h3>
+<p data-pl="Czasowe wsparcie managerskie w modelu B2B."
+data-en="Temporary management support in B2B model."
+data-de="Temporäre Managementunterstützung im B2B-Modell."></p>
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2 data-pl="O nas"
+data-en="About"
+data-de="Über uns">O nas</h2>
+
+<p data-pl="Działamy w modelu B2B, dostarczając ekspertów, szkolenia oraz wsparcie operacyjne dla firm w Polsce i UE."
+data-en="We operate in B2B model delivering experts, training and operational support across Poland and EU."
+data-de="Wir arbeiten im B2B-Modell mit Experten, Trainings und operativer Unterstützung in Polen und der EU."></p>
+
+<ul>
+<li data-pl="Partner TÜV Nord Academy"
+data-en="TÜV Nord Academy Partner"
+data-de="TÜV Nord Academy Partner"></li>
+
+<li data-pl="Projekty międzynarodowe"
+data-en="International projects"
+data-de="Internationale Projekte"></li>
+
+<li data-pl="Elastyczna kooperacja B2B"
+data-en="Flexible B2B cooperation"
+data-de="Flexible B2B-Zusammenarbeit"></li>
+</ul>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<input type="text" name="name" placeholder="Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<textarea name="message" placeholder="Message" rows="5" required></textarea>
+
+<button type="submit">Send</button>
+
+</form>
+
+<p style="margin-top:40px">
+Email: info@twojadomena.pl<br>
+Tel: +48 xxx xxx xxx
+</p>
+
+<p>
+Konrad Czachor Advisory & Partners<br>
+Poland
+</p>
+
+</section>
+
+<footer>
+© 2026 Konrad Czachor Advisory & Partners
+</footer>
+
+<script>
+function setLang(lang){
+document.querySelectorAll('[data-pl]').forEach(el=>{
+el.innerText = el.dataset[lang];
+});
+}
+</script>
+
+</body>
+</html>
