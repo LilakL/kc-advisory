@@ -3,10 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Konrad Czachor – Profile</title>
+
+<title>Konrad Czachor – Leadership, Transformation & Operational Excellence</title>
+
+<meta name="description" content="Konrad Czachor – executive advisor helping organisations across Europe turn strategy into measurable results through leadership, transformation and operational excellence.">
+
+<meta property="og:title" content="Konrad Czachor Advisory & Partners">
+<meta property="og:description" content="Turning strategy into measurable results. Leadership. Transformation. Operational Excellence.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kc-adp.com/profile.html">
+<meta property="og:image" content="https://kc-adp.com/img/profile.jpg">
 
 <style>
 body{margin:0;font-family:Arial}
+
 header{
 position:sticky;top:0;background:#fff;padding:15px 40px;
 display:flex;justify-content:space-between;align-items:center;
@@ -20,14 +30,24 @@ border-radius:8px;font-size:22px;cursor:pointer;transition:.2s
 .lang button:hover{transform:scale(1.1)}
 .lang button.active{border-color:#2563eb;box-shadow:0 0 0 2px #2563eb inset}
 
+.breadcrumb{
+font-size:14px;color:#666;padding:20px 40px
+}
+.breadcrumb a{text-decoration:none;color:#2563eb}
+
 .hero{
-max-width:900px;margin:60px auto;padding:0 30px;
+max-width:900px;margin:40px auto;padding:0 30px;
 display:flex;gap:40px;flex-wrap:wrap;align-items:center
 }
 
 .hero img{max-width:240px;border-radius:10px}
 
-.content{max-width:900px;margin:auto;padding:0 30px 80px}
+.content{
+max-width:900px;margin:auto;padding:0 30px 80px;
+opacity:1;transition:opacity .3s
+}
+
+.fade{opacity:0}
 
 h1{font-size:36px}
 p{font-size:18px;line-height:1.6}
@@ -42,6 +62,8 @@ border-radius:6px;margin:5px 5px 0 0;font-size:13px
 .cta{
 margin-top:50px;padding:30px;background:#111;color:white;border-radius:12px
 }
+
+.cta a{color:white;font-weight:bold;text-decoration:none}
 
 footer{text-align:center;padding:30px;color:#777}
 
@@ -63,6 +85,10 @@ footer{text-align:center;padding:30px;color:#777}
 </div>
 </header>
 
+<div class="breadcrumb">
+<a href="index.html">Home</a> › Profile
+</div>
+
 <div class="hero">
 <img src="Konrad Czachor.jpg">
 
@@ -79,7 +105,7 @@ footer{text-align:center;padding:30px;color:#777}
 </div>
 </div>
 
-<div class="content">
+<div class="content" id="content">
 
 <p id="p1"></p>
 <p id="p2"></p>
@@ -92,7 +118,7 @@ footer{text-align:center;padding:30px;color:#777}
 <div class="cta">
 <h3 id="ctaTitle"></h3>
 <p id="ctaText"></p>
-<a style="color:white;font-weight:bold" href="contact.html">contact@kc-adp.com</a>
+<a href="contact.html" id="ctaBtn">contact@kc-adp.com</a>
 </div>
 
 </div>
@@ -160,6 +186,11 @@ cta:["Kontakt aufnehmen.","Wenn Ergebnisse zählen — sprechen wir."]
 };
 
 function setLang(l){
+
+content.classList.add("fade");
+
+setTimeout(()=>{
+
 localStorage.setItem("lang",l);
 document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
 document.querySelector(`[data-lang=${l}]`).classList.add("active");
@@ -170,6 +201,10 @@ list.innerHTML=dict[l].list.map(x=>"<li>"+x+"</li>").join("");
 p4.innerText=dict[l].end;
 ctaTitle.innerText=dict[l].cta[0];
 ctaText.innerText=dict[l].cta[1];
+
+content.classList.remove("fade");
+
+},150);
 }
 
 document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
