@@ -39,6 +39,9 @@ nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
 .about h3{font-size:30px;margin-top:40px}
 .about p{font-size:18px}
 
+ul.power{margin-left:20px;font-size:18px}
+ul.power li{margin-bottom:10px}
+
 footer{background:#0b1325;color:white;padding:30px;text-align:center}
 .cta{position:fixed;right:20px;bottom:20px;background:#2563eb;color:white;padding:18px 32px;border-radius:30px;font-weight:700;text-decoration:none}
 
@@ -79,6 +82,9 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 <div class="about-inner">
 <h2 id="a0"></h2>
 <p id="a1"></p><p id="a2"></p><p id="a3"></p>
+
+<ul class="power" id="bullets"></ul>
+
 <h3 id="a4"></h3><p id="a5"></p>
 <h3 id="a6"></h3><p id="a7"></p>
 <p id="a8"></p><p id="a9"></p><p id="a10"></p><p id="a11"></p><p id="a12"></p>
@@ -103,29 +109,6 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 document.addEventListener("DOMContentLoaded",()=>{
 
 const dict={
-en:{
-hero:"Trainings • Audits • Interim • B2B",
-t:["Trainings","Audits","Interim","B2B"],
-cta:"Start your transformation",
-about:[
-"Welcome to Konrad Czachor Advisory & Partners",
-"You don’t need another consultant. You need momentum.",
-"We help leaders simplify complexity, break operational limits, and execute with precision.",
-"This is where strategy becomes action.",
-"Konrad Czachor Advisory",
-"We rebuild operations. Strengthen management systems. Deliver measurable results in quality, compliance, leadership and performance.",
-"Konrad Czachor Partners",
-"We deploy elite international experts where execution truly matters.",
-"You gain clarity. You gain structure. You gain speed.",
-"One aligned boutique. One powerful direction.",
-"Central Europe roots. Global reach.",
-"This is not theory. This is implementation.",
-"Your next level starts with one conversation."
-],
-cookieTitle:"Privacy notice",
-cookie:"We use analytics to improve our website. <a href='privacy.html' style='color:white'>Privacy policy</a>"
-},
-
 pl:{
 hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
@@ -133,20 +116,59 @@ cta:"Rozpocznij transformację",
 about:[
 "Witamy w Konrad Czachor Advisory & Partners",
 "Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
-"Pomagamy liderom upraszczać złożoność i działać skutecznie.",
-"Tu strategia staje się realizacją.",
+"Pomagamy liderom upraszczać złożoność i zamieniać strategię w realne wyniki.",
+"Tu zaczyna się prawdziwa transformacja.",
 "Konrad Czachor Advisory",
 "Transformacja operacyjna, systemy jakości, compliance i rozwój przywództwa.",
 "Konrad Czachor Partners",
 "Międzynarodowi eksperci dokładnie tam, gdzie liczy się wykonanie.",
-"Zyskujesz jasność. Strukturę. Tempo.",
+"Zyskujesz jasność.",
+"Zyskujesz strukturę.",
+"Zyskujesz tempo.",
 "Jedna butikowa organizacja. Jeden kierunek.",
-"Korzenie w Europie Centralnej. Zasięg globalny.",
-"To nie teoria. To wdrożenie.",
 "Zacznijmy rozmowę."
+],
+bullets:[
+"✔ Skalowanie procesów bez chaosu",
+"✔ Lepsze decyzje oparte na danych",
+"✔ Silniejsze zespoły i liderzy",
+"✔ Redukcja kosztów operacyjnych",
+"✔ Wdrożenia, które naprawdę działają",
+"✔ Realna przewaga konkurencyjna"
 ],
 cookieTitle:"Polityka prywatności",
 cookie:"Używamy analityki. <a href='privacy.html' style='color:white'>Polityka prywatności</a>"
+},
+
+en:{
+hero:"Trainings • Audits • Interim • B2B",
+t:["Trainings","Audits","Interim","B2B"],
+cta:"Start your transformation",
+about:[
+"Welcome to Konrad Czachor Advisory & Partners",
+"You don’t need another consultant. You need momentum.",
+"We help leaders simplify complexity and turn strategy into measurable results.",
+"This is where transformation begins.",
+"Konrad Czachor Advisory",
+"Operational excellence, management systems, compliance and leadership development.",
+"Konrad Czachor Partners",
+"International experts exactly where execution matters most.",
+"You gain clarity.",
+"You gain structure.",
+"You gain speed.",
+"One boutique. One direction.",
+"Let’s talk."
+],
+bullets:[
+"✔ Scale operations without chaos",
+"✔ Make confident data-driven decisions",
+"✔ Build high-performance teams",
+"✔ Reduce operational costs",
+"✔ Implement change that sticks",
+"✔ Create real competitive advantage"
+],
+cookieTitle:"Privacy notice",
+cookie:"We use analytics. <a href='privacy.html' style='color:white'>Privacy policy</a>"
 },
 
 de:{
@@ -156,17 +178,25 @@ cta:"Transformation starten",
 about:[
 "Willkommen bei Konrad Czachor Advisory & Partners",
 "Sie brauchen keinen weiteren Berater. Sie brauchen Dynamik.",
-"Wir helfen Führungskräften Komplexität zu reduzieren und Ergebnisse umzusetzen.",
-"Hier wird Strategie zur Realität.",
+"Wir helfen Führungskräften Strategie in messbare Ergebnisse umzusetzen.",
+"Hier beginnt Transformation.",
 "Konrad Czachor Advisory",
-"Operative Transformation, Managementsysteme, Qualität und Compliance.",
+"Operative Exzellenz, Managementsysteme, Compliance und Führung.",
 "Konrad Czachor Partners",
-"Internationale Experten dort, wo Umsetzung entscheidend ist.",
-"Sie gewinnen Klarheit. Struktur. Geschwindigkeit.",
+"Internationale Experten dort, wo Umsetzung zählt.",
+"Sie gewinnen Klarheit.",
+"Sie gewinnen Struktur.",
+"Sie gewinnen Geschwindigkeit.",
 "Eine Boutique. Eine Richtung.",
-"Mitteleuropa verwurzelt. Global aktiv.",
-"Keine Theorie. Reale Umsetzung.",
 "Beginnen wir das Gespräch."
+],
+bullets:[
+"✔ Prozesse skalieren ohne Chaos",
+"✔ Bessere Entscheidungen durch Daten",
+"✔ Leistungsstarke Teams aufbauen",
+"✔ Operative Kosten senken",
+"✔ Nachhaltige Veränderungen umsetzen",
+"✔ Wettbewerbsvorteile schaffen"
 ],
 cookieTitle:"Datenschutz",
 cookie:"Wir verwenden Analysen. <a href='privacy.html' style='color:white'>Datenschutz</a>"
@@ -178,6 +208,7 @@ heroSub.innerText=dict[l].hero;
 [t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
 cta.innerText=dict[l].cta;
 dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
+bullets.innerHTML=dict[l].bullets.map(b=>"<li>"+b+"</li>").join("");
 cookieTitle.innerText=dict[l].cookieTitle;
 cookieText.innerHTML=dict[l].cookie;
 };
