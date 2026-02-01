@@ -34,11 +34,12 @@ nav a:hover{color:#2563eb}
 
 .lang button{
 margin-left:6px;
-padding:6px 12px;
+padding:6px 10px;
 border:1px solid #ccc;
 background:#fff;
 border-radius:6px;
-cursor:pointer
+cursor:pointer;
+font-size:18px
 }
 
 .lang .active{background:#2563eb;color:#fff}
@@ -111,75 +112,18 @@ text-align:center;
 margin-top:40px
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:900px){
-
-header{
-padding:15px 20px;
+.tiles{grid-template-columns:repeat(2,1fr);padding:30px}
+.hero{padding:40px;height:auto}
+.about{padding:50px 20px}
 }
-
-.hero{
-padding:40px 20px;
-height:auto;
-min-height:260px;
-}
-
-.tiles{
-grid-template-columns:repeat(2,1fr);
-padding:30px 20px;
-}
-
-.tile{
-height:160px;
-font-size:18px;
-}
-
-.about{
-padding:50px 20px;
-}
-
-}
-
-/* phones */
 
 @media(max-width:500px){
-
-header{
-flex-direction:column;
-align-items:flex-start;
-}
-
-nav{
-width:100%;
-display:flex;
-justify-content:space-between;
-}
-
-.tiles{
-grid-template-columns:1fr;
-}
-
-.tile{
-height:180px;
-}
-
-.hero h1{
-font-size:22px;
-}
-
-.hero p{
-font-size:14px;
-}
-
-.about h2{
-font-size:22px;
-}
-
-.about h3{
-font-size:18px;
-}
-
+header{flex-direction:column;align-items:flex-start}
+nav{width:100%;display:flex;justify-content:space-between}
+.tiles{grid-template-columns:1fr}
 }
 </style>
 
@@ -196,16 +140,16 @@ font-size:18px;
 </nav>
 
 <div class="lang">
-<button id="pl" class="active" onclick="setLang('pl')">PL</button>
-<button id="en" onclick="setLang('en')">EN</button>
-<button id="de" onclick="setLang('de')">DE</button>
+<button id="pl" onclick="setLang('pl')">🇵🇱</button>
+<button id="en" class="active" onclick="setLang('en')">🇬🇧</button>
+<button id="de" onclick="setLang('de')">🇩🇪</button>
 </div>
 </header>
 
 <section class="hero">
 <div>
-<h1 id="heroTitle">Konrad Czachor Advisory & Partners</h1>
-<p id="heroSub">Szkolenia • Audyty • Interim • B2B</p>
+<h1>Konrad Czachor Advisory & Partners</h1>
+<p id="heroSub">Training • Audits • Interim • B2B</p>
 </div>
 </section>
 
@@ -221,23 +165,19 @@ font-size:18px;
 <section class="about">
 <div class="about-inner">
 
-<h2>Welcome to Konrad Czachor Advisory & Partners</h2>
+<h2 id="aTitle"></h2>
+<p id="a1"></p>
+<p id="a2"></p>
 
-<p>Konrad Czachor Advisory & Partners is an independent, internationally oriented advisory boutique delivering strategic consulting, operational excellence, and business development support across multiple industries.</p>
+<h3 id="a3"></h3>
+<p id="a4"></p>
 
-<p>Built on hands-on experience and deep technical understanding, we combine advisory, implementation, and talent solutions under one roof — enabling our clients to move from strategy to execution seamlessly.</p>
+<h3 id="a5"></h3>
+<p id="a6"></p>
 
-<h3>Konrad Czachor Advisory</h3>
-
-<p>This division focuses on business advisory, operational transformation, quality systems, compliance, and strategic growth initiatives.</p>
-
-<h3>Konrad Czachor Partners</h3>
-
-<p>Our Partners division delivers project-based expertise and international recruitment.</p>
-
-<p>With roots in Central Europe and an international network of experts and partners, we support clients globally.</p>
-
-<p><b>Contact us today</b> for a confidential discussion.</p>
+<p id="a7"></p>
+<p id="a8"></p>
+<p id="a9"></p>
 
 </div>
 </section>
@@ -249,9 +189,54 @@ font-size:18px;
 <script>
 
 const dict={
-pl:{hero:"Szkolenia • Audyty • Interim • B2B",t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",mS:"Usługi",mC:"Kontakt"},
-en:{hero:"Training • Audits • Interim • B2B",t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Services",mC:"Contact"},
-de:{hero:"Training • Audits • Interim • B2B",t1:"Schulungen",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Leistungen",mC:"Kontakt"}
+en:{
+hero:"Training • Audits • Interim • B2B",
+t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B",
+mS:"Services",mC:"Contact",
+a:[
+"Welcome to Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners is an independent, internationally oriented advisory boutique delivering strategic consulting, operational excellence, and business development support across multiple industries.",
+"Built on hands-on experience and deep technical understanding, we combine advisory, implementation, and talent solutions under one roof — enabling our clients to move from strategy to execution seamlessly.",
+"Konrad Czachor Advisory",
+"This division focuses on business advisory, operational transformation, quality systems, compliance, and strategic growth initiatives. We support organizations with structure, clarity, and measurable results — from process optimization to management systems and organizational development.",
+"Konrad Czachor Partners",
+"Our Partners division delivers project-based expertise and international recruitment, providing highly qualified specialists tailored to client needs, particularly within manufacturing, engineering, and technical environments.",
+"We operate as a one-stop boutique — speaking the language of both management and operations. Having grown organically, we have expanded our services across multiple sectors while maintaining a strong practical, results-driven mindset.",
+"With roots in Central Europe and an international network of experts and partners, we support clients globally through flexible, agile engagement models.",
+"Contact us today for a confidential discussion on how Konrad Czachor Advisory & Partners can support your business growth, transformation, and operational excellence."
+]},
+pl:{
+hero:"Szkolenia • Audyty • Interim • B2B",
+t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",
+mS:"Usługi",mC:"Kontakt",
+a:[
+"Witamy w Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners to niezależna, międzynarodowa butikowa firma doradcza świadcząca usługi w zakresie strategii, doskonałości operacyjnej oraz rozwoju biznesu w wielu branżach.",
+"Opierając się na praktycznym doświadczeniu i głębokiej wiedzy technicznej, łączymy doradztwo, wdrożenia oraz rozwiązania personalne pod jednym dachem — umożliwiając płynne przejście od strategii do realizacji.",
+"Konrad Czachor Advisory",
+"Ten obszar koncentruje się na doradztwie biznesowym, transformacji operacyjnej, systemach jakości, zgodności oraz inicjatywach rozwoju strategicznego.",
+"Konrad Czachor Partners",
+"Nasz dział Partners dostarcza ekspertów projektowych oraz prowadzi rekrutację międzynarodową, zapewniając wysoko wykwalifikowanych specjalistów.",
+"Działamy jako butik typu one-stop, mówiąc tym samym językiem co zarząd i operacje.",
+"Dzięki korzeniom w Europie Centralnej i międzynarodowej sieci ekspertów wspieramy klientów globalnie.",
+"Skontaktuj się z nami już dziś, aby omówić poufnie rozwój Twojej organizacji."
+]},
+de:{
+hero:"Training • Audits • Interim • B2B",
+t1:"Schulungen",t2:"Audits",t3:"Interim",t4:"B2B",
+mS:"Leistungen",mC:"Kontakt",
+a:[
+"Willkommen bei Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners ist eine unabhängige, international ausgerichtete Boutique-Beratung für Strategie, operative Exzellenz und Geschäftsentwicklung.",
+"Basierend auf praktischer Erfahrung und tiefem technischem Know-how verbinden wir Beratung, Umsetzung und Talentlösungen.",
+"Konrad Czachor Advisory",
+"Dieser Bereich konzentriert sich auf Unternehmensberatung, operative Transformation, Qualitätssysteme und Compliance.",
+"Konrad Czachor Partners",
+"Unsere Partners Division liefert projektbasierte Expertise sowie internationale Rekrutierung.",
+"Wir agieren als One-Stop-Boutique und sprechen die Sprache von Management und Betrieb.",
+"Mit Wurzeln in Mitteleuropa unterstützen wir Kunden weltweit.",
+"Kontaktieren Sie uns für ein vertrauliches Gespräch."
+]}
 };
 
 function setLang(l){
@@ -266,8 +251,21 @@ t4.innerText=dict[l].t4;
 mServices.innerText=dict[l].mS;
 mContact.innerText=dict[l].mC;
 
+aTitle.innerText=dict[l].a[0];
+a1.innerText=dict[l].a[1];
+a2.innerText=dict[l].a[2];
+a3.innerText=dict[l].a[3];
+a4.innerText=dict[l].a[4];
+a5.innerText=dict[l].a[5];
+a6.innerText=dict[l].a[6];
+a7.innerText=dict[l].a[7];
+a8.innerText=dict[l].a[8];
+a9.innerText=dict[l].a[9];
+
 document.documentElement.lang=l;
 }
+
+setLang('en');
 
 </script>
 
