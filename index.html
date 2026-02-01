@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Konrad Czachor Advisory & Partners</title>
-<meta name="description" content="Training, Audits, Interim Management and B2B cooperation">
 
 <style>
 
@@ -38,9 +37,10 @@ nav a:hover{color:#2563eb}
 
 .lang span{
 border:1px solid #ccc;
-padding:5px 10px;
+padding:6px 12px;
 cursor:pointer;
 border-radius:6px;
+margin-left:5px;
 }
 
 .lang .active{
@@ -67,14 +67,15 @@ padding:80px;
 }
 
 .tile{
-height:260px;
+height:240px;
 background-size:cover;
+background-position:center;
 position:relative;
 overflow:hidden;
 transition:.4s;
 }
 
-.tile:hover{transform:scale(1.05)}
+.tile:hover{transform:scale(1.04)}
 
 .tile a{
 position:absolute;
@@ -86,12 +87,17 @@ color:white;
 font-size:22px;
 font-weight:bold;
 text-decoration:none;
-background:rgba(0,0,0,.4);
+background:rgba(0,0,0,.25);
+transition:.3s;
 }
 
-.breadcrumbs{
-padding:20px 80px;
-font-size:14px;
+.tile a:hover{background:rgba(0,0,0,.45)}
+
+footer{
+text-align:center;
+padding:40px;
+color:#555;
+border-top:1px solid #eee;
 }
 
 </style>
@@ -113,7 +119,7 @@ font-size:14px;
 
 <div class="lang">
 <span data-lang="pl" onclick="setLang('pl')">PL</span>
-<span data-lang="en" class="active" onclick="setLang('en')">EN</span>
+<span data-lang="en" onclick="setLang('en')">EN</span>
 <span data-lang="de" onclick="setLang('de')">DE</span>
 </div>
 
@@ -122,44 +128,81 @@ font-size:14px;
 
 <section class="hero">
 <h1 id="hero-title">Konrad Czachor Advisory & Partners</h1>
-<p id="hero-sub">Training • Audits • Interim Management</p>
+<p id="hero-sub">Training • Audits • Interim</p>
 </section>
 
 <div class="tiles">
 
-<div class="tile" style="background:url(img/training.jpg)">
-<a href="training.html">Training</a>
+<div class="tile" style="background-image:url(img/training.jpg)">
+<a href="training.html" id="tile-training">Training</a>
 </div>
 
-<div class="tile" style="background:url(img/audits.jpg)">
-<a href="audits.html">Audits</a>
+<div class="tile" style="background-image:url(img/audits.jpg)">
+<a href="audits.html" id="tile-audits">Audits</a>
 </div>
 
-<div class="tile" style="background:url(img/interim.jpg)">
-<a href="interim.html">Interim</a>
+<div class="tile" style="background-image:url(img/interim.jpg)">
+<a href="interim.html" id="tile-interim">Interim</a>
 </div>
 
-<div class="tile" style="background:url(img/b2b.jpg)">
-<a href="b2b.html">B2B</a>
+<div class="tile" style="background-image:url(img/b2b.jpg)">
+<a href="b2b.html" id="tile-b2b">B2B</a>
 </div>
 
 </div>
+
+<footer>
+© 2026 Konrad Czachor Advisory & Partners – All rights reserved
+</footer>
 
 <script>
 
 const t={
-pl:{services:"Usługi",contact:"Kontakt",sub:"Szkolenia • Audyty • Interim"},
-en:{services:"Services",contact:"Contact",sub:"Training • Audits • Interim"},
-de:{services:"Leistungen",contact:"Kontakt",sub:"Training • Audits • Interim"}
+pl:{
+services:"Usługi",
+contact:"Kontakt",
+sub:"Szkolenia • Audyty • Interim",
+training:"Szkolenia",
+audits:"Audyty",
+interim:"Interim",
+b2b:"B2B"
+},
+en:{
+services:"Services",
+contact:"Contact",
+sub:"Training • Audits • Interim",
+training:"Training",
+audits:"Audits",
+interim:"Interim",
+b2b:"B2B"
+},
+de:{
+services:"Leistungen",
+contact:"Kontakt",
+sub:"Training • Audits • Interim",
+training:"Training",
+audits:"Audits",
+interim:"Interim",
+b2b:"B2B"
+}
 };
 
 function setLang(l){
+
 localStorage.lang=l;
-document.getElementById("nav-services").innerText=t[l].services;
-document.getElementById("nav-contact").innerText=t[l].contact;
-document.getElementById("hero-sub").innerText=t[l].sub;
+
+nav-services.innerText=t[l].services;
+nav-contact.innerText=t[l].contact;
+hero-sub.innerText=t[l].sub;
+
+tile-training.innerText=t[l].training;
+tile-audits.innerText=t[l].audits;
+tile-interim.innerText=t[l].interim;
+tile-b2b.innerText=t[l].b2b;
+
 document.querySelectorAll(".lang span").forEach(x=>x.classList.remove("active"));
 document.querySelector(`[data-lang="${l}"]`).classList.add("active");
+
 document.documentElement.lang=l;
 }
 
