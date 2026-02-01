@@ -101,6 +101,7 @@ display:flex;justify-content:space-between
 
 <nav>
 <a href="#services" id="navServices"></a>
+<a href="profile.html" id="navAbout"></a>
 <a href="#" id="navContact"></a>
 </nav>
 
@@ -168,11 +169,11 @@ display:flex;justify-content:space-between
 </div>
 
 <script>
-/* FULL COPY PL / EN / DE — dokładnie jak podałeś wcześniej */
+
 const dict={
 
 pl:{
-nav:["Usługi","Kontakt"],
+nav:["Usługi","O mnie","Kontakt"],
 cta:"Rozpocznij transformację",
 hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
@@ -209,7 +210,7 @@ cookie:"Używamy cookies."
 },
 
 en:{
-nav:["Services","Contact"],
+nav:["Services","About me","Contact"],
 cta:"Start your transformation",
 hero:"Trainings • Audits • Interim • B2B",
 t:["Trainings","Audits","Interim","B2B"],
@@ -246,7 +247,7 @@ cookie:"We use cookies."
 },
 
 de:{
-nav:["Leistungen","Kontakt"],
+nav:["Leistungen","Über mich","Kontakt"],
 cta:"Transformation starten",
 hero:"Schulungen • Audits • Interim • B2B",
 t:["Schulungen","Audits","Interim","B2B"],
@@ -294,7 +295,8 @@ dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
 bullets.innerHTML=dict[l].bullets.map(x=>"<li>"+x+"</li>").join("");
 dict[l].extra.forEach((v,i)=>document.getElementById("a"+(7+i)).innerText=v);
 navServices.innerText=dict[l].nav[0];
-navContact.innerText=dict[l].nav[1];
+navAbout.innerText=dict[l].nav[1];
+navContact.innerText=dict[l].nav[2];
 ctaBtn.innerText=dict[l].cta;
 cookieText.innerText=dict[l].cookie;
 }
