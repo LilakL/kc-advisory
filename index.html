@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<title>Konrad Czachor Advisory & Partners | Training • Audits • Interim Management</title>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title id="seoTitle">Konrad Czachor Advisory & Partners</title>
-<meta name="description" content="Training, Audits and Interim Management">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Professional Training, Audits and Interim Management for industrial and service companies. B2B cooperation with trusted partners.">
 
 <style>
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-
-body{
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,Helvetica,sans-serif;
-color:#0f172a;
 }
 
-/* HEADER */
+body{background:#fff;}
 
 header{
 position:fixed;
@@ -31,216 +31,232 @@ justify-content:space-between;
 align-items:center;
 border-bottom:1px solid #e5e7eb;
 z-index:100;
+transition:.3s;
+}
+
+header.scrolled{
+box-shadow:0 4px 15px rgba(0,0,0,.12);
+}
+
+header>div{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+nav{
+display:flex;
+align-items:center;
+gap:25px;
 }
 
 nav a{
-margin:0 15px;
 text-decoration:none;
-color:#334155;
-font-weight:500;
+color:#1f2937;
+font-weight:600;
+position:relative;
 }
 
-.lang button{
-margin-left:8px;
-padding:6px 12px;
-border:1px solid #94a3b8;
-background:white;
+nav a:after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0;
+height:2px;
+background:#2563eb;
+transition:.3s;
+}
+
+nav a:hover:after{width:100%;}
+
+.lang{
+display:flex;
+gap:8px;
+}
+
+.lang span{
+border:1px solid #cbd5e1;
+padding:4px 10px;
 border-radius:6px;
 cursor:pointer;
+font-size:13px;
 }
 
-/* HERO */
+.lang span.active{
+background:#2563eb;
+color:white;
+border-color:#2563eb;
+}
 
 .hero{
-margin-top:80px;
-min-height:85vh;
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url("img/background.jpg");
-background-size:cover;
-background-position:center;
+margin-top:90px;
+height:60vh;
+background:url('img/background.jpg') center/cover no-repeat;
+position:relative;
 display:flex;
 align-items:center;
-padding:0 80px;
+padding:60px;
+}
+
+.hero:before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+}
+
+.hero-content{
+position:relative;
 color:white;
+max-width:700px;
+animation:fadeInUp 1s ease;
 }
 
-.hero h1{font-size:48px;margin-bottom:20px}
+.hero h1{font-size:48px;margin-bottom:10px;}
+.hero p{font-size:18px;}
 
-/* SERVICES */
-
-section{
-padding:100px 80px;
-max-width:1200px;
-margin:auto;
-}
-
-.tiles{
+.services{
+padding:80px 60px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+gap:40px;
 }
 
-.tile{
+.card{
 height:260px;
 position:relative;
 overflow:hidden;
-transition:.5s;
+cursor:pointer;
+animation:fadeInUp 1s ease;
 }
 
-.tile:hover{transform:scale(1.05)}
-
-.tile img{
+.card img{
 width:100%;
 height:100%;
 object-fit:cover;
+transition:.5s;
 }
 
-.tile::after{
-content:"";
+.card:hover img{transform:scale(1.1);}
+
+.overlay{
 position:absolute;
 inset:0;
 background:rgba(0,0,0,.45);
-}
-
-.tile-content{
-position:absolute;
-inset:0;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 color:white;
-z-index:2;
-}
-
-.tile-content button{
-margin-top:10px;
-background:none;
-border:2px solid white;
-color:white;
-padding:8px 20px;
-}
-
-/* FADE */
-
-.fade{opacity:0;transform:translateY(30px);transition:1s}
-.fade.show{opacity:1;transform:none}
-
-footer{
-background:#0f172a;
-color:white;
-padding:60px;
 text-align:center;
+gap:10px;
+}
+
+.overlay a{
+border:2px solid white;
+padding:8px 20px;
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+.overlay a:hover{
+background:white;
+color:black;
+}
+
+@keyframes fadeInUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:none;}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-
-<strong>Konrad Czachor Advisory & Partners</strong>
+<header id="header">
 
 <div>
+<strong>Konrad Czachor Advisory & Partners</strong>
+</div>
+
+<div>
+
 <nav>
-<a href="#services" id="navServices">Services</a>
-<a href="#contact" id="navContact">Contact</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<span class="lang">
-<button onclick="setLang('pl')">PL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-</span>
+<div class="lang">
+<span class="active">PL</span>
+<span>EN</span>
+<span>DE</span>
+</div>
+
 </div>
 
 </header>
 
-<div class="hero">
-<div>
-<h1 id="heroTitle">Konrad Czachor Advisory & Partners</h1>
-<p id="heroText">Training • Audits • Interim Management</p>
+<section class="hero">
+
+<div class="hero-content">
+<h1>Konrad Czachor Advisory & Partners</h1>
+<p>Training • Audits • Interim Management</p>
 </div>
-</div>
 
-<section id="services">
+</section>
 
-<h2 id="servicesTitle">Our Services</h2>
+<section class="services" id="services">
 
-<div class="tiles fade">
-
-<a href="training.html" class="tile">
+<div class="card">
 <img src="img/training.jpg">
-<div class="tile-content"><h3 id="t1">Training</h3></div>
-</a>
-
-<a href="audits.html" class="tile">
-<img src="img/audits.jpg">
-<div class="tile-content"><h3 id="t2">Audits</h3></div>
-</a>
-
-<a href="interim.html" class="tile">
-<img src="img/interim.jpg">
-<div class="tile-content"><h3 id="t3">Interim</h3></div>
-</a>
-
-<a href="b2b.html" class="tile">
-<img src="img/b2b.jpg">
-<div class="tile-content"><h3 id="t4">B2B</h3></div>
-</a>
-
+<div class="overlay">
+<h3>Training</h3>
+<a href="training.html">Learn more</a>
 </div>
-</section>
+</div>
 
-<section id="contact" class="fade">
-<h2 id="contactTitle">Contact</h2>
-<p>Email: info@kc-adp.com</p>
-</section>
+<div class="card">
+<img src="img/audits.jpg">
+<div class="overlay">
+<h3>Audits</h3>
+<a href="audits.html">Learn more</a>
+</div>
+</div>
 
-<footer>
-© 2026 Konrad Czachor Advisory & Partners
-</footer>
+<div class="card">
+<img src="img/interim.jpg">
+<div class="overlay">
+<h3>Interim Management</h3>
+<a href="interim.html">Learn more</a>
+</div>
+</div>
+
+<div class="card">
+<img src="img/b2b.jpg">
+<div class="overlay">
+<h3>B2B Multiplicator</h3>
+<a href="b2b.html">Learn more</a>
+</div>
+</div>
+
+</section>
 
 <script>
 
-const txt={
-pl:{
-services:"Usługi",contact:"Kontakt",
-hero:"Szkolenia • Audyty • Interim Management",
-t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",
-seo:"Doradztwo biznesowe | KCAP"
-},
-en:{
-services:"Services",contact:"Contact",
-hero:"Training • Audits • Interim Management",
-t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B",
-seo:"Business Advisory | KCAP"
-},
-de:{
-services:"Leistungen",contact:"Kontakt",
-hero:"Training • Audits • Interim Management",
-t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B",
-seo:"Unternehmensberatung | KCAP"
-}
-}
+window.addEventListener("scroll",()=>{
+document.getElementById("header").classList.toggle("scrolled",window.scrollY>10);
+});
 
-function setLang(l){
-document.getElementById("navServices").innerText=txt[l].services
-document.getElementById("navContact").innerText=txt[l].contact
-document.getElementById("heroText").innerText=txt[l].hero
-document.getElementById("t1").innerText=txt[l].t1
-document.getElementById("t2").innerText=txt[l].t2
-document.getElementById("t3").innerText=txt[l].t3
-document.getElementById("t4").innerText=txt[l].t4
-document.getElementById("seoTitle").innerText=txt[l].seo
+document.querySelectorAll(".lang span").forEach(el=>{
+el.onclick=()=>{
+document.querySelectorAll(".lang span").forEach(x=>x.classList.remove("active"));
+el.classList.add("active");
 }
-
-const obs=new IntersectionObserver(e=>{
-e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show")})
-})
-document.querySelectorAll(".fade").forEach(el=>obs.observe(el))
+});
 
 </script>
 
