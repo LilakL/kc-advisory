@@ -1,76 +1,181 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Konrad Czachor – Profile</title>
+
 <style>
-body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; line-height: 1.6; }
-h1, h2 { color:#222; }
-section { margin-bottom:60px; }
-img { max-width:280px; border-radius:8px; }
-.hero { display:flex; gap:30px; align-items:flex-start; }
-.lang { border-top:1px solid #ccc; padding-top:30px; }
+body{margin:0;font-family:Arial}
+header{
+position:sticky;top:0;background:#fff;padding:15px 40px;
+display:flex;justify-content:space-between;align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:10
+}
+
+.lang button{
+margin-left:6px;padding:8px 12px;border:1px solid #ccc;background:#fff;
+border-radius:8px;font-size:22px;cursor:pointer;transition:.2s
+}
+.lang button:hover{transform:scale(1.1)}
+.lang button.active{border-color:#2563eb;box-shadow:0 0 0 2px #2563eb inset}
+
+.hero{
+max-width:900px;margin:60px auto;padding:0 30px;
+display:flex;gap:40px;flex-wrap:wrap;align-items:center
+}
+
+.hero img{max-width:240px;border-radius:10px}
+
+.content{max-width:900px;margin:auto;padding:0 30px 80px}
+
+h1{font-size:36px}
+p{font-size:18px;line-height:1.6}
+
+ul{padding-left:20px}
+
+.badges span{
+display:inline-block;background:#f1f1f1;padding:6px 12px;
+border-radius:6px;margin:5px 5px 0 0;font-size:13px
+}
+
+.cta{
+margin-top:50px;padding:30px;background:#111;color:white;border-radius:12px
+}
+
+footer{text-align:center;padding:30px;color:#777}
+
+@media(max-width:700px){
+.hero{text-align:center;justify-content:center}
+}
 </style>
 </head>
 
 <body>
 
+<header>
+<b>Konrad Czachor Advisory & Partners</b>
+
+<div class="lang">
+<button data-lang="pl">🇵🇱</button>
+<button data-lang="en">🇬🇧</button>
+<button data-lang="de">🇩🇪</button>
+</div>
+</header>
+
 <div class="hero">
-<img src="Konrad Czachor.jpg" alt="Konrad Czachor">
+<img src="Konrad Czachor.jpg">
+
 <div>
 <h1>Konrad Czachor</h1>
-<p><strong>22 lata doświadczenia • Leadership • Transformation • Operational Excellence</strong></p>
+<p id="headline"></p>
+
+<div class="badges">
+<span>Leadership</span>
+<span>Transformation</span>
+<span>Operational Excellence</span>
+<span>Execution</span>
 </div>
 </div>
+</div>
 
-<section class="lang">
-<h2>🇵🇱 POLSKI</h2>
+<div class="content">
 
-<p><strong>Lider, który zamienia strategię w realne wyniki.</strong></p>
+<p id="p1"></p>
+<p id="p2"></p>
+<p id="p3"></p>
 
-<p>Nie potrzebujesz kolejnego konsultanta. Potrzebujesz partnera, który bierze odpowiedzialność za rezultat.</p>
+<ul id="list"></ul>
 
-<p>Od ponad 22 lat pomagam organizacjom w Europie rozwijać biznes, podnosić jakość, upraszczać złożoność i budować zespoły, które dowożą — nawet w najbardziej wymagających środowiskach: automotive, defense, energy, aviation czy rolling stock.</p>
+<p id="p4"></p>
 
-<p>Łączę inżynierską precyzję z biznesowym pragmatyzmem i przywództwem opartym na działaniu.</p>
+<div class="cta">
+<h3 id="ctaTitle"></h3>
+<p id="ctaText"></p>
+<a style="color:white;font-weight:bold" href="contact.html">contact@kc-adp.com</a>
+</div>
 
-<p>Myślę systemowo. Działam hands‑on. Buduję ludzi. Upraszczam procesy. Skupiam się na efekcie.</p>
+</div>
 
-<p>Pomagam firmom przechodzić od chaosu do klarowności. Od strategii do egzekucji. Od potencjału do przewagi konkurencyjnej.</p>
-</section>
+<footer>© 2026 Konrad Czachor Advisory & Partners</footer>
 
-<section class="lang">
-<h2>🇬🇧 ENGLISH</h2>
+<script>
 
-<p><strong>Turning strategy into measurable results.</strong></p>
+const dict={
 
-<p>You don’t need another consultant. You need a partner who owns the outcome.</p>
+pl:{
+headline:"22 lata doświadczenia • Leadership • Transformation • Operational Excellence",
+p:[
+"Lider, który zamienia strategię w realne wyniki.",
+"Nie potrzebujesz kolejnego konsultanta. Potrzebujesz partnera, który bierze odpowiedzialność za rezultat.",
+"Od ponad 22 lat pomagam organizacjom w Europie rozwijać biznes, podnosić jakość i budować zespoły które dowożą."
+],
+list:[
+"Myślę systemowo",
+"Działam hands-on",
+"Buduję ludzi",
+"Upraszczam procesy",
+"Skupiam się na efekcie"
+],
+end:"Pomagam firmom przechodzić od chaosu do klarowności. Od strategii do egzekucji. Od potencjału do przewagi.",
+cta:["Let’s talk.","Jeśli zależy Ci na realnych rezultatach — porozmawiajmy."]
+},
 
-<p>For over 22 years, I’ve been helping organisations across Europe grow, simplify complexity, elevate quality, and build high‑performance teams — even in the most demanding industries.</p>
+en:{
+headline:"22+ years • Leadership • Transformation • Operational Excellence",
+p:[
+"Turning strategy into measurable results.",
+"You don’t need another consultant. You need a partner who owns the outcome.",
+"For over 22 years I’ve helped organisations across Europe grow, simplify complexity and build high-performance teams."
+],
+list:[
+"Systemic thinking",
+"Hands-on execution",
+"People development",
+"Process simplification",
+"Impact focus"
+],
+end:"I help companies move from chaos to clarity. From strategy to execution. From potential to competitive advantage.",
+cta:["Let’s talk.","If you care about execution and results — let’s connect."]
+},
 
-<p>I combine engineering precision with business pragmatism and action‑based leadership.</p>
+de:{
+headline:"22+ Jahre • Leadership • Transformation • Operational Excellence",
+p:[
+"Strategie in messbare Ergebnisse verwandeln.",
+"Sie brauchen keinen weiteren Berater. Sie brauchen einen Partner, der Verantwortung übernimmt.",
+"Seit über 22 Jahren unterstütze ich Unternehmen in Europa beim Wachstum und Aufbau leistungsstarker Teams."
+],
+list:[
+"Systemisches Denken",
+"Hands-on Umsetzung",
+"Menschen entwickeln",
+"Prozesse vereinfachen",
+"Wirkung erzielen"
+],
+end:"Von Chaos zu Klarheit. Von Strategie zu Umsetzung. Von Potenzial zu Wettbewerbsvorteil.",
+cta:["Kontakt aufnehmen.","Wenn Ergebnisse zählen — sprechen wir."]
+}
 
-<p>I think systemically. I work hands‑on. I build people. I simplify processes. I focus on impact.</p>
+};
 
-<p>I help companies move from chaos to clarity. From strategy to execution. From potential to competitive advantage.</p>
-</section>
+function setLang(l){
+localStorage.setItem("lang",l);
+document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+document.querySelector(`[data-lang=${l}]`).classList.add("active");
 
-<section class="lang">
-<h2>🇩🇪 DEUTSCH</h2>
+headline.innerText=dict[l].headline;
+[p1,p2,p3].forEach((e,i)=>e.innerText=dict[l].p[i]);
+list.innerHTML=dict[l].list.map(x=>"<li>"+x+"</li>").join("");
+p4.innerText=dict[l].end;
+ctaTitle.innerText=dict[l].cta[0];
+ctaText.innerText=dict[l].cta[1];
+}
 
-<p><strong>Strategie in messbare Ergebnisse verwandeln.</strong></p>
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+setLang(localStorage.getItem("lang")||"pl");
 
-<p>Sie brauchen keinen weiteren Berater. Sie brauchen einen Partner, der Verantwortung für Resultate übernimmt.</p>
-
-<p>Seit über 22 Jahren unterstütze ich Unternehmen in ganz Europa dabei, zu wachsen, Komplexität zu reduzieren, Qualität zu steigern und leistungsstarke Teams aufzubauen.</p>
-
-<p>Ich verbinde ingenieurtechnische Präzision mit unternehmerischem Denken und umsetzungsstarker Führung.</p>
-
-<p>Ich denke systemisch. Ich arbeite hands‑on. Ich entwickle Menschen. Ich vereinfache Prozesse. Ich fokussiere Ergebnisse.</p>
-
-<p>Von Chaos zu Klarheit. Von Strategie zu Umsetzung. Von Potenzial zu Wettbewerbsvorteil.</p>
-</section>
+</script>
 
 </body>
 </html>
