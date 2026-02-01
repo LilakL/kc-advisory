@@ -5,100 +5,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Konrad Czachor Advisory & Partners</title>
+<title id="seo-title">Konrad Czachor Advisory & Partners</title>
 
 <style>
 
 body{margin:0;font-family:Arial}
 
 header{
-position:fixed;
-top:0;width:100%;
-background:white;
-padding:20px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #e5e7eb;
-z-index:100;
-transition:.3s;
+position:fixed;top:0;width:100%;
+background:white;padding:20px 60px;
+display:flex;justify-content:space-between;
+align-items:center;border-bottom:1px solid #e5e7eb;
+z-index:100;transition:.3s;
 }
 
 header.scrolled{box-shadow:0 4px 12px rgba(0,0,0,.15)}
 
-nav a{
-margin-right:20px;
-text-decoration:none;
-color:#1f2937;
-font-weight:600;
-}
-
+nav a{margin-right:20px;text-decoration:none;color:#1f2937;font-weight:600}
 nav a:hover{color:#2563eb}
 
 .lang span{
-border:1px solid #ccc;
-padding:6px 12px;
-cursor:pointer;
-border-radius:6px;
-margin-left:5px;
+border:1px solid #ccc;padding:6px 12px;
+cursor:pointer;border-radius:6px;margin-left:5px;
 }
 
-.lang .active{
-background:#2563eb;
-color:white;
-}
+.lang .active{background:#2563eb;color:white}
 
 .hero{
-margin-top:100px;
-height:420px;
+margin-top:100px;height:420px;
 background:url(img/background.jpg) center/cover;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding-left:80px;
-color:white;
+display:flex;flex-direction:column;
+justify-content:center;padding-left:80px;color:white;
 }
 
 .tiles{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:30px;
-padding:80px;
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:30px;padding:80px;
 }
 
 .tile{
-height:240px;
-background-size:cover;
-background-position:center;
-position:relative;
-overflow:hidden;
-transition:.4s;
+height:240px;background-size:cover;
+background-position:center;position:relative;
+overflow:hidden;transition:.4s;
+opacity:0;transform:translateY(40px);
 }
+
+.tile.visible{opacity:1;transform:none}
 
 .tile:hover{transform:scale(1.04)}
 
 .tile a{
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:22px;
-font-weight:bold;
-text-decoration:none;
-background:rgba(0,0,0,.25);
+position:absolute;inset:0;display:flex;
+align-items:center;justify-content:center;
+color:white;font-size:22px;font-weight:bold;
+text-decoration:none;background:rgba(0,0,0,.25);
 transition:.3s;
 }
 
 .tile a:hover{background:rgba(0,0,0,.45)}
 
 footer{
-text-align:center;
-padding:40px;
-color:#555;
-border-top:1px solid #eee;
+background:#0f172a;color:white;padding:50px 80px;margin-top:80px
 }
+
+.footer-inner{
+display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px
+}
+
+.footer a{color:#cbd5f5;text-decoration:none;display:block;margin-bottom:6px}
+.footer a:hover{color:white}
 
 </style>
 
@@ -114,7 +89,7 @@ border-top:1px solid #eee;
 
 <nav>
 <a id="nav-services" href="index.html">Services</a>
-<a id="nav-contact" href="#contact">Contact</a>
+<a id="nav-contact" href="contact.html">Contact</a>
 </nav>
 
 <div class="lang">
@@ -127,7 +102,7 @@ border-top:1px solid #eee;
 </header>
 
 <section class="hero">
-<h1 id="hero-title">Konrad Czachor Advisory & Partners</h1>
+<h1>Konrad Czachor Advisory & Partners</h1>
 <p id="hero-sub">Training • Audits • Interim</p>
 </section>
 
@@ -152,65 +127,43 @@ border-top:1px solid #eee;
 </div>
 
 <footer>
-© 2026 Konrad Czachor Advisory & Partners – All rights reserved
+<div class="footer-inner">
+<div><strong>Konrad Czachor Advisory & Partners</strong><br>Training • Audits • Interim • B2B</div>
+<div><a href="index.html">Services</a><a href="contact.html">Contact</a></div>
+<div>© 2026 All rights reserved</div>
+</div>
 </footer>
 
 <script>
 
 const t={
-pl:{
-services:"Usługi",
-contact:"Kontakt",
-sub:"Szkolenia • Audyty • Interim",
-training:"Szkolenia",
-audits:"Audyty",
-interim:"Interim",
-b2b:"B2B"
-},
-en:{
-services:"Services",
-contact:"Contact",
-sub:"Training • Audits • Interim",
-training:"Training",
-audits:"Audits",
-interim:"Interim",
-b2b:"B2B"
-},
-de:{
-services:"Leistungen",
-contact:"Kontakt",
-sub:"Training • Audits • Interim",
-training:"Training",
-audits:"Audits",
-interim:"Interim",
-b2b:"B2B"
-}
+pl:{services:"Usługi",contact:"Kontakt",sub:"Szkolenia • Audyty • Interim",training:"Szkolenia",audits:"Audyty"},
+en:{services:"Services",contact:"Contact",sub:"Training • Audits • Interim"},
+de:{services:"Leistungen",contact:"Kontakt",sub:"Training • Audits • Interim"}
 };
 
 function setLang(l){
-
 localStorage.lang=l;
-
-nav-services.innerText=t[l].services;
-nav-contact.innerText=t[l].contact;
-hero-sub.innerText=t[l].sub;
-
-tile-training.innerText=t[l].training;
-tile-audits.innerText=t[l].audits;
-tile-interim.innerText=t[l].interim;
-tile-b2b.innerText=t[l].b2b;
+document.getElementById("nav-services").innerText=t[l].services;
+document.getElementById("nav-contact").innerText=t[l].contact;
+document.getElementById("hero-sub").innerText=t[l].sub;
+document.getElementById("seo-title").innerText=
+l=="pl"?"Doradztwo biznesowe – KC Advisory":
+l=="de"?"Unternehmensberatung – KC Advisory":
+"Business Advisory – KC Advisory";
 
 document.querySelectorAll(".lang span").forEach(x=>x.classList.remove("active"));
 document.querySelector(`[data-lang="${l}"]`).classList.add("active");
-
-document.documentElement.lang=l;
 }
 
-window.onload=()=>setLang(localStorage.lang||"en");
-
-window.addEventListener("scroll",()=>{
-header.classList.toggle("scrolled",scrollY>10);
+window.onload=()=>{
+setLang(localStorage.lang||"en");
+document.querySelectorAll(".tile").forEach((t,i)=>{
+setTimeout(()=>t.classList.add("visible"),i*150);
 });
+}
+
+window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>10));
 
 </script>
 
