@@ -24,22 +24,27 @@ header{position:sticky;top:0;background:#fff;padding:15px 40px;display:flex;just
 nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
 .lang button{margin-left:6px;padding:6px 10px;border:1px solid #ccc;background:#fff;border-radius:6px;font-size:18px}
 
-.hero{min-height:100vh;background:url(img/background.jpg) center/cover;display:flex;align-items:center;padding-left:80px;color:white}
-#heroHeadline{font-size:50px;margin:0 0 10px 0;opacity:0;transform:translateY(30px);transition:1s}
-#heroSub{font-size:22px}
+.hero{height:420px;background:url(img/background.jpg) center/cover;display:flex;align-items:center;padding-left:80px;color:white}
+#heroHeadline{font-size:46px;margin:0 0 10px 0;opacity:0;transform:translateY(30px);transition:1s}
+#heroSub{font-size:20px}
 
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;padding:80px}
 .tile{height:240px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;transition:.3s}
 .tile:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.3)}
 .tile span{color:#fff;font-size:22px;font-weight:600;padding:12px 30px;border:2px solid #fff;border-radius:999px;background:rgba(0,0,0,.3)}
 
-.about{min-height:100vh;padding:100px 60px;background:#f5f5f5;opacity:0;transform:translateY(50px);transition:1.2s}
+.about{padding:100px 60px;background:#f5f5f5;opacity:0;transform:translateY(50px);transition:1.2s}
 .about-inner{max-width:900px;margin:auto;line-height:1.75}
 .about h2{font-size:44px}
 .about h3{font-size:30px;margin-top:40px}
 .about p{font-size:18px}
 
-ul.power{margin-left:20px;font-size:18px}
+/* BULLETS FIX */
+ul.power{
+list-style:none;
+padding-left:0;
+font-size:18px
+}
 ul.power li{margin-bottom:10px}
 
 footer{background:#0b1325;color:white;padding:30px;text-align:center}
@@ -48,7 +53,10 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 .cookiebar{position:fixed;bottom:0;left:0;right:0;background:#2f2f2f;color:white;padding:20px;display:flex;justify-content:space-between}
 .cookiebar.hide{display:none}
 
-@media(max-width:900px){.tiles{grid-template-columns:1fr}.hero{padding:40px}}
+@media(max-width:900px){
+.tiles{grid-template-columns:1fr}
+.hero{height:320px;padding:40px}
+}
 </style>
 </head>
 
@@ -82,9 +90,7 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 <div class="about-inner">
 <h2 id="a0"></h2>
 <p id="a1"></p><p id="a2"></p><p id="a3"></p>
-
 <ul class="power" id="bullets"></ul>
-
 <h3 id="a4"></h3><p id="a5"></p>
 <h3 id="a6"></h3><p id="a7"></p>
 <p id="a8"></p><p id="a9"></p><p id="a10"></p><p id="a11"></p><p id="a12"></p>
@@ -109,6 +115,7 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 document.addEventListener("DOMContentLoaded",()=>{
 
 const dict={
+
 pl:{
 hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
@@ -133,7 +140,7 @@ bullets:[
 "✔ Lepsze decyzje oparte na danych",
 "✔ Silniejsze zespoły i liderzy",
 "✔ Redukcja kosztów operacyjnych",
-"✔ Wdrożenia, które naprawdę działają",
+"✔ Zmiany, które naprawdę działają",
 "✔ Realna przewaga konkurencyjna"
 ],
 cookieTitle:"Polityka prywatności",
@@ -172,18 +179,18 @@ cookie:"We use analytics. <a href='privacy.html' style='color:white'>Privacy pol
 },
 
 de:{
-hero:"Trainings • Audits • Interim • B2B",
-t:["Trainings","Audits","Interim","B2B"],
+hero:"Schulungen • Audits • Interim • B2B",
+t:["Schulungen","Audits","Interim","B2B"],
 cta:"Transformation starten",
 about:[
 "Willkommen bei Konrad Czachor Advisory & Partners",
 "Sie brauchen keinen weiteren Berater. Sie brauchen Dynamik.",
-"Wir helfen Führungskräften Strategie in messbare Ergebnisse umzusetzen.",
+"Wir helfen Führungskräften, Strategie in messbare Ergebnisse umzusetzen.",
 "Hier beginnt Transformation.",
 "Konrad Czachor Advisory",
-"Operative Exzellenz, Managementsysteme, Compliance und Führung.",
+"Operative Exzellenz, Managementsysteme, Qualität, Compliance und Führung.",
 "Konrad Czachor Partners",
-"Internationale Experten dort, wo Umsetzung zählt.",
+"Internationale Experten dort, wo Umsetzung wirklich zählt.",
 "Sie gewinnen Klarheit.",
 "Sie gewinnen Struktur.",
 "Sie gewinnen Geschwindigkeit.",
@@ -201,6 +208,7 @@ bullets:[
 cookieTitle:"Datenschutz",
 cookie:"Wir verwenden Analysen. <a href='privacy.html' style='color:white'>Datenschutz</a>"
 }
+
 };
 
 window.setLang=function(l){
@@ -213,17 +221,9 @@ cookieTitle.innerText=dict[l].cookieTitle;
 cookieText.innerHTML=dict[l].cookie;
 };
 
-const lang=(navigator.language||"en").slice(0,2);
-setLang(dict[lang]?lang:"en");
+setLang(dict[(navigator.language||"en").slice(0,2)]?(navigator.language||"en").slice(0,2):"en");
 
 setTimeout(()=>{heroHeadline.style.opacity=1;heroHeadline.style.transform="none"},200);
-
-const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){about.style.opacity=1;about.style.transform="none"}},{threshold:.2});
-obs.observe(about);
-
-window.acceptCookies=()=>{localStorage.setItem("cookies","1");cookiebar.classList.add("hide")}
-window.declineCookies=()=>{localStorage.setItem("cookies","0");cookiebar.classList.add("hide")}
-if(localStorage.getItem("cookies"))cookiebar.classList.add("hide");
 
 });
 </script>
