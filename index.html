@@ -53,6 +53,7 @@ background:rgba(0,0,0,.35)
 .about{padding:90px 50px;background:#f5f5f5}
 .about-inner{max-width:900px;margin:auto}
 .about h2{font-size:40px}
+.about h3{margin-top:40px}
 .about p{font-size:18px;line-height:1.6}
 
 ul.power{list-style:none;padding:0}
@@ -126,15 +127,30 @@ display:flex;justify-content:space-between
 
 <section class="about">
 <div class="about-inner">
+
 <h2 id="a0"></h2>
 <p id="a1"></p>
 <p id="a2"></p>
 <p id="a3"></p>
+<p id="a4"></p>
+<p id="a5"></p>
 
 <ul class="power" id="bullets"></ul>
 
-<p id="a4"></p>
-<p id="a5"></p>
+<p id="a6"></p>
+
+<h3 id="a7"></h3>
+<p id="a8"></p>
+<p id="a9"></p>
+<p id="a10"></p>
+
+<h3 id="a11"></h3>
+<p id="a12"></p>
+<p id="a13"></p>
+<p id="a14"></p>
+<p id="a15"></p>
+<p id="a16"></p>
+
 </div>
 </section>
 
@@ -152,27 +168,43 @@ display:flex;justify-content:space-between
 </div>
 
 <script>
+/* FULL COPY PL / EN / DE — dokładnie jak podałeś wcześniej */
 const dict={
+
 pl:{
 nav:["Usługi","Kontakt"],
 cta:"Rozpocznij transformację",
 hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
+
 about:[
 "Witamy w Konrad Czachor Advisory & Partners",
 "Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
-"Strategia bez wykonania to tylko pomysł. My dowozimy rezultaty.",
-"Tu zaczyna się prawdziwa transformacja."
+"Potrzebujesz kogoś, kto nie tylko narysuje strategię na slajdzie — ale pomoże ją wdrożyć, dowieźć i zamienić w realne wyniki.",
+"My właśnie to robimy.",
+"Pomagamy liderom uprościć złożoność i przekształcić ambicje w rezultaty.",
+"Bo sukces nie bierze się z pomysłów. Bierze się z wykonania."
 ],
+
 bullets:[
 "✔ Skalujesz procesy bez chaosu",
 "✔ Podejmujesz lepsze decyzje dzięki danym",
 "✔ Budujesz silniejsze zespoły",
 "✔ Redukujesz koszty bez utraty jakości",
-"✔ Wdrażasz zmiany, które działają",
+"✔ Wdrażasz zmiany które działają",
 "✔ Tworzysz przewagę konkurencyjną"
 ],
-extra:["Jedna filozofia: rezultat ponad wszystko.","Zacznijmy rozmowę."],
+
+extra:[
+"Nie oferujemy teorii. Oferujemy klarowność, strukturę i tempo.",
+"Konrad Czachor Advisory",
+"Transformacja operacyjna. Systemy jakości. Compliance. Rozwój przywództwa.",
+"Konrad Czachor Partners",
+"Międzynarodowi eksperci tam, gdzie liczy się wykonanie.",
+"Jedna filozofia: rezultat ponad wszystko.",
+"Zacznijmy rozmowę."
+],
+
 cookie:"Używamy cookies."
 },
 
@@ -181,21 +213,35 @@ nav:["Services","Contact"],
 cta:"Start your transformation",
 hero:"Trainings • Audits • Interim • B2B",
 t:["Trainings","Audits","Interim","B2B"],
+
 about:[
 "Welcome to Konrad Czachor Advisory & Partners",
 "You don’t need another consultant. You need momentum.",
-"Strategy without execution is just theory. We deliver results.",
-"This is where transformation begins."
+"You need someone who doesn’t just design strategy — but executes.",
+"That’s what we do.",
+"We help leaders turn vision into performance.",
+"Because success comes from execution."
 ],
+
 bullets:[
 "✔ Scale without chaos",
 "✔ Smarter decisions",
 "✔ Stronger teams",
 "✔ Lower costs",
 "✔ Change that sticks",
-"✔ Competitive edge"
+"✔ Competitive advantage"
 ],
-extra:["One philosophy: results first.","Let’s start the conversation."],
+
+extra:[
+"We don’t sell theory. We deliver clarity, structure and speed.",
+"Konrad Czachor Advisory",
+"Operational transformation. Quality systems. Compliance. Leadership.",
+"Konrad Czachor Partners",
+"International experts where execution matters.",
+"One philosophy: results first.",
+"Let’s start the conversation."
+],
+
 cookie:"We use cookies."
 },
 
@@ -204,12 +250,16 @@ nav:["Leistungen","Kontakt"],
 cta:"Transformation starten",
 hero:"Schulungen • Audits • Interim • B2B",
 t:["Schulungen","Audits","Interim","B2B"],
+
 about:[
 "Willkommen bei Konrad Czachor Advisory & Partners",
 "Sie brauchen keinen weiteren Berater. Sie brauchen Momentum.",
-"Strategie ohne Umsetzung bleibt Theorie. Wir liefern Ergebnisse.",
-"Hier beginnt echte Transformation."
+"Sie brauchen jemanden, der Strategie nicht nur plant — sondern umsetzt.",
+"Genau das tun wir.",
+"Wir verwandeln Visionen in Ergebnisse.",
+"Erfolg entsteht durch Umsetzung."
 ],
+
 bullets:[
 "✔ Prozesse skalieren",
 "✔ Bessere Entscheidungen",
@@ -218,7 +268,17 @@ bullets:[
 "✔ Nachhaltige Veränderungen",
 "✔ Wettbewerbsvorteile"
 ],
-extra:["Eine Philosophie: Ergebnisse zuerst.","Starten wir."],
+
+extra:[
+"Wir verkaufen keine Theorie. Wir liefern Klarheit, Struktur und Geschwindigkeit.",
+"Konrad Czachor Advisory",
+"Operative Transformation. Qualitätssysteme. Compliance. Leadership.",
+"Konrad Czachor Partners",
+"Internationale Experten dort, wo Umsetzung zählt.",
+"Eine Philosophie: Ergebnisse zuerst.",
+"Starten wir."
+],
+
 cookie:"Wir verwenden Cookies."
 }
 };
@@ -230,10 +290,9 @@ document.querySelector(`[data-lang=${l}]`).classList.add("active");
 
 heroSub.innerText=dict[l].hero;
 [t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
-[a0,a1,a2,a3].forEach((e,i)=>e.innerText=dict[l].about[i]);
+dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
 bullets.innerHTML=dict[l].bullets.map(x=>"<li>"+x+"</li>").join("");
-a4.innerText=dict[l].extra[0];
-a5.innerText=dict[l].extra[1];
+dict[l].extra.forEach((v,i)=>document.getElementById("a"+(7+i)).innerText=v);
 navServices.innerText=dict[l].nav[0];
 navContact.innerText=dict[l].nav[1];
 ctaBtn.innerText=dict[l].cta;
