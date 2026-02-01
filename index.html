@@ -1,197 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title id="seo-title">Business Advisory – KC Advisory</title>
-<meta name="description" id="seo-desc" content="Training, Audits, Interim Management and B2B cooperation.">
+<title>KC Advisory – Training • Audits • Interim • B2B</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Konrad Czachor Advisory & Partners – Training, Audits, Interim Management and B2B Multiplicator.">
 
 <link rel="icon" href="favicon.ico">
 
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXXXXXX');
-</script>
-
 <style>
 
-body{margin:0;font-family:Arial}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+
+body{background:#fff;color:#111}
+
+/* HEADER */
 
 header{
-position:fixed;top:0;width:100%;
-background:white;padding:20px 60px;
-display:flex;justify-content:space-between;
-align-items:center;border-bottom:1px solid #eee;
-z-index:100;transition:.3s;
+position:sticky;
+top:0;
+background:#fff;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+box-shadow:0 2px 6px rgba(0,0,0,.08)
 }
 
-header.scrolled{box-shadow:0 4px 12px rgba(0,0,0,.15)}
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#111;
+font-weight:600
+}
 
-nav a{margin-right:20px;text-decoration:none;color:#1f2937;font-weight:600}
 nav a:hover{color:#2563eb}
 
-.lang span{
-border:1px solid #ccc;padding:6px 12px;
-cursor:pointer;border-radius:6px;margin-left:5px;
+.lang button{
+margin-left:6px;
+border:1px solid #ccc;
+background:#fff;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer
 }
 
-.lang .active{background:#2563eb;color:white}
+.lang .active{
+background:#2563eb;
+color:white;
+border-color:#2563eb
+}
+
+/* HERO */
 
 .hero{
-margin-top:90px;height:420px;
-background:url(img/background.jpg) center/cover;
-display:flex;flex-direction:column;
-justify-content:center;padding-left:80px;color:white;
+height:380px;
+background:url("img/background.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+padding-left:60px;
+color:white
 }
 
+.hero h1{font-size:40px}
+.hero p{margin-top:10px}
+
+/* TILES */
+
 .tiles{
-display:grid;grid-template-columns:repeat(4,1fr);
-gap:30px;padding:80px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+padding:80px;
+min-height:300px;
 }
 
 .tile{
-height:220px;background-size:cover;
-background-position:center;position:relative;
-overflow:hidden;transition:.4s;
-opacity:0;transform:translateY(40px);
-}
-
-.tile.visible{opacity:1;transform:none}
-.tile:hover{transform:scale(1.04)}
-
-.tile a{
-position:absolute;inset:0;display:flex;
-align-items:center;justify-content:center;
-color:white;font-size:22px;font-weight:bold;
-text-decoration:none;background:rgba(0,0,0,.25);
+height:260px;
+min-height:260px;
+background:#111827 center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:22px;
+font-weight:600;
+cursor:pointer;
 transition:.3s;
 }
 
-.tile a:hover{background:rgba(0,0,0,.45)}
+.tile:hover{
+transform:scale(1.04)
+}
+
+/* FOOTER */
 
 footer{
-background:#0f172a;color:white;padding:40px 80px;margin-top:80px
+background:#0b1220;
+color:white;
+padding:30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:80px
 }
 
-.footer-inner{
-display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px
+footer a{color:white;text-decoration:none;margin-left:20px}
+
+@media(max-width:900px){
+.tiles{grid-template-columns:1fr 1fr}
+.hero{padding-left:30px}
 }
 
-.footer a{color:#cbd5f5;text-decoration:none;display:block}
-.footer a:hover{color:white}
+@media(max-width:600px){
+.tiles{grid-template-columns:1fr}
+}
 
 </style>
-
 </head>
 
 <body>
 
-<header id="header">
-
+<header>
 <strong>Konrad Czachor Advisory & Partners</strong>
 
-<div style="display:flex;align-items:center;gap:25px">
-
 <nav>
-<a id="nav-services" href="index.html">Services</a>
-<a id="nav-contact" href="contact.html">Contact</a>
+<a href="#">Services</a>
+<a href="#contact">Contact</a>
+<span class="lang">
+<button class="active">PL</button>
+<button>EN</button>
+<button>DE</button>
+</span>
 </nav>
-
-<div class="lang">
-<span data-lang="pl" onclick="setLang('pl')">PL</span>
-<span data-lang="en" onclick="setLang('en')">EN</span>
-<span data-lang="de" onclick="setLang('de')">DE</span>
-</div>
-
-</div>
 </header>
 
 <section class="hero">
+<div>
 <h1>Konrad Czachor Advisory & Partners</h1>
-<p id="hero-sub">Training • Audits • Interim</p>
+<p>Training • Audits • Interim • B2B</p>
+</div>
 </section>
 
-<div class="tiles">
+<section class="tiles">
 
-<div class="tile" style="background-image:url(img/training.jpg)">
-<a href="training.html">Training</a>
-</div>
+<a href="training.html" class="tile" style="background-image:url('img/training.jpg')">Training</a>
 
-<div class="tile" style="background-image:url(img/audits.jpg)">
-<a href="audits.html">Audits</a>
-</div>
+<a href="audits.html" class="tile" style="background-image:url('img/audits.jpg')">Audits</a>
 
-<div class="tile" style="background-image:url(img/interim.jpg)">
-<a href="interim.html">Interim</a>
-</div>
+<a href="interim.html" class="tile" style="background-image:url('img/interim.jpg')">Interim</a>
 
-<div class="tile" style="background-image:url(img/b2b.jpg)">
-<a href="b2b.html">B2B</a>
-</div>
+<a href="b2b.html" class="tile" style="background-image:url('img/b2b.jpg')">B2B</a>
 
-</div>
+</section>
 
 <footer>
-<div class="footer-inner">
-<div><strong>KC Advisory</strong></div>
-<div><a href="index.html">Services</a><a href="contact.html">Contact</a></div>
-<div>© 2026 All rights reserved</div>
+<div>KC Advisory</div>
+
+<div>
+<a href="#">Services</a>
+<a href="#contact">Contact</a>
 </div>
+
+<div>© 2026 All rights reserved</div>
 </footer>
-
-<script>
-
-const t={
-pl:{
-services:"Usługi",contact:"Kontakt",
-sub:"Szkolenia • Audyty • Interim",
-title:"Doradztwo biznesowe – KC Advisory",
-desc:"Szkolenia, audyty, interim management oraz współpraca B2B."
-},
-en:{
-services:"Services",contact:"Contact",
-sub:"Training • Audits • Interim",
-title:"Business Advisory – KC Advisory",
-desc:"Training, audits, interim management and B2B cooperation."
-},
-de:{
-services:"Leistungen",contact:"Kontakt",
-sub:"Training • Audits • Interim",
-title:"Unternehmensberatung – KC Advisory",
-desc:"Training, Audits, Interim Management und B2B Kooperation."
-}
-};
-
-function setLang(l){
-localStorage.lang=l;
-
-nav-services.innerText=t[l].services;
-nav-contact.innerText=t[l].contact;
-hero-sub.innerText=t[l].sub;
-
-seo-title.innerText=t[l].title;
-seo-desc.content=t[l].desc;
-
-document.querySelectorAll(".lang span").forEach(x=>x.classList.remove("active"));
-document.querySelector(`[data-lang="${l}"]`).classList.add("active");
-}
-
-window.onload=()=>{
-setLang(localStorage.lang||"en");
-document.querySelectorAll(".tile").forEach((t,i)=>{
-setTimeout(()=>t.classList.add("visible"),i*150);
-});
-}
-
-window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>10));
-
-</script>
 
 </body>
 </html>
