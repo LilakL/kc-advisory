@@ -2,12 +2,12 @@
 <html lang="pl">
 <head>
 
-<title>Konrad Czachor Advisory & Partners – Trainings • Audits • Interim • B2B</title>
+<title>Konrad Czachor Advisory & Partners – Training • Audits • Interim • B2B</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description" content="Professional trainings, audits, interim management and B2B cooperation.">
+<meta name="description" content="Professional training, audits, interim management and B2B cooperation.">
 
 <link rel="canonical" href="https://kc-adp.com/">
 
@@ -70,18 +70,22 @@ border:2px solid #ddd;
 display:flex;
 align-items:center;
 justify-content:center;
-color:#fff !important;
+color:white;
 font-size:22px;
 font-weight:600;
 letter-spacing:.5px;
 text-decoration:none;
-transition:.2s;
+transition:.25s ease;
 position:relative;
 z-index:1;
 text-shadow:0 2px 6px rgba(0,0,0,.8);
 }
 
-.tile:hover{transform:scale(1.03)}
+/* hover glow */
+.tile:hover{
+transform:scale(1.03);
+box-shadow:0 0 25px rgba(255,255,255,.35);
+}
 
 .tile::after{
 content:"";
@@ -130,6 +134,35 @@ text-align:center;
 margin-top:40px
 }
 
+/* CTA BUTTON */
+
+.cta{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#2563eb;
+color:white;
+padding:14px 22px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+z-index:999;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:none;
+}
+
 /* MOBILE */
 
 @media(max-width:900px){
@@ -176,23 +209,23 @@ margin-bottom:8px;
 </div>
 </header>
 
-<section class="hero">
+<section class="hero reveal">
 <div>
 <h1>Konrad Czachor Advisory & Partners</h1>
-<p id="heroSub">Trainings • Audits • Interim • B2B</p>
+<p id="heroSub">Training • Audits • Interim • B2B</p>
 </div>
 </section>
 
-<div id="services" class="tiles">
+<div id="services" class="tiles reveal">
 
-<a class="tile" href="training.html" style="background-image:url(img/training.jpg)" id="t1">Trainings</a>
+<a class="tile" href="training.html" style="background-image:url(img/training.jpg)" id="t1">Training</a>
 <a class="tile" href="audits.html" style="background-image:url(img/audits.jpg)" id="t2">Audits</a>
 <a class="tile" href="interim.html" style="background-image:url(img/interim.jpg)" id="t3">Interim</a>
 <a class="tile" href="b2b.html" style="background-image:url(img/b2b.jpg)" id="t4">B2B</a>
 
 </div>
 
-<section class="about">
+<section class="about reveal">
 <div class="about-inner">
 
 <h2 id="aTitle"></h2>
@@ -216,63 +249,21 @@ margin-bottom:8px;
 © 2026 Konrad Czachor Advisory & Partners – All rights reserved
 </footer>
 
+<a href="contact.html" class="cta">Book consultation</a>
+
 <script>
 
+/* language */
+
 const dict={
-en:{
-hero:"Trainings • Audits • Interim • B2B",
-t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",
-mS:"Services",mC:"Contact",
-a:[
-"Welcome to Konrad Czachor Advisory & Partners",
-"Konrad Czachor Advisory & Partners is an independent, internationally oriented advisory boutique delivering strategic consulting, operational excellence, and business development support across multiple industries.",
-"Built on hands-on experience and deep technical understanding, we combine advisory, implementation, and talent solutions under one roof — enabling our clients to move from strategy to execution seamlessly.",
-"Konrad Czachor Advisory",
-"This division focuses on business advisory, operational transformation, quality systems, compliance, and strategic growth initiatives. We support organizations with structure, clarity, and measurable results — from process optimization to management systems and organizational development.",
-"Konrad Czachor Partners",
-"Our Partners division delivers project-based expertise and international recruitment, providing highly qualified specialists tailored to client needs, particularly within manufacturing, engineering, and technical environments.",
-"We operate as a one-stop boutique — speaking the language of both management and operations. Having grown organically, we have expanded our services across multiple sectors while maintaining a strong practical, results-driven mindset.",
-"With roots in Central Europe and an international network of experts and partners, we support clients globally through flexible, agile engagement models.",
-"Contact us today for a confidential discussion on how Konrad Czachor Advisory & Partners can support your business growth, transformation, and operational excellence."
-]},
-pl:{
-hero:"Szkolenia • Audyty • Interim • B2B",
-t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",
-mS:"Usługi",mC:"Kontakt",
-a:[
-"Witamy w Konrad Czachor Advisory & Partners",
-"Konrad Czachor Advisory & Partners to niezależna, międzynarodowa butikowa firma doradcza świadcząca usługi w zakresie strategii, doskonałości operacyjnej oraz rozwoju biznesu w wielu branżach.",
-"Opierając się na praktycznym doświadczeniu i głębokiej wiedzy technicznej, łączymy doradztwo, wdrożenia oraz rozwiązania personalne pod jednym dachem — umożliwiając płynne przejście od strategii do realizacji.",
-"Konrad Czachor Advisory",
-"Ten obszar koncentruje się na doradztwie biznesowym, transformacji operacyjnej, systemach jakości, zgodności oraz inicjatywach rozwoju strategicznego.",
-"Konrad Czachor Partners",
-"Nasz dział Partners dostarcza ekspertów projektowych oraz prowadzi rekrutację międzynarodową, zapewniając wysoko wykwalifikowanych specjalistów.",
-"Działamy jako butik typu one-stop, mówiąc tym samym językiem co zarząd i operacje.",
-"Dzięki korzeniom w Europie Centralnej i międzynarodowej sieci ekspertów wspieramy klientów globalnie.",
-"Skontaktuj się z nami już dziś, aby omówić poufnie rozwój Twojej organizacji."
-]},
-de:{
-hero:"Trainings • Audits • Interim • B2B",
-t1:"Schulungen",t2:"Audits",t3:"Interim",t4:"B2B",
-mS:"Leistungen",mC:"Kontakt",
-a:[
-"Willkommen bei Konrad Czachor Advisory & Partners",
-"Konrad Czachor Advisory & Partners ist eine unabhängige, international ausgerichtete Boutique-Beratung für Strategie, operative Exzellenz und Geschäftsentwicklung.",
-"Basierend auf praktischer Erfahrung und tiefem technischem Know-how verbinden wir Beratung, Umsetzung und Talentlösungen.",
-"Konrad Czachor Advisory",
-"Dieser Bereich konzentriert sich auf Unternehmensberatung, operative Transformation, Qualitätssysteme und Compliance.",
-"Konrad Czachor Partners",
-"Unsere Partners Division liefert projektbasierte Expertise sowie internationale Rekrutierung.",
-"Wir agieren als One-Stop-Boutique und sprechen die Sprache von Management und Betrieb.",
-"Mit Wurzeln in Mitteleuropa unterstützen wir Kunden weltweit.",
-"Kontaktieren Sie uns für ein vertrauliches Gespräch."
-]}
+en:{hero:"Training • Audits • Interim • B2B",t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Services",mC:"Contact"},
+pl:{hero:"Szkolenia • Audyty • Interim • B2B",t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",mS:"Usługi",mC:"Kontakt"},
+de:{hero:"Training • Audits • Interim • B2B",t1:"Schulungen",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Leistungen",mC:"Kontakt"}
 };
 
 function setLang(l){
 document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
 document.getElementById(l).classList.add("active");
-
 heroSub.innerText=dict[l].hero;
 t1.innerText=dict[l].t1;
 t2.innerText=dict[l].t2;
@@ -280,25 +271,24 @@ t3.innerText=dict[l].t3;
 t4.innerText=dict[l].t4;
 mServices.innerText=dict[l].mS;
 mContact.innerText=dict[l].mC;
-
-aTitle.innerText=dict[l].a[0];
-a1.innerText=dict[l].a[1];
-a2.innerText=dict[l].a[2];
-a3.innerText=dict[l].a[3];
-a4.innerText=dict[l].a[4];
-a5.innerText=dict[l].a[5];
-a6.innerText=dict[l].a[6];
-a7.innerText=dict[l].a[7];
-a8.innerText=dict[l].a[8];
-a9.innerText=dict[l].a[9];
-
-document.documentElement.lang=l;
 }
 
-setLang('en');
+/* scroll reveal */
+
+const reveals=document.querySelectorAll(".reveal");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add("active");
+});
+},{threshold:.15});
+
+reveals.forEach(r=>observer.observe(r));
 
 </script>
 
+<!-- cookie-free analytics -->
+<script data-goatcounter="https://kcadp.goatcounter.com/count"
+async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>
-
