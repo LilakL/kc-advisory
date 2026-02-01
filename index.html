@@ -12,7 +12,13 @@ body{margin:0;font-family:Arial}
 
 header{position:sticky;top:0;background:#fff;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
-.lang button{margin-left:6px;padding:6px 10px;border:1px solid #ccc;background:#fff;border-radius:6px;font-size:20px}
+
+.lang button{
+margin-left:6px;padding:8px 12px;border:1px solid #ccc;background:#fff;border-radius:8px;
+font-size:22px;cursor:pointer;transition:.25s
+}
+.lang button:hover{transform:scale(1.15);box-shadow:0 6px 15px rgba(0,0,0,.25)}
+.lang button.active{border-color:#2563eb;box-shadow:0 0 0 2px #2563eb inset}
 
 .hero{height:420px;background:url(img/background.jpg) center/cover;display:flex;align-items:center;padding-left:80px;color:white}
 #heroHeadline{font-size:46px;margin:0 0 10px 0}
@@ -26,7 +32,7 @@ nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
 .about-inner{max-width:900px;margin:auto}
 .about h2{font-size:42px}
 .about h3{font-size:28px;margin-top:40px}
-.about p{font-size:18px}
+.about p{font-size:18px;line-height:1.6}
 
 ul.power{list-style:none;padding-left:0;font-size:18px}
 ul.power li{margin-bottom:10px}
@@ -53,9 +59,9 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 </nav>
 
 <div class="lang">
-<button onclick="setLang('pl')">🇵🇱</button>
-<button onclick="setLang('en')">🇬🇧</button>
-<button onclick="setLang('de')">🇩🇪</button>
+<button data-lang="pl">🇵🇱</button>
+<button data-lang="en">🇬🇧</button>
+<button data-lang="de">🇩🇪</button>
 </div>
 </header>
 
@@ -76,11 +82,13 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 <section class="about">
 <div class="about-inner">
 <h2 id="a0"></h2>
-<p id="a1"></p><p id="a2"></p><p id="a3"></p>
+<p id="a1"></p><p id="a2"></p><p id="a3"></p><p id="a4"></p><p id="a5"></p>
 <ul class="power" id="bullets"></ul>
-<h3 id="a4"></h3><p id="a5"></p>
-<h3 id="a6"></h3><p id="a7"></p>
-<p id="a8"></p><p id="a9"></p><p id="a10"></p><p id="a11"></p><p id="a12"></p>
+<p id="a6"></p>
+<h3 id="a7"></h3>
+<p id="a8"></p><p id="a9"></p><p id="a10"></p>
+<h3 id="a11"></h3>
+<p id="a12"></p><p id="a13"></p><p id="a14"></p><p id="a15"></p><p id="a16"></p>
 </div>
 </section>
 
@@ -105,26 +113,30 @@ hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
 about:[
 "Witamy w Konrad Czachor Advisory & Partners",
-"Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
-"Pomagamy liderom upraszczać złożoność i zamieniać strategię w realne wyniki.",
-"Tu zaczyna się prawdziwa transformacja.",
-"Konrad Czachor Advisory",
-"Transformacja operacyjna, systemy jakości, compliance i rozwój przywództwa.",
-"Konrad Czachor Partners",
-"Międzynarodowi eksperci dokładnie tam, gdzie liczy się wykonanie.",
-"Zyskujesz jasność.","Zyskujesz strukturę.","Zyskujesz tempo.",
-"Jedna butikowa organizacja.","Zacznijmy rozmowę."
+"Nie potrzebujesz kolejnego konsultanta.",
+"Potrzebujesz impetu.",
+"Potrzebujesz kogoś, kto nie tylko narysuje strategię — ale pomoże ją wdrożyć i dowieźć.",
+"My właśnie to robimy.",
+"Tu zaczyna się prawdziwa transformacja."
 ],
 bullets:[
-"✔ Skalowanie procesów bez chaosu",
-"✔ Lepsze decyzje oparte na danych",
-"✔ Silniejsze zespoły",
-"✔ Redukcja kosztów",
-"✔ Zmiany które działają",
-"✔ Realna przewaga konkurencyjna"
+"✔ Skalujesz procesy bez chaosu",
+"✔ Podejmujesz lepsze decyzje dzięki danym",
+"✔ Budujesz silniejsze, odpowiedzialne zespoły",
+"✔ Redukujesz koszty bez utraty jakości",
+"✔ Wdrażasz zmiany, które naprawdę działają",
+"✔ Tworzysz trwałą przewagę konkurencyjną"
 ],
-cookieTitle:"Polityka prywatności",
-cookie:"Używamy analityki. <a href='privacy.html' style='color:white'>Polityka prywatności</a>"
+extra:[
+"Nie oferujemy teorii. Oferujemy klarowność, strukturę i tempo.",
+"Konrad Czachor Advisory",
+"Transformacja operacyjna. Systemy jakości. Compliance. Rozwój przywództwa.",
+"Konrad Czachor Partners",
+"Międzynarodowi eksperci dokładnie tam, gdzie liczy się wykonanie.",
+"Jedna butikowa organizacja. Jedna filozofia: rezultat ponad wszystko.",
+"Zacznijmy rozmowę."
+],
+cookieTitle:"Polityka prywatności",cookie:"Używamy analityki."
 },
 
 en:{
@@ -133,26 +145,30 @@ hero:"Trainings • Audits • Interim • B2B",
 t:["Trainings","Audits","Interim","B2B"],
 about:[
 "Welcome to Konrad Czachor Advisory & Partners",
-"You don’t need another consultant. You need momentum.",
-"We help leaders turn strategy into results.",
-"This is where transformation begins.",
-"Konrad Czachor Advisory",
-"Operational excellence and leadership.",
-"Konrad Czachor Partners",
-"International experts where execution matters.",
-"You gain clarity.","You gain structure.","You gain speed.",
-"One boutique.","Let’s talk."
+"You don’t need another consultant.",
+"You need momentum.",
+"We don’t just design strategy — we help you execute.",
+"That’s what we do.",
+"This is where true transformation begins."
 ],
 bullets:[
-"✔ Scale operations",
-"✔ Data driven decisions",
-"✔ High performance teams",
-"✔ Reduce costs",
-"✔ Implement change",
-"✔ Competitive advantage"
+"✔ Scale processes without chaos",
+"✔ Make smarter decisions powered by data",
+"✔ Build stronger accountable teams",
+"✔ Reduce costs without sacrificing quality",
+"✔ Implement change that sticks",
+"✔ Create sustainable competitive advantage"
 ],
-cookieTitle:"Privacy notice",
-cookie:"We use analytics. <a href='privacy.html' style='color:white'>Privacy policy</a>"
+extra:[
+"We don’t sell theory. We deliver clarity, structure and speed.",
+"Konrad Czachor Advisory",
+"Operational transformation. Quality systems. Compliance. Leadership.",
+"Konrad Czachor Partners",
+"International experts where execution matters most.",
+"One boutique organization. Results first.",
+"Let’s start the conversation."
+],
+cookieTitle:"Privacy notice",cookie:"We use analytics."
 },
 
 de:{
@@ -161,45 +177,59 @@ hero:"Schulungen • Audits • Interim • B2B",
 t:["Schulungen","Audits","Interim","B2B"],
 about:[
 "Willkommen bei Konrad Czachor Advisory & Partners",
-"Sie brauchen Dynamik.",
-"Wir setzen Strategie in Ergebnisse um.",
-"Hier beginnt Transformation.",
-"Konrad Czachor Advisory",
-"Operative Exzellenz und Führung.",
-"Konrad Czachor Partners",
-"Internationale Experten dort wo Umsetzung zählt.",
-"Sie gewinnen Klarheit.","Sie gewinnen Struktur.","Sie gewinnen Geschwindigkeit.",
-"Eine Boutique.","Beginnen wir."
+"Sie brauchen keinen weiteren Berater.",
+"Sie brauchen Momentum.",
+"Wir entwerfen Strategie nicht nur — wir setzen sie um.",
+"Genau das tun wir.",
+"Hier beginnt echte Transformation."
 ],
 bullets:[
-"✔ Prozesse skalieren",
-"✔ Datenbasierte Entscheidungen",
-"✔ Leistungsstarke Teams",
-"✔ Kosten senken",
-"✔ Nachhaltige Umsetzung",
-"✔ Wettbewerbsvorteile"
+"✔ Prozesse skalieren – ohne Chaos",
+"✔ Bessere Entscheidungen auf Basis von Daten",
+"✔ Stärkere verantwortungsvolle Teams",
+"✔ Kosten senken ohne Qualitätsverlust",
+"✔ Veränderungen umsetzen, die wirken",
+"✔ Nachhaltige Wettbewerbsvorteile schaffen"
 ],
-cookieTitle:"Datenschutz",
-cookie:"Wir verwenden Analysen. <a href='privacy.html' style='color:white'>Datenschutz</a>"
+extra:[
+"Wir verkaufen keine Theorie. Wir liefern Klarheit, Struktur und Geschwindigkeit.",
+"Konrad Czachor Advisory",
+"Operative Transformation. Qualitätssysteme. Compliance. Leadership.",
+"Konrad Czachor Partners",
+"Internationale Experten dort, wo Umsetzung zählt.",
+"Eine Boutique. Ergebnisse zuerst.",
+"Starten wir das Gespräch."
+],
+cookieTitle:"Datenschutz",cookie:"Wir verwenden Analysen."
 }
 };
 
 function setLang(l){
+localStorage.setItem("lang",l);
+document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+document.querySelector(`[data-lang=${l}]`).classList.add("active");
+
 heroSub.innerText=dict[l].hero;
 [t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
+
 dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
 bullets.innerHTML=dict[l].bullets.map(b=>"<li>"+b+"</li>").join("");
+
+dict[l].extra.forEach((v,i)=>document.getElementById("a"+(7+i)).innerText=v);
+
 navServices.innerText=dict[l].nav[0];
 navContact.innerText=dict[l].nav[1];
 cookieTitle.innerText=dict[l].cookieTitle;
-cookieText.innerHTML=dict[l].cookie;
+cookieText.innerText=dict[l].cookie;
 }
+
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 
 function acceptCookies(){localStorage.setItem("cookies","1");cookiebar.classList.add("hide")}
 function declineCookies(){localStorage.setItem("cookies","0");cookiebar.classList.add("hide")}
 
-const auto=(navigator.language||"en").slice(0,2);
-setLang(dict[auto]?auto:"en");
+const init=localStorage.getItem("lang")||(navigator.language||"en").slice(0,2);
+setLang(dict[init]?init:"en");
 
 if(localStorage.getItem("cookies"))cookiebar.classList.add("hide");
 </script>
