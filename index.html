@@ -17,20 +17,21 @@ box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:10
 
 nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
 
+.breadcrumbs{
+padding:10px 40px;font-size:14px;color:#555
+}
+.breadcrumbs span{margin:0 6px}
+
 .lang button{
 margin-left:6px;padding:8px 12px;border:1px solid #ccc;background:#fff;
-border-radius:8px;font-size:22px;cursor:pointer;transition:.2s
+border-radius:8px;font-size:22px;cursor:pointer
 }
-.lang button:hover{transform:scale(1.1)}
 .lang button.active{border-color:#2563eb;box-shadow:0 0 0 2px #2563eb inset}
 
 .hero{
 height:360px;background:url(img/background.jpg) center/cover;
 display:flex;align-items:center;padding-left:60px;color:white
 }
-
-.hero h1{font-size:42px;margin:0}
-.hero p{font-size:20px}
 
 .tiles{
 display:grid;grid-template-columns:repeat(4,1fr);
@@ -40,9 +41,8 @@ gap:25px;padding:70px
 .tile{
 height:220px;background-size:cover;background-position:center;
 display:flex;align-items:center;justify-content:center;
-text-decoration:none;transition:.3s
+text-decoration:none
 }
-.tile:hover{transform:scale(1.03)}
 
 .tile span{
 color:#fff;font-size:22px;font-weight:600;
@@ -52,44 +52,22 @@ background:rgba(0,0,0,.35)
 
 .about{padding:90px 50px;background:#f5f5f5}
 .about-inner{max-width:900px;margin:auto}
-.about h2{font-size:40px}
-.about h3{margin-top:40px}
 .about p{font-size:18px;line-height:1.6}
 
-ul.power{list-style:none;padding:0}
-ul.power li{margin:8px 0;font-size:18px}
+.about-btn{
+display:inline-block;margin-top:30px;
+padding:14px 36px;background:#111;color:#fff;
+border-radius:8px;text-decoration:none;font-weight:700
+}
+
+.contact{padding:80px 50px;text-align:center}
 
 footer{background:#111;color:#fff;padding:25px;text-align:center}
 
 .cta{
 position:fixed;right:20px;bottom:20px;
 background:#2563eb;color:white;padding:16px 30px;
-border-radius:30px;font-weight:700;text-decoration:none;
-animation:pulse 2s infinite
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 0 0 rgba(37,99,235,.6)}
-70%{box-shadow:0 0 0 20px rgba(37,99,235,0)}
-100%{box-shadow:0 0 0 0 rgba(37,99,235,0)}
-}
-
-#topBtn{
-position:fixed;left:20px;bottom:20px;
-display:none;background:#111;color:white;border:none;
-border-radius:50%;width:40px;height:40px;cursor:pointer
-}
-
-.cookiebar{
-position:fixed;bottom:0;left:0;right:0;
-background:#333;color:white;padding:15px;
-display:flex;justify-content:space-between
-}
-.cookiebar.hide{display:none}
-
-@media(max-width:900px){
-.tiles{grid-template-columns:1fr}
-.hero{height:280px;padding:40px}
+border-radius:30px;font-weight:700;text-decoration:none
 }
 </style>
 </head>
@@ -100,8 +78,9 @@ display:flex;justify-content:space-between
 <b>Konrad Czachor Advisory & Partners</b>
 
 <nav>
-<a href="#services" id="navServices"></a>
-<a href="#" id="navContact"></a>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <div class="lang">
@@ -111,7 +90,11 @@ display:flex;justify-content:space-between
 </div>
 </header>
 
-<section class="hero">
+<div class="breadcrumbs">
+Home <span>›</span> Advisory & Partners
+</div>
+
+<section id="home" class="hero">
 <div>
 <h1>Konrad Czachor Advisory & Partners</h1>
 <p id="heroSub"></p>
@@ -125,189 +108,21 @@ display:flex;justify-content:space-between
 <a class="tile" href="b2b.html" style="background-image:url(img/b2b.jpg)"><span id="t4"></span></a>
 </div>
 
-<section class="about">
+<section id="about" class="about">
 <div class="about-inner">
 
 <h2 id="a0"></h2>
 <p id="a1"></p>
 <p id="a2"></p>
 <p id="a3"></p>
-<p id="a4"></p>
-<p id="a5"></p>
 
-<ul class="power" id="bullets"></ul>
-
-<p id="a6"></p>
-
-<h3 id="a7"></h3>
-<p id="a8"></p>
-<p id="a9"></p>
-<p id="a10"></p>
-
-<h3 id="a11"></h3>
-<p id="a12"></p>
-<p id="a13"></p>
-<p id="a14"></p>
-<p id="a15"></p>
-<p id="a16"></p>
+<a class="about-btn" href="profile.html">About Me</a>
 
 </div>
 </section>
 
-<footer>© 2026 Konrad Czachor Advisory & Partners</footer>
+<section id="contact" class="contact">
+<h2>Contact</h2>
+<p>Ready to move from strategy to execution?</p>
 
-<a class="cta" id="ctaBtn" href="contact.html"></a>
-<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-<div id="cookiebar" class="cookiebar">
-<div id="cookieText"></div>
-<div>
-<button onclick="acceptCookies()">Accept</button>
-<button onclick="declineCookies()">Decline</button>
-</div>
-</div>
-
-<script>
-/* FULL COPY PL / EN / DE — dokładnie jak podałeś wcześniej */
-const dict={
-
-pl:{
-nav:["Usługi","Kontakt"],
-cta:"Rozpocznij transformację",
-hero:"Szkolenia • Audyty • Interim • B2B",
-t:["Szkolenia","Audyty","Interim","B2B"],
-
-about:[
-"Witamy w Konrad Czachor Advisory & Partners",
-"Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
-"Potrzebujesz kogoś, kto nie tylko narysuje strategię na slajdzie — ale pomoże ją wdrożyć, dowieźć i zamienić w realne wyniki.",
-"My właśnie to robimy.",
-"Pomagamy liderom uprościć złożoność i przekształcić ambicje w rezultaty.",
-"Bo sukces nie bierze się z pomysłów. Bierze się z wykonania."
-],
-
-bullets:[
-"✔ Skalujesz procesy bez chaosu",
-"✔ Podejmujesz lepsze decyzje dzięki danym",
-"✔ Budujesz silniejsze zespoły",
-"✔ Redukujesz koszty bez utraty jakości",
-"✔ Wdrażasz zmiany które działają",
-"✔ Tworzysz przewagę konkurencyjną"
-],
-
-extra:[
-"Nie oferujemy teorii. Oferujemy klarowność, strukturę i tempo.",
-"Konrad Czachor Advisory",
-"Transformacja operacyjna. Systemy jakości. Compliance. Rozwój przywództwa.",
-"Konrad Czachor Partners",
-"Międzynarodowi eksperci tam, gdzie liczy się wykonanie.",
-"Jedna filozofia: rezultat ponad wszystko.",
-"Zacznijmy rozmowę."
-],
-
-cookie:"Używamy cookies."
-},
-
-en:{
-nav:["Services","Contact"],
-cta:"Start your transformation",
-hero:"Trainings • Audits • Interim • B2B",
-t:["Trainings","Audits","Interim","B2B"],
-
-about:[
-"Welcome to Konrad Czachor Advisory & Partners",
-"You don’t need another consultant. You need momentum.",
-"You need someone who doesn’t just design strategy — but executes.",
-"That’s what we do.",
-"We help leaders turn vision into performance.",
-"Because success comes from execution."
-],
-
-bullets:[
-"✔ Scale without chaos",
-"✔ Smarter decisions",
-"✔ Stronger teams",
-"✔ Lower costs",
-"✔ Change that sticks",
-"✔ Competitive advantage"
-],
-
-extra:[
-"We don’t sell theory. We deliver clarity, structure and speed.",
-"Konrad Czachor Advisory",
-"Operational transformation. Quality systems. Compliance. Leadership.",
-"Konrad Czachor Partners",
-"International experts where execution matters.",
-"One philosophy: results first.",
-"Let’s start the conversation."
-],
-
-cookie:"We use cookies."
-},
-
-de:{
-nav:["Leistungen","Kontakt"],
-cta:"Transformation starten",
-hero:"Schulungen • Audits • Interim • B2B",
-t:["Schulungen","Audits","Interim","B2B"],
-
-about:[
-"Willkommen bei Konrad Czachor Advisory & Partners",
-"Sie brauchen keinen weiteren Berater. Sie brauchen Momentum.",
-"Sie brauchen jemanden, der Strategie nicht nur plant — sondern umsetzt.",
-"Genau das tun wir.",
-"Wir verwandeln Visionen in Ergebnisse.",
-"Erfolg entsteht durch Umsetzung."
-],
-
-bullets:[
-"✔ Prozesse skalieren",
-"✔ Bessere Entscheidungen",
-"✔ Stärkere Teams",
-"✔ Kosten senken",
-"✔ Nachhaltige Veränderungen",
-"✔ Wettbewerbsvorteile"
-],
-
-extra:[
-"Wir verkaufen keine Theorie. Wir liefern Klarheit, Struktur und Geschwindigkeit.",
-"Konrad Czachor Advisory",
-"Operative Transformation. Qualitätssysteme. Compliance. Leadership.",
-"Konrad Czachor Partners",
-"Internationale Experten dort, wo Umsetzung zählt.",
-"Eine Philosophie: Ergebnisse zuerst.",
-"Starten wir."
-],
-
-cookie:"Wir verwenden Cookies."
-}
-};
-
-function setLang(l){
-localStorage.setItem("lang",l);
-document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-document.querySelector(`[data-lang=${l}]`).classList.add("active");
-
-heroSub.innerText=dict[l].hero;
-[t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
-dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
-bullets.innerHTML=dict[l].bullets.map(x=>"<li>"+x+"</li>").join("");
-dict[l].extra.forEach((v,i)=>document.getElementById("a"+(7+i)).innerText=v);
-navServices.innerText=dict[l].nav[0];
-navContact.innerText=dict[l].nav[1];
-ctaBtn.innerText=dict[l].cta;
-cookieText.innerText=dict[l].cookie;
-}
-
-document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
-
-function acceptCookies(){cookiebar.classList.add("hide")}
-function declineCookies(){cookiebar.classList.add("hide")}
-
-setLang(localStorage.getItem("lang")||"pl");
-window.addEventListener("scroll",()=>topBtn.style.display=window.scrollY>300?"block":"none");
-</script>
-
-</body>
-</html>
-
+<
