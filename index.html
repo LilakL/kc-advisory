@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 
-<title>KC Advisory – Training • Audits • Interim • B2B</title>
+<title>Konrad Czachor Advisory & Partners – Training • Audits • Interim • B2B</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Konrad Czachor Advisory & Partners – Training, Audits, Interim Management and B2B Multiplicator.">
+
+<meta name="description" content="Konrad Czachor Advisory & Partners – szkolenia, audyty, interim management i B2B cooperation.">
 
 <link rel="icon" href="favicon.ico">
 
@@ -22,7 +23,7 @@ header{
 position:sticky;
 top:0;
 background:#fff;
-padding:15px 40px;
+padding:14px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -31,7 +32,7 @@ box-shadow:0 2px 6px rgba(0,0,0,.08)
 }
 
 nav a{
-margin-left:20px;
+margin-left:24px;
 text-decoration:none;
 color:#111;
 font-weight:600
@@ -73,42 +74,41 @@ color:white
 .tiles{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:30px;
+gap:28px;
 padding:80px;
-min-height:300px;
 }
 
 .tile{
-height:260px;
-min-height:260px;
-background:#111827 center/cover no-repeat;
+height:240px;
+background-size:cover;
+background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
 font-size:22px;
 font-weight:600;
+text-shadow:0 2px 6px rgba(0,0,0,.6);
 cursor:pointer;
-transition:.3s;
+transition:.35s;
 }
 
-.tile:hover{
-transform:scale(1.04)
-}
+.tile:hover{transform:scale(1.04)}
 
 /* FOOTER */
 
 footer{
 background:#0b1220;
 color:white;
-padding:30px;
+padding:30px 40px;
 display:flex;
-justify-content:space-between;
+justify-content:center;
+gap:40px;
 align-items:center;
-margin-top:80px
+margin-top:60px
 }
 
-footer a{color:white;text-decoration:none;margin-left:20px}
+footer a{color:white;text-decoration:none}
 
 @media(max-width:900px){
 .tiles{grid-template-columns:1fr 1fr}
@@ -130,43 +130,69 @@ footer a{color:white;text-decoration:none;margin-left:20px}
 <nav>
 <a href="#">Services</a>
 <a href="#contact">Contact</a>
+
 <span class="lang">
-<button class="active">PL</button>
-<button>EN</button>
-<button>DE</button>
+<button onclick="setLang('pl')" id="pl" class="active">PL</button>
+<button onclick="setLang('en')" id="en">EN</button>
+<button onclick="setLang('de')" id="de">DE</button>
 </span>
 </nav>
 </header>
 
 <section class="hero">
 <div>
-<h1>Konrad Czachor Advisory & Partners</h1>
-<p>Training • Audits • Interim • B2B</p>
+<h1 id="heroTitle">Konrad Czachor Advisory & Partners</h1>
+<p id="heroSub">Training • Audits • Interim • B2B</p>
 </div>
 </section>
 
 <section class="tiles">
 
-<a href="training.html" class="tile" style="background-image:url('img/training.jpg')">Training</a>
-
-<a href="audits.html" class="tile" style="background-image:url('img/audits.jpg')">Audits</a>
-
-<a href="interim.html" class="tile" style="background-image:url('img/interim.jpg')">Interim</a>
-
-<a href="b2b.html" class="tile" style="background-image:url('img/b2b.jpg')">B2B</a>
+<a href="training.html" class="tile" style="background-image:url('img/training.jpg')" id="t1">Training</a>
+<a href="audits.html" class="tile" style="background-image:url('img/audits.jpg')" id="t2">Audits</a>
+<a href="interim.html" class="tile" style="background-image:url('img/interim.jpg')" id="t3">Interim</a>
+<a href="b2b.html" class="tile" style="background-image:url('img/b2b.jpg')" id="t4">B2B</a>
 
 </section>
 
 <footer>
-<div>KC Advisory</div>
-
-<div>
 <a href="#">Services</a>
 <a href="#contact">Contact</a>
-</div>
-
 <div>© 2026 All rights reserved</div>
 </footer>
+
+<script>
+
+const dict={
+pl:{
+heroSub:"Szkolenia • Audyty • Interim • B2B",
+t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B"
+},
+en:{
+heroSub:"Training • Audits • Interim • B2B",
+t1:"Training",t2:"Audits",t3:"Interim",t4:"B2B"
+},
+de:{
+heroSub:"Training • Audits • Interim • B2B",
+t1:"Schulungen",t2:"Audits",t3:"Interim",t4:"B2B"
+}
+};
+
+function setLang(l){
+
+document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+document.getElementById(l).classList.add("active");
+
+heroSub.innerText=dict[l].heroSub;
+t1.innerText=dict[l].t1;
+t2.innerText=dict[l].t2;
+t3.innerText=dict[l].t3;
+t4.innerText=dict[l].t4;
+
+document.documentElement.lang=l;
+}
+
+</script>
 
 </body>
 </html>
