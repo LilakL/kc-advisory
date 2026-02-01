@@ -86,7 +86,6 @@ transform:scale(1.03);
 box-shadow:0 0 25px rgba(255,255,255,.35);
 }
 
-/* >>> ONLY FIX: lighter fill inside frame <<< */
 .tile::after{
 content:"";
 position:absolute;
@@ -96,7 +95,7 @@ transform:translate(-50%,-50%);
 padding:14px 28px;
 border:2px solid rgba(255,255,255,.9);
 border-radius:10px;
-background:rgba(0,0,0,.20);   /* was .45 – now clean & bright */
+background:rgba(0,0,0,.20);
 pointer-events:none;
 min-width:140px;
 }
@@ -236,9 +235,54 @@ nav{width:100%;display:flex;justify-content:center;gap:30px;margin-bottom:8px}
 <script>
 
 const dict={
-en:{hero:"Trainings • Audits • Interim • B2B",t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Services",mC:"Contact"},
-pl:{hero:"Szkolenia • Audyty • Interim • B2B",t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",mS:"Usługi",mC:"Kontakt"},
-de:{hero:"Trainings • Audits • Interim • B2B",t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",mS:"Leistungen",mC:"Kontakt"}
+en:{
+hero:"Trainings • Audits • Interim • B2B",
+t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",
+mS:"Services",mC:"Contact",
+a:[
+"Welcome to Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners is an independent, internationally oriented advisory boutique delivering strategic consulting, operational excellence, and business development support across multiple industries.",
+"Built on hands-on experience and deep technical understanding, we combine advisory, implementation, and talent solutions under one roof — enabling our clients to move from strategy to execution seamlessly.",
+"Konrad Czachor Advisory",
+"This division focuses on business advisory, operational transformation, quality systems, compliance, and strategic growth initiatives. We support organizations with structure, clarity, and measurable results — from process optimization to management systems and organizational development.",
+"Konrad Czachor Partners",
+"Our Partners division delivers project-based expertise and international recruitment, providing highly qualified specialists tailored to client needs, particularly within manufacturing, engineering, and technical environments.",
+"We operate as a one-stop boutique — speaking the language of both management and operations. Having grown organically, we have expanded our services across multiple sectors while maintaining a strong practical, results-driven mindset.",
+"With roots in Central Europe and an international network of experts and partners, we support clients globally through flexible, agile engagement models.",
+"Contact us today for a confidential discussion on how Konrad Czachor Advisory & Partners can support your business growth, transformation, and operational excellence."
+]},
+pl:{
+hero:"Szkolenia • Audyty • Interim • B2B",
+t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",
+mS:"Usługi",mC:"Kontakt",
+a:[
+"Witamy w Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners to niezależna, międzynarodowa butikowa firma doradcza świadcząca usługi w zakresie strategii, doskonałości operacyjnej oraz rozwoju biznesu w wielu branżach.",
+"Opierając się na praktycznym doświadczeniu i głębokiej wiedzy technicznej, łączymy doradztwo, wdrożenia oraz rozwiązania personalne pod jednym dachem — umożliwiając płynne przejście od strategii do realizacji.",
+"Konrad Czachor Advisory",
+"Ten obszar koncentruje się na doradztwie biznesowym, transformacji operacyjnej, systemach jakości, zgodności oraz inicjatywach rozwoju strategicznego.",
+"Konrad Czachor Partners",
+"Nasz dział Partners dostarcza ekspertów projektowych oraz prowadzi rekrutację międzynarodową, zapewniając wysoko wykwalifikowanych specjalistów.",
+"Działamy jako butik typu one-stop, mówiąc tym samym językiem co zarząd i operacje.",
+"Dzięki korzeniom w Europie Centralnej i międzynarodowej sieci ekspertów wspieramy klientów globalnie.",
+"Skontaktuj się z nami już dziś, aby omówić poufnie rozwój Twojej organizacji."
+]},
+de:{
+hero:"Trainings • Audits • Interim • B2B",
+t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",
+mS:"Leistungen",mC:"Kontakt",
+a:[
+"Willkommen bei Konrad Czachor Advisory & Partners",
+"Konrad Czachor Advisory & Partners ist eine unabhängige, international ausgerichtete Boutique-Beratung für Strategie, operative Exzellenz und Geschäftsentwicklung.",
+"Basierend auf praktischer Erfahrung und tiefem technischem Know-how verbinden wir Beratung, Umsetzung und Talentlösungen.",
+"Konrad Czachor Advisory",
+"Dieser Bereich konzentriert sich auf Unternehmensberatung, operative Transformation, Qualitätssysteme und Compliance.",
+"Konrad Czachor Partners",
+"Unsere Partners Division liefert projektbasierte Expertise sowie internationale Rekrutierung.",
+"Wir agieren als One-Stop-Boutique und sprechen die Sprache von Management und Betrieb.",
+"Mit Wurzeln in Mitteleuropa unterstützen wir Kunden weltweit.",
+"Kontaktieren Sie uns für ein vertrauliches Gespräch."
+]}
 };
 
 function setLang(l){
@@ -252,6 +296,17 @@ t3.innerText=dict[l].t3;
 t4.innerText=dict[l].t4;
 mServices.innerText=dict[l].mS;
 mContact.innerText=dict[l].mC;
+
+aTitle.innerText=dict[l].a[0];
+a1.innerText=dict[l].a[1];
+a2.innerText=dict[l].a[2];
+a3.innerText=dict[l].a[3];
+a4.innerText=dict[l].a[4];
+a5.innerText=dict[l].a[5];
+a6.innerText=dict[l].a[6];
+a7.innerText=dict[l].a[7];
+a8.innerText=dict[l].a[8];
+a9.innerText=dict[l].a[9];
 }
 
 /* scroll reveal */
