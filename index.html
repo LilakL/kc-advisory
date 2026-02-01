@@ -5,7 +5,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title id="seo-title">Konrad Czachor Advisory & Partners</title>
+<title id="seo-title">Business Advisory – KC Advisory</title>
+<meta name="description" id="seo-desc" content="Training, Audits, Interim Management and B2B cooperation.">
+
+<link rel="icon" href="favicon.ico">
+
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXXX');
+</script>
 
 <style>
 
@@ -15,7 +27,7 @@ header{
 position:fixed;top:0;width:100%;
 background:white;padding:20px 60px;
 display:flex;justify-content:space-between;
-align-items:center;border-bottom:1px solid #e5e7eb;
+align-items:center;border-bottom:1px solid #eee;
 z-index:100;transition:.3s;
 }
 
@@ -32,7 +44,7 @@ cursor:pointer;border-radius:6px;margin-left:5px;
 .lang .active{background:#2563eb;color:white}
 
 .hero{
-margin-top:100px;height:420px;
+margin-top:90px;height:420px;
 background:url(img/background.jpg) center/cover;
 display:flex;flex-direction:column;
 justify-content:center;padding-left:80px;color:white;
@@ -44,14 +56,13 @@ gap:30px;padding:80px;
 }
 
 .tile{
-height:240px;background-size:cover;
+height:220px;background-size:cover;
 background-position:center;position:relative;
 overflow:hidden;transition:.4s;
 opacity:0;transform:translateY(40px);
 }
 
 .tile.visible{opacity:1;transform:none}
-
 .tile:hover{transform:scale(1.04)}
 
 .tile a{
@@ -65,14 +76,14 @@ transition:.3s;
 .tile a:hover{background:rgba(0,0,0,.45)}
 
 footer{
-background:#0f172a;color:white;padding:50px 80px;margin-top:80px
+background:#0f172a;color:white;padding:40px 80px;margin-top:80px
 }
 
 .footer-inner{
 display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px
 }
 
-.footer a{color:#cbd5f5;text-decoration:none;display:block;margin-bottom:6px}
+.footer a{color:#cbd5f5;text-decoration:none;display:block}
 .footer a:hover{color:white}
 
 </style>
@@ -109,26 +120,26 @@ display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px
 <div class="tiles">
 
 <div class="tile" style="background-image:url(img/training.jpg)">
-<a href="training.html" id="tile-training">Training</a>
+<a href="training.html">Training</a>
 </div>
 
 <div class="tile" style="background-image:url(img/audits.jpg)">
-<a href="audits.html" id="tile-audits">Audits</a>
+<a href="audits.html">Audits</a>
 </div>
 
 <div class="tile" style="background-image:url(img/interim.jpg)">
-<a href="interim.html" id="tile-interim">Interim</a>
+<a href="interim.html">Interim</a>
 </div>
 
 <div class="tile" style="background-image:url(img/b2b.jpg)">
-<a href="b2b.html" id="tile-b2b">B2B</a>
+<a href="b2b.html">B2B</a>
 </div>
 
 </div>
 
 <footer>
 <div class="footer-inner">
-<div><strong>Konrad Czachor Advisory & Partners</strong><br>Training • Audits • Interim • B2B</div>
+<div><strong>KC Advisory</strong></div>
 <div><a href="index.html">Services</a><a href="contact.html">Contact</a></div>
 <div>© 2026 All rights reserved</div>
 </div>
@@ -137,20 +148,35 @@ display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px
 <script>
 
 const t={
-pl:{services:"Usługi",contact:"Kontakt",sub:"Szkolenia • Audyty • Interim",training:"Szkolenia",audits:"Audyty"},
-en:{services:"Services",contact:"Contact",sub:"Training • Audits • Interim"},
-de:{services:"Leistungen",contact:"Kontakt",sub:"Training • Audits • Interim"}
+pl:{
+services:"Usługi",contact:"Kontakt",
+sub:"Szkolenia • Audyty • Interim",
+title:"Doradztwo biznesowe – KC Advisory",
+desc:"Szkolenia, audyty, interim management oraz współpraca B2B."
+},
+en:{
+services:"Services",contact:"Contact",
+sub:"Training • Audits • Interim",
+title:"Business Advisory – KC Advisory",
+desc:"Training, audits, interim management and B2B cooperation."
+},
+de:{
+services:"Leistungen",contact:"Kontakt",
+sub:"Training • Audits • Interim",
+title:"Unternehmensberatung – KC Advisory",
+desc:"Training, Audits, Interim Management und B2B Kooperation."
+}
 };
 
 function setLang(l){
 localStorage.lang=l;
-document.getElementById("nav-services").innerText=t[l].services;
-document.getElementById("nav-contact").innerText=t[l].contact;
-document.getElementById("hero-sub").innerText=t[l].sub;
-document.getElementById("seo-title").innerText=
-l=="pl"?"Doradztwo biznesowe – KC Advisory":
-l=="de"?"Unternehmensberatung – KC Advisory":
-"Business Advisory – KC Advisory";
+
+nav-services.innerText=t[l].services;
+nav-contact.innerText=t[l].contact;
+hero-sub.innerText=t[l].sub;
+
+seo-title.innerText=t[l].title;
+seo-desc.content=t[l].desc;
 
 document.querySelectorAll(".lang span").forEach(x=>x.classList.remove("active"));
 document.querySelector(`[data-lang="${l}"]`).classList.add("active");
