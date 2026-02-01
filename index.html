@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Konrad Czachor Advisory & Partners</title>
+
+<title>Konrad Czachor Advisory & Partners | Training, Audits, Interim Management</title>
+<meta name="description" content="Professional training, audits and interim management for industrial and service companies. TÜV Nord Academy Partner.">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
+
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 color:#0f172a;
 }
 
@@ -60,13 +64,22 @@ padding:0 80px;
 color:white;
 }
 
-.hero-content{max-width:600px;}
+.hero-content{
+max-width:600px;
+animation:fadeUp 1s ease;
+}
 
-.hero h1{font-size:52px;margin-bottom:20px;}
+.hero h1{
+font-size:52px;
+margin-bottom:20px;
+}
 
-.hero p{font-size:20px;line-height:1.5;}
+.hero p{
+font-size:20px;
+line-height:1.5;
+}
 
-/* SERVICES */
+/* SECTIONS */
 
 section{
 padding:100px 80px;
@@ -74,7 +87,13 @@ max-width:1200px;
 margin:auto;
 }
 
-h2{text-align:center;font-size:36px;margin-bottom:60px;}
+h2{
+text-align:center;
+font-size:36px;
+margin-bottom:60px;
+}
+
+/* SERVICE TILES */
 
 .tiles{
 display:grid;
@@ -84,11 +103,21 @@ gap:30px;
 
 .tile{
 height:260px;
-background-size:cover;
-background-position:center;
 position:relative;
 overflow:hidden;
 text-decoration:none;
+transform:scale(1);
+transition:.5s;
+}
+
+.tile:hover{
+transform:scale(1.05);
+}
+
+.tile img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .tile::after{
@@ -109,7 +138,9 @@ color:white;
 z-index:2;
 }
 
-.tile-content h3{margin-bottom:15px;}
+.tile-content h3{
+margin-bottom:15px;
+}
 
 .tile-content button{
 background:transparent;
@@ -117,6 +148,24 @@ border:2px solid white;
 color:white;
 padding:10px 25px;
 cursor:pointer;
+}
+
+/* ANIMATIONS */
+
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:none;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:none}
 }
 
 /* FOOTER */
@@ -128,6 +177,7 @@ color:white;
 text-align:center;
 margin-top:80px;
 }
+
 </style>
 </head>
 
@@ -137,19 +187,18 @@ margin-top:80px;
 
 <strong>Konrad Czachor Advisory & Partners</strong>
 
-<div style="display:flex;align-items:center">
+<div>
 
 <nav>
-<a href="#services" data-i18n="services">Services</a>
-<a href="#about" data-i18n="about">About</a>
-<a href="#contact" data-i18n="contact">Contact</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<div class="lang">
-<button onclick="setLang('pl')">PL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-</div>
+<span class="lang">
+<button>PL</button>
+<button>EN</button>
+<button>DE</button>
+</span>
 
 </div>
 
@@ -158,56 +207,54 @@ margin-top:80px;
 <div class="hero">
 <div class="hero-content">
 <h1>Konrad Czachor Advisory & Partners</h1>
-<p id="heroText">Training • Audits • Interim Management<br>for industrial and service companies</p>
+<p>Training • Audits • Interim Management<br>
+for industrial and service companies</p>
 </div>
 </div>
 
 <section id="services">
-<h2 data-i18n="ourservices">Our Services</h2>
+<h2 class="fade">Our Services</h2>
 
 <div class="tiles">
 
-<a href="training.html" class="tile" style="background-image:url('img/training.jpg')">
+<a href="training.html" class="tile fade">
+<img src="img/training.jpg">
 <div class="tile-content">
-<h3 data-i18n="training">Training</h3>
-<button data-i18n="learn">Learn more</button>
+<h3>Training</h3>
+<button>Learn more</button>
 </div>
 </a>
 
-<a href="audits.html" class="tile" style="background-image:url('img/audits.jpg')">
+<a href="audits.html" class="tile fade">
+<img src="img/audits.jpg">
 <div class="tile-content">
-<h3 data-i18n="audits">Audits</h3>
-<button data-i18n="learn">Learn more</button>
+<h3>Audits</h3>
+<button>Learn more</button>
 </div>
 </a>
 
-<a href="interim.html" class="tile" style="background-image:url('img/interim.jpg')">
+<a href="interim.html" class="tile fade">
+<img src="img/interim.jpg">
 <div class="tile-content">
-<h3 data-i18n="interim">Interim Management</h3>
-<button data-i18n="learn">Learn more</button>
+<h3>Interim Management</h3>
+<button>Learn more</button>
 </div>
 </a>
 
-<a href="b2b.html" class="tile" style="background-image:url('img/b2b.jpg')">
+<a href="b2b.html" class="tile fade">
+<img src="img/b2b.jpg">
 <div class="tile-content">
-<h3 data-i18n="b2b">B2B Multiplicator</h3>
-<button data-i18n="learn">Learn more</button>
+<h3>B2B Multiplicator</h3>
+<button>Learn more</button>
 </div>
 </a>
 
 </div>
+
 </section>
 
-<section id="about">
-<h2 data-i18n="about">About</h2>
-<p>
-Partner TÜV Nord Academy.<br>
-International B2B advisory for manufacturing and service companies.
-</p>
-</section>
-
-<section id="contact">
-<h2 data-i18n="contact">Contact</h2>
+<section id="contact" class="fade">
+<h2>Contact</h2>
 <p>Email: info@kc-adp.com</p>
 </section>
 
@@ -216,51 +263,13 @@ International B2B advisory for manufacturing and service companies.
 </footer>
 
 <script>
-const translations={
-pl:{
-services:"Usługi",
-about:"O nas",
-contact:"Kontakt",
-ourservices:"Nasze usługi",
-training:"Szkolenia",
-audits:"Audyty",
-interim:"Interim Management",
-b2b:"B2B Multiplikator",
-learn:"Więcej",
-hero:"Szkolenia • Audyty • Interim Management<br>dla firm produkcyjnych i usługowych"
-},
-en:{
-services:"Services",
-about:"About",
-contact:"Contact",
-ourservices:"Our Services",
-training:"Training",
-audits:"Audits",
-interim:"Interim Management",
-b2b:"B2B Multiplicator",
-learn:"Learn more",
-hero:"Training • Audits • Interim Management<br>for industrial and service companies"
-},
-de:{
-services:"Leistungen",
-about:"Über uns",
-contact:"Kontakt",
-ourservices:"Unsere Leistungen",
-training:"Training",
-audits:"Audits",
-interim:"Interim Management",
-b2b:"B2B Multiplikator",
-learn:"Mehr erfahren",
-hero:"Training • Audits • Interim Management<br>für Industrie- und Dienstleistungsunternehmen"
-}
-};
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add("show")
+})
+})
 
-function setLang(lang){
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.innerHTML=translations[lang][el.dataset.i18n];
-});
-document.getElementById("heroText").innerHTML=translations[lang].hero;
-}
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
 </script>
 
 </body>
