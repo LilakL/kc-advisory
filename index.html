@@ -75,9 +75,26 @@ font-size:22px;
 font-weight:600;
 text-decoration:none;
 transition:.2s;
+position:relative;
+z-index:1;
 }
 
 .tile:hover{transform:scale(1.03)}
+
+.tile::after{
+content:"";
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+padding:14px 28px;
+border:2px solid rgba(255,255,255,.85);
+border-radius:10px;
+background:rgba(0,0,0,.25);
+backdrop-filter:blur(2px);
+pointer-events:none;
+min-width:140px;
+}
 
 /* ABOUT */
 .about{
@@ -135,12 +152,8 @@ gap:30px;
 margin-bottom:8px;
 }
 
-.tiles{
-grid-template-columns:1fr
+.tiles{grid-template-columns:1fr}
 }
-
-}
-
 </style>
 
 </head>
@@ -287,4 +300,3 @@ setLang('en');
 
 </body>
 </html>
-
