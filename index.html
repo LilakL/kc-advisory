@@ -68,9 +68,6 @@ display:flex;
 align-items:center;
 padding-left:60px;
 color:white;
-
-image-rendering:auto;
--webkit-backface-visibility:hidden;
 }
 
 /* TILES */
@@ -95,15 +92,15 @@ font-size:22px;
 color:white;
 font-weight:700;
 
-transition:.35s ease;
+border:2px solid rgba(255,255,255,.5);
+cursor:pointer;
 
-image-rendering:auto;
-transform:translateZ(0);
--webkit-font-smoothing:antialiased;
+transition:.3s ease;
 }
 
 .tile:hover{
 transform:scale(1.04);
+border-color:white;
 }
 
 /* STOPKA */
@@ -151,10 +148,10 @@ justify-content:flex-end;
 
 <section class="tiles" id="services">
 
-<div id="t1" class="tile" style="background-image:url('img/training.jpg')">Training</div>
-<div id="t2" class="tile" style="background-image:url('img/audits.jpg')">Audits</div>
-<div id="t3" class="tile" style="background-image:url('img/interim.jpg')">Interim</div>
-<div id="t4" class="tile" style="background-image:url('img/b2b.jpg')">B2B</div>
+<div id="t1" class="tile" onclick="location.href='training.html'" style="background-image:url('img/training.jpg')">Training</div>
+<div id="t2" class="tile" onclick="location.href='audits.html'" style="background-image:url('img/audits.jpg')">Audits</div>
+<div id="t3" class="tile" onclick="location.href='interim.html'" style="background-image:url('img/interim.jpg')">Interim</div>
+<div id="t4" class="tile" onclick="location.href='b2b.html'" style="background-image:url('img/b2b.jpg')">B2B</div>
 
 </section>
 
