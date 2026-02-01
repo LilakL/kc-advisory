@@ -10,7 +10,6 @@
 :root{
 --gold:#c9a14a;
 --dark:#0b0f14;
---panel:#151c2b;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -39,19 +38,8 @@ position:absolute;
 inset:0;
 background:
 linear-gradient(180deg,rgba(5,7,11,.88),rgba(11,15,20,.95)),
-url("img/background_profile.jpg") center/cover no-repeat,
-linear-gradient(180deg,#05070b,#0b0f14);
-transform:scale(1);
-transition:transform .2s ease-out;
+url("img/background_profile.jpg") center/cover no-repeat;
 z-index:0;
-}
-
-.hero-bg::after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(180deg,#05070b,#0b0f14);
-z-index:-1;
 }
 
 .hero-content{
@@ -124,12 +112,8 @@ li{margin-bottom:8px}
 footer{text-align:center;padding:40px;opacity:.6}
 
 @media(max-width:900px){
-.hero-content{
-grid-template-columns:1fr;
-gap:40px;
-}
+.hero-content{grid-template-columns:1fr}
 .profile-wrap{justify-content:flex-start}
-.profile-pic{width:220px;height:280px}
 }
 
 </style>
@@ -145,7 +129,7 @@ gap:40px;
 
 <div class="hero">
 
-<div class="hero-bg" id="heroBg"></div>
+<div class="hero-bg"></div>
 
 <div class="hero-content">
 
@@ -209,13 +193,9 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 
 <p>I help organisations regain control over strategy — and convert it into disciplined execution.</p>
 
-<p>
-No corporate theatre.<br>
-No slide decks that change nothing.<br>
-Full accountability for outcomes.
-</p>
+<p>No corporate theatre.<br>No slide decks that change nothing.<br>Full accountability for outcomes.</p>
 
-<p>I embed into your business, identify bottlenecks, define a clear action path, and lead implementation — with your teams or with a tailored group of experts I assemble for your challenge.</p>
+<p>I embed into your business, identify bottlenecks, define a clear action path, and lead implementation — with your teams or with a tailored group of experts.</p>
 
 <p><strong>This is not consulting.<br>This is operational partnership.</strong></p>
 
@@ -227,17 +207,7 @@ Full accountability for outcomes.
 <li>leadership and decision-making effectiveness</li>
 </ul>
 
-<p>I founded Konrad Czachor Advisory & Partners because modern challenges require teams — not solo advisors.</p>
-
-<p>
-I bring clarity where there is noise.<br>
-Momentum where progress has stalled.<br>
-Ownership where excuses used to live.
-</p>
-
 <p><strong>Clarity. Ownership. Speed.</strong></p>
-
-<p>If you’re looking for advice — keep looking.<br>If you want execution — we should talk.</p>
 
 <a class="cta" href="#cta">Start a conversation</a>
 
@@ -252,39 +222,9 @@ Ownership where excuses used to live.
 
 <p><br>Sie brauchen keine Motivation.<br><strong>Sie brauchen Ergebnisse.</strong></p>
 
-<p>Ich arbeite mit Unternehmern, Vorständen und Führungsteams dort, wo es wirklich zählt: Wachstum, Transformation, Profitabilität und operative Stabilität.</p>
-
-<p>Ich helfe Organisationen, die Kontrolle über ihre Strategie zurückzugewinnen — und diese konsequent umzusetzen.</p>
-
-<p>
-Kein Corporate-Theater.<br>
-Keine Präsentationen ohne Wirkung.<br>
-Volle Verantwortung für Resultate.
-</p>
-
-<p>Ich integriere mich in Ihr Unternehmen, identifiziere Engpässe, entwickle eine klare Umsetzungsstrategie und begleite die Implementierung — mit Ihren Teams oder mit maßgeschneiderten Expertengruppen.</p>
+<p>Ich arbeite mit Unternehmern, Vorständen und Führungsteams dort, wo es wirklich zählt.</p>
 
 <p><strong>Das ist kein Consulting.<br>Das ist operative Partnerschaft.</strong></p>
-
-<ul>
-<li>strategische und operative Transformation</li>
-<li>Performance- und Margensteigerung</li>
-<li>Qualitätsmanagement & Compliance (ISO)</li>
-<li>skalierbare B2B-Modelle</li>
-<li>Leadership- und Entscheidungsstrukturen</li>
-</ul>
-
-<p>Ich habe Konrad Czachor Advisory & Partners gegründet, weil heutige Herausforderungen Teams brauchen — keine Einzelberater.</p>
-
-<p>
-Ich bringe Klarheit ins Chaos.<br>
-Tempo in stagnierende Organisationen.<br>
-Verantwortung dorthin, wo Ausreden waren.
-</p>
-
-<p><strong>Klarheit. Verantwortung. Geschwindigkeit.</strong></p>
-
-<p>Wenn Sie Beratung suchen – bin ich nicht der Richtige.<br>Wenn Sie Umsetzung wollen – sprechen wir.</p>
 
 <a class="cta" href="#cta">Kontakt aufnehmen</a>
 
@@ -299,7 +239,6 @@ Verantwortung dorthin, wo Ausreden waren.
 
 <section id="cta">
 <h2 class="fade">Let’s build results.</h2>
-<p class="fade">Projects, interim management, operational transformations.</p>
 <a class="cta fade" href="mailto:contact@kc-adp.com">Start Project</a>
 </section>
 
@@ -309,9 +248,7 @@ Verantwortung dorthin, wo Ausreden waren.
 
 const faders=document.querySelectorAll('.fade');
 const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting)e.target.classList.add('show');
-});
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 },{threshold:.2});
 faders.forEach(f=>obs.observe(f));
 
@@ -320,12 +257,6 @@ document.querySelectorAll('.lang').forEach(el=>el.hidden=true);
 document.querySelectorAll('.'+l).forEach(el=>el.hidden=false);
 document.documentElement.lang=l;
 }
-
-const bg=document.getElementById("heroBg");
-window.addEventListener("scroll",()=>{
-const y=window.scrollY;
-bg.style.transform=`scale(${1 + y/3000})`;
-});
 
 </script>
 
