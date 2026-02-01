@@ -6,12 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
 font-family:Arial, Helvetica, sans-serif;
@@ -65,21 +60,13 @@ padding:0 80px;
 color:white;
 }
 
-.hero-content{
-max-width:600px;
-}
+.hero-content{max-width:600px;}
 
-.hero h1{
-font-size:52px;
-margin-bottom:20px;
-}
+.hero h1{font-size:52px;margin-bottom:20px;}
 
-.hero p{
-font-size:20px;
-line-height:1.5;
-}
+.hero p{font-size:20px;line-height:1.5;}
 
-/* SECTIONS */
+/* SERVICES */
 
 section{
 padding:100px 80px;
@@ -87,19 +74,12 @@ max-width:1200px;
 margin:auto;
 }
 
-h2{
-font-size:36px;
-margin-bottom:60px;
-text-align:center;
-}
-
-/* SERVICE TILES */
+h2{text-align:center;font-size:36px;margin-bottom:60px;}
 
 .tiles{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
-margin-bottom:80px;
 }
 
 .tile{
@@ -108,6 +88,7 @@ background-size:cover;
 background-position:center;
 position:relative;
 overflow:hidden;
+text-decoration:none;
 }
 
 .tile::after{
@@ -128,9 +109,7 @@ color:white;
 z-index:2;
 }
 
-.tile-content h3{
-margin-bottom:15px;
-}
+.tile-content h3{margin-bottom:15px;}
 
 .tile-content button{
 background:transparent;
@@ -138,20 +117,6 @@ border:2px solid white;
 color:white;
 padding:10px 25px;
 cursor:pointer;
-}
-
-/* SERVICES TEXT */
-
-.services-text{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:50px;
-}
-
-.services-text h3{
-border-top:4px solid #0f172a;
-padding-top:15px;
-margin-bottom:10px;
 }
 
 /* FOOTER */
@@ -163,7 +128,6 @@ color:white;
 text-align:center;
 margin-top:80px;
 }
-
 </style>
 </head>
 
@@ -176,15 +140,15 @@ margin-top:80px;
 <div style="display:flex;align-items:center">
 
 <nav>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+<a href="#services" data-i18n="services">Services</a>
+<a href="#about" data-i18n="about">About</a>
+<a href="#contact" data-i18n="contact">Contact</a>
 </nav>
 
 <div class="lang">
-<button>PL</button>
-<button>EN</button>
-<button>DE</button>
+<button onclick="setLang('pl')">PL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
 </div>
 
 </div>
@@ -194,92 +158,110 @@ margin-top:80px;
 <div class="hero">
 <div class="hero-content">
 <h1>Konrad Czachor Advisory & Partners</h1>
-<p>Training • Audits • Interim Management<br>
-for industrial and service companies</p>
+<p id="heroText">Training • Audits • Interim Management<br>for industrial and service companies</p>
 </div>
 </div>
 
 <section id="services">
-
-<h2>Our Services</h2>
+<h2 data-i18n="ourservices">Our Services</h2>
 
 <div class="tiles">
 
-<div class="tile" style="background-image:url('img/training.jpg')">
+<a href="training.html" class="tile" style="background-image:url('img/training.jpg')">
 <div class="tile-content">
-<h3>Training</h3>
-<button>Learn more</button>
+<h3 data-i18n="training">Training</h3>
+<button data-i18n="learn">Learn more</button>
 </div>
-</div>
+</a>
 
-<div class="tile" style="background-image:url('img/audits.jpg')">
+<a href="audits.html" class="tile" style="background-image:url('img/audits.jpg')">
 <div class="tile-content">
-<h3>Audits</h3>
-<button>Learn more</button>
+<h3 data-i18n="audits">Audits</h3>
+<button data-i18n="learn">Learn more</button>
 </div>
-</div>
+</a>
 
-<div class="tile" style="background-image:url('img/interim.jpg')">
+<a href="interim.html" class="tile" style="background-image:url('img/interim.jpg')">
 <div class="tile-content">
-<h3>Interim Management</h3>
-<button>Learn more</button>
+<h3 data-i18n="interim">Interim Management</h3>
+<button data-i18n="learn">Learn more</button>
 </div>
-</div>
+</a>
 
-<div class="tile" style="background-image:url('img/b2b.jpg')">
+<a href="b2b.html" class="tile" style="background-image:url('img/b2b.jpg')">
 <div class="tile-content">
-<h3>B2B Multiplicator</h3>
-<button>Learn more</button>
+<h3 data-i18n="b2b">B2B Multiplicator</h3>
+<button data-i18n="learn">Learn more</button>
 </div>
-</div>
+</a>
 
 </div>
-
-<div class="services-text">
-
-<div>
-<h3>Training</h3>
-<p>Professional corporate training delivered onsite or remotely.</p>
-</div>
-
-<div>
-<h3>Audits</h3>
-<p>Process, quality and compliance audits aligned with ISO standards.</p>
-</div>
-
-<div>
-<h3>Interim Management</h3>
-<p>Operational leadership during transitions and transformations.</p>
-</div>
-
-<div>
-<h3>B2B Multiplicator</h3>
-<p>Flexible cooperation with trusted experts and strategic partners.</p>
-</div>
-
-</div>
-
 </section>
 
 <section id="about">
-<h2>About</h2>
+<h2 data-i18n="about">About</h2>
 <p>
-Independent advisory practice supporting organizations in operational excellence.<br><br>
-Partner of TÜV Nord Academy.<br>
-Working internationally in manufacturing and service environments.
+Partner TÜV Nord Academy.<br>
+International B2B advisory for manufacturing and service companies.
 </p>
 </section>
 
 <section id="contact">
-<h2>Contact</h2>
-<p>
-Email: info@kc-adp.com
-</p>
+<h2 data-i18n="contact">Contact</h2>
+<p>Email: info@kc-adp.com</p>
 </section>
 
 <footer>
 © 2026 Konrad Czachor Advisory & Partners
 </footer>
+
+<script>
+const translations={
+pl:{
+services:"Usługi",
+about:"O nas",
+contact:"Kontakt",
+ourservices:"Nasze usługi",
+training:"Szkolenia",
+audits:"Audyty",
+interim:"Interim Management",
+b2b:"B2B Multiplikator",
+learn:"Więcej",
+hero:"Szkolenia • Audyty • Interim Management<br>dla firm produkcyjnych i usługowych"
+},
+en:{
+services:"Services",
+about:"About",
+contact:"Contact",
+ourservices:"Our Services",
+training:"Training",
+audits:"Audits",
+interim:"Interim Management",
+b2b:"B2B Multiplicator",
+learn:"Learn more",
+hero:"Training • Audits • Interim Management<br>for industrial and service companies"
+},
+de:{
+services:"Leistungen",
+about:"Über uns",
+contact:"Kontakt",
+ourservices:"Unsere Leistungen",
+training:"Training",
+audits:"Audits",
+interim:"Interim Management",
+b2b:"B2B Multiplikator",
+learn:"Mehr erfahren",
+hero:"Training • Audits • Interim Management<br>für Industrie- und Dienstleistungsunternehmen"
+}
+};
+
+function setLang(lang){
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.innerHTML=translations[lang][el.dataset.i18n];
+});
+document.getElementById("heroText").innerHTML=translations[lang].hero;
+}
+</script>
 
 </body>
 </html>
