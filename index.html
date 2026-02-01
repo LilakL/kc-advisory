@@ -7,7 +7,12 @@
 
 <style>
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial}
+
+body{
+margin:0;
+font-family:Arial;
+padding-bottom:140px;
+}
 
 header{
 position:sticky;top:0;background:#fff;padding:15px 40px;
@@ -20,7 +25,6 @@ nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
 .breadcrumbs{
 padding:10px 40px;font-size:14px;color:#555
 }
-.breadcrumbs span{margin:0 6px}
 
 .lang button{
 margin-left:6px;padding:8px 12px;border:1px solid #ccc;background:#fff;
@@ -62,7 +66,10 @@ border-radius:8px;text-decoration:none;font-weight:700
 
 .contact{padding:80px 50px;text-align:center}
 
-footer{background:#111;color:#fff;padding:25px;text-align:center}
+footer{
+background:#111;color:#fff;padding:25px;text-align:center;
+position:relative;z-index:5
+}
 
 .cta{
 position:fixed;right:20px;bottom:20px;
@@ -90,9 +97,7 @@ border-radius:30px;font-weight:700;text-decoration:none
 </div>
 </header>
 
-<div class="breadcrumbs">
-Home <span>›</span> Advisory & Partners
-</div>
+<div class="breadcrumbs">Home › Advisory & Partners</div>
 
 <section id="home" class="hero">
 <div>
@@ -110,19 +115,75 @@ Home <span>›</span> Advisory & Partners
 
 <section id="about" class="about">
 <div class="about-inner">
-
 <h2 id="a0"></h2>
 <p id="a1"></p>
 <p id="a2"></p>
 <p id="a3"></p>
 
 <a class="about-btn" href="profile.html">About Me</a>
-
 </div>
 </section>
 
 <section id="contact" class="contact">
 <h2>Contact</h2>
 <p>Ready to move from strategy to execution?</p>
+<a class="about-btn" href="profile.html">Go to Profile & Contact</a>
+</section>
 
-<
+<footer>© 2026 Konrad Czachor Advisory & Partners</footer>
+
+<a class="cta" id="ctaBtn" href="profile.html"></a>
+
+<script>
+const dict={
+pl:{
+hero:"Szkolenia • Audyty • Interim • B2B",
+t:["Szkolenia","Audyty","Interim","B2B"],
+about:[
+"Witamy w Konrad Czachor Advisory & Partners",
+"Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
+"Potrzebujesz kogoś, kto nie tylko tworzy strategię — ale ją realizuje.",
+"My zamieniamy wizję w wyniki."
+],
+cta:"Poznaj mnie"
+},
+en:{
+hero:"Trainings • Audits • Interim • B2B",
+t:["Trainings","Audits","Interim","B2B"],
+about:[
+"Welcome to Konrad Czachor Advisory & Partners",
+"You don’t need another consultant. You need momentum.",
+"You need someone who doesn’t just design strategy — but executes.",
+"We turn vision into results."
+],
+cta:"About Me"
+},
+de:{
+hero:"Schulungen • Audits • Interim • B2B",
+t:["Schulungen","Audits","Interim","B2B"],
+about:[
+"Willkommen bei Konrad Czachor Advisory & Partners",
+"Sie brauchen keinen weiteren Berater. Sie brauchen Momentum.",
+"Sie brauchen jemanden, der Strategie umsetzt.",
+"Wir verwandeln Visionen in Ergebnisse."
+],
+cta:"Über mich"
+}
+};
+
+function setLang(l){
+heroSub.innerText=dict[l].hero;
+[t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
+dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
+ctaBtn.innerText=dict[l].cta;
+document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+document.querySelector(`[data-lang=${l}]`).classList.add("active");
+localStorage.setItem("lang",l);
+}
+
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+setLang(localStorage.getItem("lang")||"pl");
+</script>
+
+</body>
+</html>
