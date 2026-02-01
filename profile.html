@@ -1,228 +1,223 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Konrad Czachor – Leadership, Transformation & Operational Excellence</title>
-
-<meta name="description" content="Konrad Czachor – executive advisor helping organisations across Europe turn strategy into measurable results through leadership, transformation and operational excellence.">
-
-<meta property="og:title" content="Konrad Czachor Advisory & Partners">
-<meta property="og:description" content="Turning strategy into measurable results. Leadership. Transformation. Operational Excellence.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://kc-adp.com/profile.html">
-<meta property="og:image" content="https://kc-adp.com/img/background_profile.jpg">
+<meta charset="UTF-8">
+<title>Konrad Czachor – Advisory & Partners</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{margin:0;font-family:Arial}
 
-header{
-position:sticky;top:0;background:#fff;padding:15px 40px;
-display:flex;justify-content:space-between;align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:10
+:root{
+--gold:#c9a14a;
+--dark:#0b0f14;
+--panel:#151c2b;
 }
 
-.lang button{
-margin-left:6px;padding:8px 12px;border:1px solid #ccc;background:#fff;
-border-radius:8px;font-size:22px;cursor:pointer;transition:.2s
-}
-.lang button:hover{transform:scale(1.1)}
-.lang button.active{border-color:#2563eb;box-shadow:0 0 0 2px #2563eb inset}
+*{box-sizing:border-box;margin:0;padding:0}
 
-.breadcrumb{
-font-size:14px;color:#666;padding:20px 40px
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:var(--dark);
+color:white;
+overflow-x:hidden;
 }
-.breadcrumb a{text-decoration:none;color:#2563eb}
+
+section{padding:90px 10%}
+h1,h2{color:var(--gold)}
+p{opacity:.9}
 
 .hero{
-background:url(img/background_profile.jpg) center/cover;
-padding:80px 0;
+min-height:100vh;
+display:flex;
+align-items:center;
+background:linear-gradient(180deg,#05070b 0%,#0b0f14 100%);
 }
 
-.hero-inner{
-max-width:900px;margin:auto;padding:0 30px;
-display:flex;gap:40px;flex-wrap:wrap;align-items:center;
-color:white
+.hero-inner{max-width:900px}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 }
 
-.hero img{
-max-width:240px;border-radius:10px;
-box-shadow:0 10px 30px rgba(0,0,0,.4)
+.card{
+background:var(--panel);
+padding:25px;
+border-radius:12px;
 }
 
-.content{
-max-width:900px;margin:auto;padding:60px 30px 80px;
-opacity:1;transition:opacity .3s
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:.8s ease;
 }
 
-.fade{opacity:0}
+.fade.show{
+opacity:1;
+transform:none;
+}
 
-h1{font-size:36px}
-p{font-size:18px;line-height:1.6}
+.lang-switch{
+position:fixed;
+top:20px;
+right:20px;
+z-index:10;
+}
 
-ul{padding-left:20px}
-
-.badges span{
-display:inline-block;background:rgba(255,255,255,.85);
-padding:6px 12px;border-radius:6px;
-margin:5px 5px 0 0;font-size:13px;color:#111
+.lang-switch button{
+background:#111;
+color:white;
+border:1px solid var(--gold);
+padding:6px 12px;
+margin-left:5px;
+cursor:pointer;
 }
 
 .cta{
-margin-top:50px;padding:30px;background:#111;color:white;border-radius:12px
+background:var(--gold);
+color:black;
+padding:14px 26px;
+display:inline-block;
+margin-top:30px;
+border-radius:40px;
+font-weight:bold;
+text-decoration:none;
 }
 
-.cta a{color:white;font-weight:bold;text-decoration:none}
+footer{text-align:center;padding:40px;opacity:.6}
 
-footer{text-align:center;padding:30px;color:#777}
-
-@media(max-width:700px){
-.hero-inner{text-align:center;justify-content:center}
-}
 </style>
 </head>
 
 <body>
 
-<header>
-<b>Konrad Czachor Advisory & Partners</b>
-
-<div class="lang">
-<button data-lang="pl">🇵🇱</button>
-<button data-lang="en">🇬🇧</button>
-<button data-lang="de">🇩🇪</button>
+<div class="lang-switch">
+<button onclick="setLang('pl')">PL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
 </div>
-</header>
 
-<div class="breadcrumb">
-<a href="index.html">Home</a> › Profile
-</div>
+<!-- HERO -->
 
 <div class="hero">
-<div class="hero-inner">
+<div class="hero-inner fade lang pl">
 
-<img src="img/Konrad Czachor.jpg" alt="Konrad Czachor">
-
-<div>
-<h1>Konrad Czachor</h1>
-<p id="headline"></p>
-
-<div class="badges">
-<span>Leadership</span>
-<span>Transformation</span>
-<span>Operational Excellence</span>
-<span>Execution</span>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="content" id="content">
-
-<p id="p1"></p>
-<p id="p2"></p>
-<p id="p3"></p>
-
-<ul id="list"></ul>
-
-<p id="p4"></p>
-
-<div class="cta">
-<h3 id="ctaTitle"></h3>
-<p id="ctaText"></p>
-<a href="contact.html">contact@kc-adp.com</a>
-</div>
+<h1>Nie potrzebujesz kolejnego konsultanta.<br><span>Potrzebujesz impetu.</span></h1>
+<p>Lider transformacji biznesowej. 18+ lat w Automotive, Defense, Energy. Zamieniam strategię w wyniki.</p>
+<a class="cta" href="#cta">Porozmawiajmy</a>
 
 </div>
 
-<footer>© 2026 Konrad Czachor Advisory & Partners</footer>
+<div class="hero-inner fade lang en" hidden>
+<h1>You don’t need another consultant.<br><span>You need momentum.</span></h1>
+<p>Business transformation leader. 18+ years across Automotive, Defense & Energy. I turn strategy into execution.</p>
+<a class="cta" href="#cta">Start a conversation</a>
+</div>
+
+<div class="hero-inner fade lang de" hidden>
+<h1>Sie brauchen keinen weiteren Berater.<br><span>Sie brauchen Momentum.</span></h1>
+<p>Transformationsleader mit 18+ Jahren Industrieerfahrung. Ich mache Strategie wirksam.</p>
+<a class="cta" href="#cta">Kontakt aufnehmen</a>
+</div>
+</div>
+
+<!-- IMPACT -->
+
+<section>
+
+<h2 class="fade">Core Impact</h2>
+
+<div class="grid">
+
+<div class="card fade">🚀 Growth Strategy<br><br>Revenue expansion & market scaling</div>
+<div class="card fade">⚙ Operational Excellence<br><br>Lean processes & cost reduction</div>
+<div class="card fade">🧠 Leadership<br><br>High-performance teams</div>
+<div class="card fade">📊 Quality Systems<br><br>ISO / IATF / VDA done right</div>
+
+</div>
+</section>
+
+<!-- CASE IMPACT -->
+
+<section>
+
+<h2 class="fade">Case Impact</h2>
+
+<div class="grid">
+
+<div class="card fade">
+<strong>Manufacturing Turnaround</strong><br><br>
+– 22% OPEX reduction<br>
+– delivery stability restored within 90 days
+</div>
+
+<div class="card fade">
+<strong>Quality Transformation</strong><br><br>
+– IATF16949 rollout across EU plants<br>
+– customer claims reduced by 35%
+</div>
+
+<div class="card fade">
+<strong>Leadership Build</strong><br><br>
+– teams from forming to performing<br>
+– ownership culture implemented
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY -->
+
+<section>
+
+<h2 class="fade">Why me?</h2>
+
+<p class="fade">
+Because I combine CEO mindset with engineering precision.<br><br>
+I understand numbers.<br>
+I understand people.<br>
+I understand systems.<br><br>
+Then I align them.
+</p>
+
+</section>
+
+<!-- CTA -->
+
+<section id="cta">
+
+<h2 class="fade">Let’s build results.</h2>
+
+<p class="fade">
+Projects, interim management, operational transformations.
+</p>
+
+<a class="cta fade" href="mailto:contact@kc-adp.com">Start Project</a>
+
+</section>
+
+<footer>
+© Konrad Czachor Advisory & Partners
+</footer>
 
 <script>
 
-const dict={
+const faders=document.querySelectorAll('.fade');
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add('show');
+});
+},{threshold:.2});
 
-pl:{
-headline:"22 lata doświadczenia • Leadership • Transformation • Operational Excellence",
-p:[
-"Lider, który zamienia strategię w realne wyniki.",
-"Nie potrzebujesz kolejnego konsultanta. Potrzebujesz partnera, który bierze odpowiedzialność za rezultat.",
-"Od ponad 22 lat pomagam organizacjom w Europie rozwijać biznes, podnosić jakość i budować zespoły które dowożą."
-],
-list:[
-"Myślę systemowo",
-"Działam hands-on",
-"Buduję ludzi",
-"Upraszczam procesy",
-"Skupiam się na efekcie"
-],
-end:"Pomagam firmom przechodzić od chaosu do klarowności. Od strategii do egzekucji. Od potencjału do przewagi.",
-cta:["Let’s talk.","Jeśli zależy Ci na realnych rezultatach — porozmawiajmy."]
-},
-
-en:{
-headline:"22+ years • Leadership • Transformation • Operational Excellence",
-p:[
-"Turning strategy into measurable results.",
-"You don’t need another consultant. You need a partner who owns the outcome.",
-"For over 22 years I’ve helped organisations across Europe grow, simplify complexity and build high-performance teams."
-],
-list:[
-"Systemic thinking",
-"Hands-on execution",
-"People development",
-"Process simplification",
-"Impact focus"
-],
-end:"I help companies move from chaos to clarity. From strategy to execution. From potential to competitive advantage.",
-cta:["Let’s talk.","If you care about execution and results — let’s connect."]
-},
-
-de:{
-headline:"22+ Jahre • Leadership • Transformation • Operational Excellence",
-p:[
-"Strategie in messbare Ergebnisse verwandeln.",
-"Sie brauchen keinen weiteren Berater. Sie brauchen einen Partner, der Verantwortung übernimmt.",
-"Seit über 22 Jahren unterstütze ich Unternehmen in Europa beim Wachstum und Aufbau leistungsstarker Teams."
-],
-list:[
-"Systemisches Denken",
-"Hands-on Umsetzung",
-"Menschen entwickeln",
-"Prozesse vereinfachen",
-"Wirkung erzielen"
-],
-end:"Von Chaos zu Klarheit. Von Strategie zu Umsetzung. Von Potenzial zu Wettbewerbsvorteil.",
-cta:["Kontakt aufnehmen.","Wenn Ergebnisse zählen — sprechen wir."]
-}
-
-};
+faders.forEach(f=>obs.observe(f));
 
 function setLang(l){
-
-content.classList.add("fade");
-
-setTimeout(()=>{
-
-localStorage.setItem("lang",l);
-document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-document.querySelector(`[data-lang=${l}]`).classList.add("active");
-
-headline.innerText=dict[l].headline;
-[p1,p2,p3].forEach((e,i)=>e.innerText=dict[l].p[i]);
-list.innerHTML=dict[l].list.map(x=>"<li>"+x+"</li>").join("");
-p4.innerText=dict[l].end;
-ctaTitle.innerText=dict[l].cta[0];
-ctaText.innerText=dict[l].cta[1];
-
-content.classList.remove("fade");
-
-},150);
+document.querySelectorAll('.lang').forEach(el=>el.hidden=true);
+document.querySelectorAll('.'+l).forEach(el=>el.hidden=false);
+document.documentElement.lang=l;
 }
-
-document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
-setLang(localStorage.getItem("lang")||"pl");
 
 </script>
 
