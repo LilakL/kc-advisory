@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Konrad Czachor Advisory & Partners</title>
 
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"Organization",
-"name":"Konrad Czachor Advisory & Partners",
-"url":"https://kc-advisory.com",
-"description":"International advisory boutique delivering strategy, operational excellence and business transformation."
-}
-</script>
-
 <style>
 html{scroll-snap-type:y mandatory}
 section,.tiles{scroll-snap-align:start}
@@ -22,33 +12,26 @@ body{margin:0;font-family:Arial}
 
 header{position:sticky;top:0;background:#fff;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 nav a{margin:0 15px;text-decoration:none;color:#111;font-weight:600}
-.lang button{margin-left:6px;padding:6px 10px;border:1px solid #ccc;background:#fff;border-radius:6px;font-size:18px}
+.lang button{margin-left:6px;padding:6px 10px;border:1px solid #ccc;background:#fff;border-radius:6px;font-size:20px}
 
 .hero{height:420px;background:url(img/background.jpg) center/cover;display:flex;align-items:center;padding-left:80px;color:white}
-#heroHeadline{font-size:46px;margin:0 0 10px 0;opacity:0;transform:translateY(30px);transition:1s}
+#heroHeadline{font-size:46px;margin:0 0 10px 0}
 #heroSub{font-size:20px}
 
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;padding:80px}
-.tile{height:240px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;transition:.3s}
-.tile:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+.tile{height:240px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center}
 .tile span{color:#fff;font-size:22px;font-weight:600;padding:12px 30px;border:2px solid #fff;border-radius:999px;background:rgba(0,0,0,.3)}
 
-.about{padding:100px 60px;background:#f5f5f5;opacity:0;transform:translateY(50px);transition:1.2s}
-.about-inner{max-width:900px;margin:auto;line-height:1.75}
-.about h2{font-size:44px}
-.about h3{font-size:30px;margin-top:40px}
+.about{padding:100px 60px;background:#f5f5f5}
+.about-inner{max-width:900px;margin:auto}
+.about h2{font-size:42px}
+.about h3{font-size:28px;margin-top:40px}
 .about p{font-size:18px}
 
-/* BULLETS FIX */
-ul.power{
-list-style:none;
-padding-left:0;
-font-size:18px
-}
+ul.power{list-style:none;padding-left:0;font-size:18px}
 ul.power li{margin-bottom:10px}
 
 footer{background:#0b1325;color:white;padding:30px;text-align:center}
-.cta{position:fixed;right:20px;bottom:20px;background:#2563eb;color:white;padding:18px 32px;border-radius:30px;font-weight:700;text-decoration:none}
 
 .cookiebar{position:fixed;bottom:0;left:0;right:0;background:#2f2f2f;color:white;padding:20px;display:flex;justify-content:space-between}
 .cookiebar.hide{display:none}
@@ -64,7 +47,11 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 
 <header>
 <b>Konrad Czachor Advisory & Partners</b>
-<nav><a href="#services">Services</a><a href="#">Contact</a></nav>
+<nav>
+<a href="#services" id="navServices"></a>
+<a href="#" id="navContact"></a>
+</nav>
+
 <div class="lang">
 <button onclick="setLang('pl')">🇵🇱</button>
 <button onclick="setLang('en')">🇬🇧</button>
@@ -86,7 +73,7 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 <a class="tile" style="background-image:url(img/b2b.jpg)"><span id="t4"></span></a>
 </div>
 
-<section class="about" id="about">
+<section class="about">
 <div class="about-inner">
 <h2 id="a0"></h2>
 <p id="a1"></p><p id="a2"></p><p id="a3"></p>
@@ -98,7 +85,6 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 </section>
 
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
-<a class="cta" id="cta"></a>
 
 <div id="cookiebar" class="cookiebar">
 <div>
@@ -112,14 +98,11 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
-
 const dict={
-
 pl:{
+nav:["Usługi","Kontakt"],
 hero:"Szkolenia • Audyty • Interim • B2B",
 t:["Szkolenia","Audyty","Interim","B2B"],
-cta:"Rozpocznij transformację",
 about:[
 "Witamy w Konrad Czachor Advisory & Partners",
 "Nie potrzebujesz kolejnego konsultanta. Potrzebujesz impetu.",
@@ -129,18 +112,15 @@ about:[
 "Transformacja operacyjna, systemy jakości, compliance i rozwój przywództwa.",
 "Konrad Czachor Partners",
 "Międzynarodowi eksperci dokładnie tam, gdzie liczy się wykonanie.",
-"Zyskujesz jasność.",
-"Zyskujesz strukturę.",
-"Zyskujesz tempo.",
-"Jedna butikowa organizacja. Jeden kierunek.",
-"Zacznijmy rozmowę."
+"Zyskujesz jasność.","Zyskujesz strukturę.","Zyskujesz tempo.",
+"Jedna butikowa organizacja.","Zacznijmy rozmowę."
 ],
 bullets:[
 "✔ Skalowanie procesów bez chaosu",
 "✔ Lepsze decyzje oparte na danych",
-"✔ Silniejsze zespoły i liderzy",
-"✔ Redukcja kosztów operacyjnych",
-"✔ Zmiany, które naprawdę działają",
+"✔ Silniejsze zespoły",
+"✔ Redukcja kosztów",
+"✔ Zmiany które działają",
 "✔ Realna przewaga konkurencyjna"
 ],
 cookieTitle:"Polityka prywatności",
@@ -148,84 +128,80 @@ cookie:"Używamy analityki. <a href='privacy.html' style='color:white'>Polityka 
 },
 
 en:{
+nav:["Services","Contact"],
 hero:"Trainings • Audits • Interim • B2B",
 t:["Trainings","Audits","Interim","B2B"],
-cta:"Start your transformation",
 about:[
 "Welcome to Konrad Czachor Advisory & Partners",
 "You don’t need another consultant. You need momentum.",
-"We help leaders simplify complexity and turn strategy into measurable results.",
+"We help leaders turn strategy into results.",
 "This is where transformation begins.",
 "Konrad Czachor Advisory",
-"Operational excellence, management systems, compliance and leadership development.",
+"Operational excellence and leadership.",
 "Konrad Czachor Partners",
-"International experts exactly where execution matters most.",
-"You gain clarity.",
-"You gain structure.",
-"You gain speed.",
-"One boutique. One direction.",
-"Let’s talk."
+"International experts where execution matters.",
+"You gain clarity.","You gain structure.","You gain speed.",
+"One boutique.","Let’s talk."
 ],
 bullets:[
-"✔ Scale operations without chaos",
-"✔ Make confident data-driven decisions",
-"✔ Build high-performance teams",
-"✔ Reduce operational costs",
-"✔ Implement change that sticks",
-"✔ Create real competitive advantage"
+"✔ Scale operations",
+"✔ Data driven decisions",
+"✔ High performance teams",
+"✔ Reduce costs",
+"✔ Implement change",
+"✔ Competitive advantage"
 ],
 cookieTitle:"Privacy notice",
 cookie:"We use analytics. <a href='privacy.html' style='color:white'>Privacy policy</a>"
 },
 
 de:{
+nav:["Leistungen","Kontakt"],
 hero:"Schulungen • Audits • Interim • B2B",
 t:["Schulungen","Audits","Interim","B2B"],
-cta:"Transformation starten",
 about:[
 "Willkommen bei Konrad Czachor Advisory & Partners",
-"Sie brauchen keinen weiteren Berater. Sie brauchen Dynamik.",
-"Wir helfen Führungskräften, Strategie in messbare Ergebnisse umzusetzen.",
+"Sie brauchen Dynamik.",
+"Wir setzen Strategie in Ergebnisse um.",
 "Hier beginnt Transformation.",
 "Konrad Czachor Advisory",
-"Operative Exzellenz, Managementsysteme, Qualität, Compliance und Führung.",
+"Operative Exzellenz und Führung.",
 "Konrad Czachor Partners",
-"Internationale Experten dort, wo Umsetzung wirklich zählt.",
-"Sie gewinnen Klarheit.",
-"Sie gewinnen Struktur.",
-"Sie gewinnen Geschwindigkeit.",
-"Eine Boutique. Eine Richtung.",
-"Beginnen wir das Gespräch."
+"Internationale Experten dort wo Umsetzung zählt.",
+"Sie gewinnen Klarheit.","Sie gewinnen Struktur.","Sie gewinnen Geschwindigkeit.",
+"Eine Boutique.","Beginnen wir."
 ],
 bullets:[
-"✔ Prozesse skalieren ohne Chaos",
-"✔ Bessere Entscheidungen durch Daten",
-"✔ Leistungsstarke Teams aufbauen",
-"✔ Operative Kosten senken",
-"✔ Nachhaltige Veränderungen umsetzen",
-"✔ Wettbewerbsvorteile schaffen"
+"✔ Prozesse skalieren",
+"✔ Datenbasierte Entscheidungen",
+"✔ Leistungsstarke Teams",
+"✔ Kosten senken",
+"✔ Nachhaltige Umsetzung",
+"✔ Wettbewerbsvorteile"
 ],
 cookieTitle:"Datenschutz",
 cookie:"Wir verwenden Analysen. <a href='privacy.html' style='color:white'>Datenschutz</a>"
 }
-
 };
 
-window.setLang=function(l){
+function setLang(l){
 heroSub.innerText=dict[l].hero;
 [t1,t2,t3,t4].forEach((e,i)=>e.innerText=dict[l].t[i]);
-cta.innerText=dict[l].cta;
 dict[l].about.forEach((v,i)=>document.getElementById("a"+i).innerText=v);
 bullets.innerHTML=dict[l].bullets.map(b=>"<li>"+b+"</li>").join("");
+navServices.innerText=dict[l].nav[0];
+navContact.innerText=dict[l].nav[1];
 cookieTitle.innerText=dict[l].cookieTitle;
 cookieText.innerHTML=dict[l].cookie;
-};
+}
 
-setLang(dict[(navigator.language||"en").slice(0,2)]?(navigator.language||"en").slice(0,2):"en");
+function acceptCookies(){localStorage.setItem("cookies","1");cookiebar.classList.add("hide")}
+function declineCookies(){localStorage.setItem("cookies","0");cookiebar.classList.add("hide")}
 
-setTimeout(()=>{heroHeadline.style.opacity=1;heroHeadline.style.transform="none"},200);
+const auto=(navigator.language||"en").slice(0,2);
+setLang(dict[auto]?auto:"en");
 
-});
+if(localStorage.getItem("cookies"))cookiebar.classList.add("hide");
 </script>
 
 </body>
