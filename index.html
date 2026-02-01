@@ -24,10 +24,18 @@ color:#fff;font-size:22px;font-weight:600;letter-spacing:.5px;
 text-decoration:none;position:relative;text-shadow:0 2px 6px rgba(0,0,0,.8)
 }
 
+/* FIXED TILE FRAME */
 .tile::after{
-content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-padding:14px 28px;border:2px solid rgba(255,255,255,.9);
-border-radius:10px;background:rgba(0,0,0,.2)
+content:"";
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+padding:10px 24px;
+border:2px solid rgba(255,255,255,.9);
+border-radius:999px;
+background:rgba(0,0,0,.20);
+pointer-events:none;
 }
 
 .about{padding:80px 60px;background:#f5f5f5}
@@ -76,9 +84,21 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 
 <section class="about">
 <div class="about-inner">
+
 <h2 id="aTitle"></h2>
 <p id="a1"></p>
 <p id="a2"></p>
+
+<h3 id="a3"></h3>
+<p id="a4"></p>
+
+<h3 id="a5"></h3>
+<p id="a6"></p>
+
+<p id="a7"></p>
+<p id="a8"></p>
+<p id="a9"></p>
+
 </div>
 </section>
 
@@ -89,80 +109,27 @@ footer{background:#0b1325;color:white;padding:30px;text-align:center}
 <div id="cookiebar" class="cookiebar">
 <div id="cookieText"></div>
 <div>
-<button onclick="acceptCookies()" id="cookieAccept">Accept</button>
-<button onclick="declineCookies()" id="cookieDecline">Decline</button>
+<button onclick="acceptCookies()">Accept</button>
+<button onclick="declineCookies()">Decline</button>
 </div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
 
+/* LANGUAGE CONTENT */
+
 const dict={
-en:{
-hero:"Trainings • Audits • Interim • B2B",
-t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",
-services:"Services",contact:"Contact",cta:"Book consultation",
+en:{hero:"Trainings • Audits • Interim • B2B",t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",services:"Services",contact:"Contact",cta:"Book consultation",
 a:["Welcome to Konrad Czachor Advisory & Partners",
-"Independent international advisory boutique delivering strategy and operational excellence.",
-"We connect strategy with execution through hands-on consulting."]
-},
+"Konrad Czachor Advisory & Partners is an independent, internationally oriented advisory boutique delivering strategic consulting, operational excellence, and business development support across multiple industries.",
+"Built on hands-on experience and deep technical understanding, we combine advisory, implementation, and talent solutions under one roof — enabling our clients to move from strategy to execution seamlessly.",
+"Konrad Czachor Advisory",
+"This division focuses on business advisory, operational transformation, quality systems, compliance, and strategic growth initiatives.",
+"Konrad Czachor Partners",
+"Our Partners division delivers project-based expertise and international recruitment.",
+"We operate as a one-stop boutique — speaking the language of both management and operations.",
+"With roots in Central Europe and an international network of experts and partners, we support clients globally.",
+"Contact us today for a confidential discussion."]},
 
 pl:{
-hero:"Szkolenia • Audyty • Interim • B2B",
-t1:"Szkolenia",t2:"Audyty",t3:"Interim",t4:"B2B",
-services:"Usługi",contact:"Kontakt",cta:"Umów konsultację",
-a:["Witamy w Konrad Czachor Advisory & Partners",
-"Niezależna międzynarodowa firma doradcza wspierająca rozwój i doskonałość operacyjną.",
-"Łączymy strategię z realizacją poprzez praktyczne doradztwo."]
-},
-
-de:{
-hero:"Trainings • Audits • Interim • B2B",
-t1:"Trainings",t2:"Audits",t3:"Interim",t4:"B2B",
-services:"Leistungen",contact:"Kontakt",cta:"Beratung buchen",
-a:["Willkommen bei Konrad Czachor Advisory & Partners",
-"Unabhängige internationale Beratungsboutique für Strategie und operative Exzellenz.",
-"Wir verbinden Strategie mit Umsetzung durch praxisnahe Beratung."]
-}
-};
-
-const cookieDict={
-en:"We use analytics to improve our website. <a href='privacy.html' style='color:white'>Privacy policy</a>",
-pl:"Używamy analityki w celu poprawy strony. <a href='privacy.html' style='color:white'>Polityka prywatności</a>",
-de:"Wir verwenden Analysen zur Verbesserung der Website. <a href='privacy.html' style='color:white'>Datenschutz</a>"
-};
-
-window.setLang=function(l){
-heroSub.innerText=dict[l].hero;
-t1.innerText=dict[l].t1;
-t2.innerText=dict[l].t2;
-t3.innerText=dict[l].t3;
-t4.innerText=dict[l].t4;
-mServices.innerText=dict[l].services;
-mContact.innerText=dict[l].contact;
-ctaBtn.innerText=dict[l].cta;
-aTitle.innerText=dict[l].a[0];
-a1.innerText=dict[l].a[1];
-a2.innerText=dict[l].a[2];
-cookieText.innerHTML=cookieDict[l];
-};
-
-window.acceptCookies=function(){
-localStorage.setItem("cookies","1");
-cookiebar.classList.add("hide");
-};
-
-window.declineCookies=function(){
-localStorage.setItem("cookies","0");
-cookiebar.classList.add("hide");
-};
-
-if(localStorage.getItem("cookies")) cookiebar.classList.add("hide");
-
-setLang("en");
-
-});
-</script>
-
-</body>
-</html>
