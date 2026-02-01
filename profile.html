@@ -33,14 +33,32 @@ position:relative;
 overflow:hidden;
 }
 
+/* BACKGROUND + PARALLAX */
+
 .hero-bg{
 position:absolute;
-inset:0;
+inset:-10%;
 background:
-linear-gradient(180deg,rgba(5,7,11,.88),rgba(11,15,20,.95)),
+linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.65)),
 url("img/background_profile.jpg") center/cover no-repeat;
+filter:blur(2px);
+transform:scale(1.05);
+transition:transform .2s ease-out;
 z-index:0;
 }
+
+/* VIGNETTE */
+
+.hero-bg::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0) 40%,
+rgba(0,0,0,.55) 100%);
+}
+
+/* CONTENT */
 
 .hero-content{
 position:relative;
@@ -68,6 +86,8 @@ border-radius:18px;
 border:2px solid var(--gold);
 }
 
+/* FADE */
+
 .fade{
 opacity:0;
 transform:translateY(40px);
@@ -78,6 +98,8 @@ transition:.8s ease;
 opacity:1;
 transform:none;
 }
+
+/* LANG */
 
 .lang-switch{
 position:fixed;
@@ -94,6 +116,8 @@ padding:6px 12px;
 margin-left:5px;
 cursor:pointer;
 }
+
+/* CTA */
 
 .cta{
 background:var(--gold);
@@ -114,6 +138,7 @@ footer{text-align:center;padding:40px;opacity:.6}
 @media(max-width:900px){
 .hero-content{grid-template-columns:1fr}
 .profile-wrap{justify-content:flex-start}
+.profile-pic{width:220px;height:280px}
 }
 
 </style>
@@ -129,7 +154,7 @@ footer{text-align:center;padding:40px;opacity:.6}
 
 <div class="hero">
 
-<div class="hero-bg"></div>
+<div class="hero-bg" id="heroBg"></div>
 
 <div class="hero-content">
 
@@ -164,8 +189,6 @@ Z pełną odpowiedzialnością za rezultat.
 <li>wzmocnienie przywództwa i struktury decyzyjnej</li>
 </ul>
 
-<p>Założyłem Konrad Czachor Advisory & Partners, bo dzisiejsze wyzwania wymagają zespołów, nie solistów.</p>
-
 <p>
 Dostarczam klarowność tam, gdzie panuje chaos.<br>
 Tempo tam, gdzie utknęła organizacja.<br>
@@ -173,8 +196,6 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 </p>
 
 <p><strong>Klarowność. Odpowiedzialność. Tempo.</strong></p>
-
-<p>Jeśli szukasz doradcy – poszukaj dalej.<br>Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.</p>
 
 <a class="cta" href="#cta">Porozmawiajmy</a>
 
@@ -189,25 +210,7 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 
 <p><br>You don’t need motivation.<br><strong>You need results.</strong></p>
 
-<p>I work with business owners, boards, and executive teams where the stakes are real: growth, transformation, profitability, and operational stability.</p>
-
-<p>I help organisations regain control over strategy — and convert it into disciplined execution.</p>
-
-<p>No corporate theatre.<br>No slide decks that change nothing.<br>Full accountability for outcomes.</p>
-
-<p>I embed into your business, identify bottlenecks, define a clear action path, and lead implementation — with your teams or with a tailored group of experts.</p>
-
-<p><strong>This is not consulting.<br>This is operational partnership.</strong></p>
-
-<ul>
-<li>strategic and operational transformation</li>
-<li>performance and margin improvement</li>
-<li>quality systems and regulatory compliance (ISO)</li>
-<li>scalable B2B operating models</li>
-<li>leadership and decision-making effectiveness</li>
-</ul>
-
-<p><strong>Clarity. Ownership. Speed.</strong></p>
+<p>This is not consulting.<br>This is operational partnership.</p>
 
 <a class="cta" href="#cta">Start a conversation</a>
 
@@ -222,16 +225,17 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 
 <p><br>Sie brauchen keine Motivation.<br><strong>Sie brauchen Ergebnisse.</strong></p>
 
-<p>Ich arbeite mit Unternehmern, Vorständen und Führungsteams dort, wo es wirklich zählt.</p>
-
-<p><strong>Das ist kein Consulting.<br>Das ist operative Partnerschaft.</strong></p>
+<p>Das ist operative Partnerschaft.</p>
 
 <a class="cta" href="#cta">Kontakt aufnehmen</a>
 
 </div>
 
 <div class="profile-wrap fade">
-<img src="img/Konrad%20Czachor.jpg" class="profile-pic" onerror="this.style.display='none'">
+<img src="img/Konrad Czachor.jpg"
+class="profile-pic"
+loading="lazy"
+onerror="this.style.display='none'">
 </div>
 
 </div>
@@ -246,17 +250,29 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 
 <script>
 
+/* FADE IN */
+
 const faders=document.querySelectorAll('.fade');
 const obs=new IntersectionObserver(entries=>{
 entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 },{threshold:.2});
 faders.forEach(f=>obs.observe(f));
 
+/* LANG */
+
 function setLang(l){
 document.querySelectorAll('.lang').forEach(el=>el.hidden=true);
 document.querySelectorAll('.'+l).forEach(el=>el.hidden=false);
-document.documentElement.lang=l;
 }
+
+/* PARALLAX */
+
+const bg=document.getElementById("heroBg");
+
+window.addEventListener("scroll",()=>{
+const y=window.scrollY;
+bg.style.transform=`scale(1.05) translateY(${y*0.15}px)`;
+});
 
 </script>
 
