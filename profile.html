@@ -55,10 +55,12 @@ z-index:0;
 content:"";
 position:absolute;
 inset:0;
-background:radial-gradient(circle at center,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 100%);
+background:radial-gradient(circle at center,
+rgba(0,0,0,0) 40%,
+rgba(0,0,0,.55) 100%);
 }
 
-/* Top bar */
+/* TOP BAR */
 
 .lang-switch{
 position:fixed;
@@ -79,21 +81,7 @@ text-decoration:none;
 font-weight:bold;
 }
 
-/* Breadcrumb */
-
-.breadcrumb{
-position:fixed;
-top:20px;
-left:20px;
-z-index:10;
-font-size:14px;
-opacity:.85;
-}
-
-.breadcrumb a{color:white;text-decoration:none}
-.breadcrumb span{margin:0 6px}
-
-/* Content */
+/* CONTENT */
 
 .hero-content{
 position:relative;
@@ -118,7 +106,14 @@ width:360px;height:460px;object-fit:cover;border-radius:22px;border:2px solid va
 .fade.show{opacity:1;transform:none}
 
 .cta{
-background:var(--gold);color:black;padding:14px 28px;display:inline-block;margin-top:30px;border-radius:40px;font-weight:bold;text-decoration:none;
+background:var(--gold);
+color:black;
+padding:14px 28px;
+display:inline-block;
+margin-top:30px;
+border-radius:40px;
+font-weight:bold;
+text-decoration:none;
 }
 
 ul{margin-top:20px;padding-left:20px}
@@ -133,16 +128,11 @@ p{font-size:15px;line-height:1.7}
 .hero-content{grid-template-columns:1fr;padding:0 6%}
 .profile-wrap{justify-content:flex-start}
 .profile-pic{width:260px;height:340px;margin-top:30px}
-.breadcrumb{font-size:13px}
 }
 </style>
 </head>
 
 <body>
-
-<div class="breadcrumb">
-<a href="index.html">Home</a><span>/</span><strong>Profile</strong>
-</div>
 
 <div class="lang-switch">
 <a href="index.html" class="home-btn">← Home</a>
@@ -313,4 +303,3 @@ bg.style.transform=`scale(1.05) translateY(${window.scrollY*0.12}px)`;
 
 </body>
 </html>
-
