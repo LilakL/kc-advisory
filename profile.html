@@ -2,17 +2,24 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Konrad Czachor – Advisory & Partners</title>
+<title>Konrad Czachor – Strategic Advisor & Execution Partner</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<meta name="description" content="Konrad Czachor – Founder | Strategic Advisor | Execution Partner for Leadership Teams. Strategy to execution. Clarity. Ownership. Speed.">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Konrad Czachor – Strategic Advisor & Execution Partner">
+<meta property="og:description" content="You don’t need motivation. You need results. Strategy turned into execution.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lilakl.github.io/kc-advisory/profile.html">
+<meta property="og:image" content="Profile_bg2.jpg">
 
 <link rel="preload" as="image" href="Profile_bg2.jpg">
 
 <style>
-:root{
---gold:#c9a14a;
---dark:#0b0f14;
-}
-
+:root{--gold:#c9a14a;--dark:#0b0f14}
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
@@ -22,8 +29,8 @@ color:white;
 overflow-x:hidden;
 }
 
-h1,h2{color:var(--gold)}
-p{line-height:1.6;opacity:.9}
+h1{color:var(--gold);font-size:46px}
+p{line-height:1.65;opacity:.9;font-size:16px}
 
 .hero{
 min-height:100vh;
@@ -48,10 +55,45 @@ z-index:0;
 content:"";
 position:absolute;
 inset:0;
-background:radial-gradient(circle at center,
-rgba(0,0,0,0) 40%,
-rgba(0,0,0,.55) 100%);
+background:radial-gradient(circle at center,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 100%);
 }
+
+/* Top bar */
+
+.lang-switch{
+position:fixed;
+top:20px;
+right:20px;
+z-index:10;
+}
+
+.lang-switch button,
+.home-btn{
+background:#111;
+color:white;
+border:1px solid var(--gold);
+padding:6px 12px;
+margin-left:6px;
+cursor:pointer;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* Breadcrumb */
+
+.breadcrumb{
+position:fixed;
+top:20px;
+left:20px;
+z-index:10;
+font-size:14px;
+opacity:.85;
+}
+
+.breadcrumb a{color:white;text-decoration:none}
+.breadcrumb span{margin:0 6px}
+
+/* Content */
 
 .hero-content{
 position:relative;
@@ -66,90 +108,50 @@ padding:0 10%;
 
 .hero-text{max-width:720px}
 
-.profile-wrap{
-display:flex;
-justify-content:flex-end;
-}
+.profile-wrap{display:flex;justify-content:flex-end}
 
 .profile-pic{
-width:360px;
-height:460px;
-object-fit:cover;
-border-radius:22px;
-border:2px solid var(--gold);
+width:360px;height:460px;object-fit:cover;border-radius:22px;border:2px solid var(--gold);
 }
 
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:.8s ease;
-}
-
-.fade.show{
-opacity:1;
-transform:none;
-}
-
-.lang-switch{
-position:fixed;
-top:20px;
-right:20px;
-z-index:10;
-}
-
-.lang-switch button{
-background:#111;
-color:white;
-border:1px solid var(--gold);
-padding:6px 12px;
-margin-left:6px;
-cursor:pointer;
-}
+.fade{opacity:0;transform:translateY(40px);transition:.8s ease}
+.fade.show{opacity:1;transform:none}
 
 .cta{
-background:var(--gold);
-color:black;
-padding:14px 28px;
-display:inline-block;
-margin-top:30px;
-border-radius:40px;
-font-weight:bold;
-text-decoration:none;
+background:var(--gold);color:black;padding:14px 28px;display:inline-block;margin-top:30px;border-radius:40px;font-weight:bold;text-decoration:none;
 }
 
 ul{margin-top:20px;padding-left:20px}
 li{margin-bottom:8px}
 
+/* Mobile tuning */
+
 @media(max-width:900px){
-
+h1{font-size:32px}
+p{font-size:15px;line-height:1.7}
 .hero-bg{background-position:center 20%}
-
-.hero-content{
-grid-template-columns:1fr;
-padding:0 6%;
-}
-
+.hero-content{grid-template-columns:1fr;padding:0 6%}
 .profile-wrap{justify-content:flex-start}
-
-.profile-pic{
-width:260px;
-height:340px;
-margin-top:30px;
-}
+.profile-pic{width:260px;height:340px;margin-top:30px}
+.breadcrumb{font-size:13px}
 }
 </style>
 </head>
 
 <body>
 
+<div class="breadcrumb">
+<a href="index.html">Home</a><span>/</span><strong>Profile</strong>
+</div>
+
 <div class="lang-switch">
+<a href="index.html" class="home-btn">← Home</a>
 <button onclick="setLang('pl')">PL</button>
 <button onclick="setLang('en')">EN</button>
 <button onclick="setLang('de')">DE</button>
 </div>
 
 <div class="hero">
-
 <div class="hero-bg" id="heroBg"></div>
 
 <div class="hero-content">
@@ -197,7 +199,7 @@ Odpowiedzialność tam, gdzie kończą się wymówki.
 
 <p>Jeśli szukasz doradcy – poszukaj dalej.<br>Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.</p>
 
-<a class="cta" href="#cta">Porozmawiajmy</a>
+<a class="cta" href="index.html#contact">Porozmawiajmy</a>
 </div>
 
 <!-- ================= EN ================= -->
@@ -239,7 +241,7 @@ Ownership where excuses used to live.
 
 <p>If you’re looking for advice — keep looking.<br>If you want execution — we should talk.</p>
 
-<a class="cta" href="#cta">Start a conversation</a>
+<a class="cta" href="index.html#contact">Start a conversation</a>
 </div>
 
 <!-- ================= DE ================= -->
@@ -281,7 +283,7 @@ Verantwortung dorthin, wo Ausreden waren.
 
 <p>Wenn Sie Beratung suchen – bin ich nicht der Richtige.<br>Wenn Sie Umsetzung wollen – sprechen wir.</p>
 
-<a class="cta" href="#cta">Kontakt aufnehmen</a>
+<a class="cta" href="index.html#contact">Kontakt aufnehmen</a>
 </div>
 
 <div class="profile-wrap fade">
@@ -311,3 +313,4 @@ bg.style.transform=`scale(1.05) translateY(${window.scrollY*0.12}px)`;
 
 </body>
 </html>
+
