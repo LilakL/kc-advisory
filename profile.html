@@ -1,189 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
+
 <meta charset="UTF-8">
-<title>Konrad Czachor Advisory & Partners</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Konrad Czachor Advisory & Partners</title>
 
 <style>
 
 body{
 margin:0;
-background:#0b0f14;
-color:white;
 font-family:Arial,Helvetica,sans-serif;
+background:#05070b;
+color:white;
+overflow-x:hidden;
 }
 
-.lang{
-display:none;
-text-align:center;
-padding:40px 20px;
+.hero{
 min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:60px;
 box-sizing:border-box;
+background:radial-gradient(circle at top,#0c1220,#05070b);
 }
 
-.lang.active{display:block}
+.text{
+max-width:520px;
+}
 
-.switch{
+.text h1{
+font-size:42px;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.text p{
+font-size:18px;
+opacity:.85;
+}
+
+.profile-image{
+max-width:520px;
+width:100%;
+}
+
+.profile-image img{
+width:100%;
+height:auto;
+opacity:0;
+transition:opacity 1.2s ease;
+}
+
+.profile-image img.loaded{
+opacity:1;
+}
+
+.lang-switch{
 position:fixed;
 top:20px;
 right:20px;
 z-index:10;
 }
 
-.switch button{
-background:#111;
-color:white;
-border:1px solid #c9a14a;
+.lang-btn{
+background:transparent;
+border:1px solid #d4af37;
+color:#d4af37;
 padding:6px 12px;
-margin-left:6px;
+margin-left:5px;
 cursor:pointer;
-font-weight:bold;
 }
 
-/* IMAGE */
-
-.mm{
-max-width:1100px;
-margin:0 auto;
-opacity:0;
-transform:translateY(40px);
-transition:1s ease;
+.lang-btn:hover{
+background:#d4af37;
+color:black;
 }
 
-.mm.show{
-opacity:1;
-transform:none;
+@media(max-width:900px){
+
+.hero{
+flex-direction:column-reverse;
+text-align:center;
+padding:40px 20px;
 }
 
-.mm img{
-width:100%;
-height:auto;
-box-shadow:0 20px 50px rgba(0,0,0,.4);
+.profile-image{
+margin-bottom:40px;
 }
 
-/* MOBILE FULL SCREEN */
-
-@media(max-width:768px){
-.mm img{
-height:100vh;
-object-fit:contain;
-}
+.text h1{
+font-size:30px;
 }
 
-/* TEXT */
-
-.text{
-margin-top:30px;
-font-size:20px;
-line-height:1.6;
-}
-
-.brand{
-margin-top:40px;
-font-weight:700;
-letter-spacing:1px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="switch">
-<button onclick="setLang('pl')">PL</button>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
+<div class="lang-switch">
+<button class="lang-btn" data-lang="pl">PL</button>
+<button class="lang-btn" data-lang="en">EN</button>
+<button class="lang-btn" data-lang="de">DE</button>
 </div>
 
-<!-- PL -->
+<section class="hero">
 
-<div id="pl" class="lang">
-
-<div class="mm">
-<img src="img/Profile_MM_PL.png" loading="lazy">
+<div class="text" id="heroText">
+<h1></h1>
+<p></p>
 </div>
 
-<div class="text">
-Jeśli szukasz doradcy – poszukaj dalej.<br>
-Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.
+<div class="profile-image">
+<img id="langImage" src="Profile_MM_PL.png" alt="Konrad Czachor" loading="lazy">
 </div>
 
-</div>
-
-<!-- EN -->
-
-<div id="en" class="lang">
-
-<div class="mm">
-<img src="img/Profile_MM_GB.png" loading="lazy">
-</div>
-
-<div class="text">
-If you are looking for advice – keep looking.<br>
-If you want execution – we should talk.
-</div>
-
-</div>
-
-<!-- DE -->
-
-<div id="de" class="lang">
-
-<div class="mm">
-<img src="img/Profile_MM_GER.png" loading="lazy">
-</div>
-
-<div class="text">
-Wenn Sie Beratung suchen – bin ich nicht der Richtige.<br>
-Wenn Sie Umsetzung wollen – sprechen wir.
-</div>
-
-</div>
-
-<div class="brand" style="text-align:center">
-KONRAD CZACHOR<br>
-Advisory & Partners
-</div>
+</section>
 
 <script>
 
-/* detect language */
+const content = {
 
-function detect(){
-const l=navigator.language.toLowerCase();
-if(l.startsWith("pl")) return "pl";
-if(l.startsWith("de")) return "de";
-return "en";
+pl:{
+title:"Jeśli szukasz doradcy – poszukaj dalej.",
+text:"Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.",
+img:"Profile_MM_PL.png"
+},
+
+en:{
+title:"If you're looking for a consultant — keep searching.",
+text:"If you want a true execution partner — you're in the right place.",
+img:"Profile_MM_GB.png"
+},
+
+de:{
+title:"Wenn Sie einen Berater suchen – suchen Sie weiter.",
+text:"Wenn Sie einen Umsetzungspartner wollen – sind Sie hier richtig.",
+img:"Profile_MM_GER.png"
 }
 
-/* switch */
+};
 
-function setLang(l){
-document.querySelectorAll('.lang').forEach(x=>x.classList.remove('active'));
-document.getElementById(l).classList.add('active');
+const img = document.getElementById("langImage");
+const heroText = document.getElementById("heroText");
 
-setTimeout(()=>{
-document.querySelector('#'+l+' .mm').classList.add('show');
-},50);
+function setLang(lang){
+
+const data = content[lang];
+
+heroText.querySelector("h1").innerText = data.title;
+heroText.querySelector("p").innerText = data.text;
+
+img.classList.remove("loaded");
+img.src = data.img;
+img.onload = ()=>img.classList.add("loaded");
+
 }
 
-/* init */
+const browserLang = navigator.language.toLowerCase();
 
-setLang(detect());
+if(browserLang.startsWith("pl")) setLang("pl");
+else if(browserLang.startsWith("de")) setLang("de");
+else setLang("en");
 
-/* fade observer */
-
-const obs=new IntersectionObserver(e=>{
-e.forEach(x=>{
-if(x.isIntersecting)x.target.classList.add("show");
+document.querySelectorAll(".lang-btn").forEach(btn=>{
+btn.addEventListener("click",()=>{
+setLang(btn.dataset.lang);
 });
 });
-
-document.querySelectorAll(".mm").forEach(el=>obs.observe(el));
 
 </script>
 
 </body>
 </html>
-
