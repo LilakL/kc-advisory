@@ -3,62 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <title>Konrad Czachor – Advisory & Partners</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+*{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
-background:#05080d;
 color:#fff;
+background:#000;
+overflow-x:hidden;
 }
 
-.wrapper{
+.page{
 min-height:100vh;
+background:url("img/BG.jpg") center/cover no-repeat fixed;
 display:flex;
-align-items:center;
 justify-content:center;
-padding:40px;
+padding:80px 40px;
+transition:background-size .3s ease;
 }
 
-.container{
-max-width:1200px;
+.overlay{
+background:rgba(0,0,0,.65);
 width:100%;
+max-width:1300px;
+padding:60px;
+}
+
+.grid{
 display:grid;
 grid-template-columns:1fr 420px;
 gap:60px;
-align-items:center;
+align-items:flex-start;
 }
 
-.left img{
+.mm img{
 width:100%;
-max-width:600px;
+max-width:650px;
 display:block;
-margin-bottom:30px;
+margin-bottom:25px;
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 animation:fade 1s ease forwards;
 }
 
-.right img{
+.profile img{
 width:100%;
-border-radius:50%;
-box-shadow:0 0 40px rgba(255,255,255,.15);
+box-shadow:0 0 35px rgba(255,255,255,.2);
 opacity:0;
-transform:translateX(40px);
-animation:fadeRight 1s ease forwards .4s;
+transform:translateY(20px);
+animation:fade 1s ease forwards .3s;
+transition:.4s ease;
 }
 
-.text{
+.profile img:hover{
+transform:translateY(-6px) scale(1.02);
+}
+
+.copy{
 font-size:22px;
 line-height:1.5;
-margin-top:20px;
+max-width:650px;
+}
+
+.cta{
+margin-top:25px;
+display:inline-block;
+padding:12px 26px;
+border:1px solid #d4af37;
+color:#d4af37;
+text-decoration:none;
+transition:.3s;
+}
+
+.cta:hover{
+background:#d4af37;
+color:#000;
+}
+
+.case{
+margin-top:80px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.case div{
+border-left:2px solid #d4af37;
+padding-left:15px;
+font-size:18px;
+opacity:.9;
 }
 
 .lang{
 position:fixed;
 top:20px;
 right:20px;
+z-index:10;
 }
 
 .lang button{
@@ -70,20 +113,13 @@ margin-left:6px;
 cursor:pointer;
 }
 
-@keyframes fade{
-to{opacity:1;transform:none}
-}
-
-@keyframes fadeRight{
-to{opacity:1;transform:none}
-}
+@keyframes fade{to{opacity:1;transform:none}}
 
 @media(max-width:900px){
-.container{
-grid-template-columns:1fr;
-text-align:center;
-}
-.right{order:-1}
+.overlay{padding:40px 20px}
+.grid{grid-template-columns:1fr;text-align:center}
+.profile{order:-1}
+.copy{margin:auto;font-size:20px}
 }
 </style>
 </head>
@@ -96,49 +132,88 @@ text-align:center;
 <button onclick="setLang('de')">DE</button>
 </div>
 
-<div class="wrapper">
-<div class="container">
+<div class="page" id="bg">
+<div class="overlay">
 
-<div class="left">
+<div class="grid">
+
+<div class="mm">
 <img id="mm" src="Profile_MM_PL.png" loading="lazy">
 
-<div class="text" id="text">
-Jeśli szukasz doradcy – poszukaj dalej.<br>
-Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.
-</div>
+<div class="copy" id="text"></div>
+
+<a href="mailto:kontakt@kc-adp.com" class="cta" id="cta"></a>
 </div>
 
-<div class="right">
-<img src="img/Konrad Czachor.jpg" loading="lazy">
+<div class="profile">
+<img src="img/Konrad Czachor.jpg" loading="lazy" id="photo">
 </div>
+
+</div>
+
+<div class="case" id="cases"></div>
 
 </div>
 </div>
 
 <script>
-const copy={
+const content={
 pl:{
 img:"Profile_MM_PL.png",
-text:"Jeśli szukasz doradcy – poszukaj dalej.<br>Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu."
+text:"Jeśli szukasz doradcy – poszukaj dalej.<br>Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.",
+cta:"Porozmawiajmy",
+cases:[
+"Wzrost EBITDA +18%",
+"Transformacja operacyjna 90 dni",
+"Redukcja kosztów −22%",
+"Stabilizacja zespołów C-level"
+]
 },
 en:{
 img:"Profile_MM_GB.png",
-text:"If you’re looking for a consultant — keep searching.<br>If you want an execution partner — you’re in the right place."
+text:"If you’re looking for a consultant — keep searching.<br>If you want an execution partner — you’re in the right place.",
+cta:"Let’s talk",
+cases:[
+"+18% EBITDA growth",
+"90-day operational turnaround",
+"−22% cost reduction",
+"C-level team stabilization"
+]
 },
 de:{
 img:"Profile_MM_GER.png",
-text:"Wenn Sie einen Berater suchen – suchen Sie weiter.<br>Wenn Sie einen Umsetzungspartner wollen – hier sind Sie richtig."
+text:"Wenn Sie einen Berater suchen – suchen Sie weiter.<br>Wenn Sie einen Umsetzungspartner wollen – hier sind Sie richtig.",
+cta:"Kontakt aufnehmen",
+cases:[
+"+18% EBITDA",
+"90-Tage Transformation",
+"−22% Kosten",
+"C-Level Stabilisierung"
+]
 }
 };
 
 function setLang(l){
-document.getElementById("mm").src=copy[l].img;
-document.getElementById("text").innerHTML=copy[l].text;
+mm.src=content[l].img;
+text.innerHTML=content[l].text;
+cta.innerHTML=content[l].cta;
+cases.innerHTML=content[l].cases.map(c=>`<div>${c}</div>`).join("");
 localStorage.lang=l;
 }
 
 const auto=(navigator.language||"en").substring(0,2);
-setLang(localStorage.lang||auto in copy?auto:"en");
+setLang(localStorage.lang || (auto in content?auto:"en"));
+
+// subtle background zoom
+window.addEventListener("scroll",()=>{
+const y=window.scrollY/800;
+bg.style.backgroundSize=(100+y*5)+"%";
+});
+
+// micro parallax photo
+window.addEventListener("mousemove",e=>{
+photo.style.transform=`translateY(-6px) translateX(${e.clientX/200}px)`;
+});
 </script>
 
 </body>
