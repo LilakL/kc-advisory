@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Profile | Konrad Czachor Advisory & Partners</title>
-
+<title>Konrad Czachor Advisory & Partners</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -11,27 +10,34 @@
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
-background:#fff;
-color:#111;
+background:#0b0f14;
+color:white;
 }
 
 .lang-switch{
-text-align:right;
-padding:15px 30px;
+position:fixed;
+top:20px;
+right:20px;
+z-index:20;
 }
 
 .lang-switch button{
-background:none;
-border:none;
-font-weight:600;
+background:#111;
+border:1px solid #c9a14a;
+color:white;
+padding:6px 12px;
+margin-left:6px;
 cursor:pointer;
-margin-left:10px;
+font-weight:bold;
 }
 
-.profile-wrapper{
-max-width:1200px;
-margin:0 auto;
-padding:30px 20px;
+.wrapper{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
 text-align:center;
 }
 
@@ -39,8 +45,10 @@ text-align:center;
 
 .profile-image{
 opacity:0;
-transform:translateY(30px);
-transition:opacity 1s ease, transform 1s ease;
+transform:translateY(40px);
+transition:1s ease;
+max-width:1100px;
+width:100%;
 }
 
 .profile-image.visible{
@@ -49,31 +57,24 @@ transform:none;
 }
 
 .profile-image img{
-max-width:100%;
+width:100%;
 height:auto;
-box-shadow:0 10px 40px rgba(0,0,0,.15);
+box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
 
-/* MOBILE FULL SCREEN */
+/* MOBILE FULLSCREEN */
 
 @media(max-width:768px){
-
 .profile-image img{
 height:100vh;
 object-fit:contain;
 }
-
-.profile-text{
-padding:20px;
-font-size:18px!important;
-}
-
 }
 
 /* TEXT */
 
-.profile-text{
-margin-top:40px;
+.text{
+margin-top:30px;
 font-size:20px;
 line-height:1.6;
 }
@@ -97,16 +98,16 @@ letter-spacing:1px;
 <button onclick="setLang('de')">DE</button>
 </div>
 
-<div class="profile-wrapper">
+<div class="wrapper">
 
-<!-- POLSKI -->
+<!-- PL -->
 <div id="pl">
 
 <div class="profile-image fade">
-<img src="img/Profile_MM_PL.png" loading="lazy" alt="Profile PL">
+<img src="img/Profile_MM_PL.png" loading="lazy">
 </div>
 
-<div class="profile-text">
+<div class="text">
 Jeśli szukasz doradcy – poszukaj dalej.<br>
 Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.
 </div>
@@ -117,12 +118,12 @@ Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.
 <div id="en" class="hidden">
 
 <div class="profile-image fade">
-<img src="img/Profile_MM_GB.png" loading="lazy" alt="Profile EN">
+<img src="img/Profile_MM_GB.png" loading="lazy">
 </div>
 
-<div class="profile-text">
-If you are looking for a consultant – keep looking.<br>
-If you want an execution partner – you are in the right place.
+<div class="text">
+If you are looking for advice – keep looking.<br>
+If you want execution – we should talk.
 </div>
 
 </div>
@@ -131,12 +132,12 @@ If you want an execution partner – you are in the right place.
 <div id="de" class="hidden">
 
 <div class="profile-image fade">
-<img src="img/Profile_MM_GER.png" loading="lazy" alt="Profile DE">
+<img src="img/Profile_MM_GER.png" loading="lazy">
 </div>
 
-<div class="profile-text">
-Wenn Sie einen Berater suchen – suchen Sie weiter.<br>
-Wenn Sie Umsetzung wollen – sind Sie hier richtig.
+<div class="text">
+Wenn Sie Beratung suchen – bin ich nicht der Richtige.<br>
+Wenn Sie Umsetzung wollen – sprechen wir.
 </div>
 
 </div>
@@ -150,50 +151,43 @@ Advisory & Partners
 
 <script>
 
-/* LANGUAGE AUTO-DETECT */
+/* auto language */
 
-function autoLang(){
+function detectLang(){
 const l=navigator.language.toLowerCase();
-if(l.startsWith('pl')) return 'pl';
-if(l.startsWith('de')) return 'de';
-return 'en';
+if(l.startsWith("pl")) return "pl";
+if(l.startsWith("de")) return "de";
+return "en";
 }
 
-/* SWITCH */
+/* switch */
 
-function setLang(lang){
-
-['pl','en','de'].forEach(l=>{
-document.getElementById(l).classList.add('hidden');
+function setLang(l){
+["pl","en","de"].forEach(x=>{
+document.getElementById(x).classList.add("hidden");
 });
 
-const active=document.getElementById(lang);
-active.classList.remove('hidden');
+const active=document.getElementById(l);
+active.classList.remove("hidden");
 
-/* trigger fade */
 setTimeout(()=>{
-active.querySelector('.profile-image').classList.add('visible');
+active.querySelector(".profile-image").classList.add("visible");
 },50);
 }
 
-/* INITIAL LOAD */
+/* init */
 
-const detected=autoLang();
-setLang(detected);
+setLang(detectLang());
 
-/* FADE-IN OBSERVER */
+/* fade observer */
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.classList.add('visible');
-}
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting)x.target.classList.add("visible");
 });
 });
 
-document.querySelectorAll('.profile-image').forEach(el=>{
-observer.observe(el);
-});
+document.querySelectorAll(".profile-image").forEach(el=>obs.observe(el));
 
 </script>
 
