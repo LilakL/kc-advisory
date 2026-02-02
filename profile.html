@@ -14,48 +14,52 @@ margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#05070b;
 color:white;
-overflow-x:hidden;
 }
 
-.hero{
+.container{
 min-height:100vh;
 display:flex;
+flex-direction:column;
 align-items:center;
-justify-content:space-between;
-padding:60px;
+justify-content:center;
+padding:60px 20px;
 box-sizing:border-box;
+text-align:center;
 background:radial-gradient(circle at top,#0c1220,#05070b);
 }
 
-.text{
+.profile-photo{
+width:220px;
+border-radius:50%;
+margin-bottom:25px;
+opacity:0;
+transition:opacity 1.2s ease;
+}
+
+.lang-graphic{
 max-width:520px;
+width:100%;
+margin-bottom:25px;
+opacity:0;
+transition:opacity 1.2s ease;
+}
+
+.loaded{
+opacity:1;
+}
+
+.text{
+max-width:600px;
 }
 
 .text h1{
-font-size:42px;
-line-height:1.2;
-margin-bottom:20px;
+font-size:36px;
+margin-bottom:12px;
 }
 
 .text p{
 font-size:18px;
 opacity:.85;
-}
-
-.profile-image{
-max-width:520px;
-width:100%;
-}
-
-.profile-image img{
-width:100%;
-height:auto;
-opacity:0;
-transition:opacity 1.2s ease;
-}
-
-.profile-image img.loaded{
-opacity:1;
 }
 
 .lang-switch{
@@ -79,20 +83,14 @@ background:#d4af37;
 color:black;
 }
 
-@media(max-width:900px){
-
-.hero{
-flex-direction:column-reverse;
-text-align:center;
-padding:40px 20px;
-}
-
-.profile-image{
-margin-bottom:40px;
-}
+@media(max-width:768px){
 
 .text h1{
-font-size:30px;
+font-size:26px;
+}
+
+.profile-photo{
+width:170px;
 }
 
 }
@@ -109,18 +107,18 @@ font-size:30px;
 <button class="lang-btn" data-lang="de">DE</button>
 </div>
 
-<section class="hero">
+<div class="container">
+
+<img src="Profile_bg2.jpg" class="profile-photo" id="profilePhoto" alt="Konrad Czachor">
+
+<img id="langImage" class="lang-graphic" src="Profile_MM_PL.png" alt="Language graphic">
 
 <div class="text" id="heroText">
 <h1></h1>
 <p></p>
 </div>
 
-<div class="profile-image">
-<img id="langImage" src="Profile_MM_PL.png" alt="Konrad Czachor" loading="lazy">
 </div>
-
-</section>
 
 <script>
 
@@ -146,8 +144,11 @@ img:"Profile_MM_GER.png"
 
 };
 
-const img = document.getElementById("langImage");
+const langImg = document.getElementById("langImage");
 const heroText = document.getElementById("heroText");
+const profilePhoto = document.getElementById("profilePhoto");
+
+profilePhoto.onload = ()=>profilePhoto.classList.add("loaded");
 
 function setLang(lang){
 
@@ -156,9 +157,9 @@ const data = content[lang];
 heroText.querySelector("h1").innerText = data.title;
 heroText.querySelector("p").innerText = data.text;
 
-img.classList.remove("loaded");
-img.src = data.img;
-img.onload = ()=>img.classList.add("loaded");
+langImg.classList.remove("loaded");
+langImg.src = data.img;
+langImg.onload = ()=>langImg.classList.add("loaded");
 
 }
 
