@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Konrad Czachor Advisory & Partners</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+background:#0b0f14;
+color:white;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.lang{
+display:none;
+text-align:center;
+padding:40px 20px;
+min-height:100vh;
+box-sizing:border-box;
+}
+
+.lang.active{display:block}
+
+.switch{
+position:fixed;
+top:20px;
+right:20px;
+z-index:10;
+}
+
+.switch button{
+background:#111;
+color:white;
+border:1px solid #c9a14a;
+padding:6px 12px;
+margin-left:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* IMAGE */
+
+.mm{
+max-width:1100px;
+margin:0 auto;
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.mm.show{
+opacity:1;
+transform:none;
+}
+
+.mm img{
+width:100%;
+height:auto;
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+/* MOBILE FULL SCREEN */
+
+@media(max-width:768px){
+.mm img{
+height:100vh;
+object-fit:contain;
+}
+}
+
+/* TEXT */
+
+.text{
+margin-top:30px;
+font-size:20px;
+line-height:1.6;
+}
+
+.brand{
+margin-top:40px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="switch">
+<button onclick="setLang('pl')">PL</button>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
+</div>
+
+<!-- PL -->
+
+<div id="pl" class="lang">
+
+<div class="mm">
+<img src="img/Profile_MM_PL.png" loading="lazy">
+</div>
+
+<div class="text">
+Jeśli szukasz doradcy – poszukaj dalej.<br>
+Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.
+</div>
+
+</div>
+
+<!-- EN -->
+
+<div id="en" class="lang">
+
+<div class="mm">
+<img src="img/Profile_MM_GB.png" loading="lazy">
+</div>
+
+<div class="text">
+If you are looking for advice – keep looking.<br>
+If you want execution – we should talk.
+</div>
+
+</div>
+
+<!-- DE -->
+
+<div id="de" class="lang">
+
+<div class="mm">
+<img src="img/Profile_MM_GER.png" loading="lazy">
+</div>
+
+<div class="text">
+Wenn Sie Beratung suchen – bin ich nicht der Richtige.<br>
+Wenn Sie Umsetzung wollen – sprechen wir.
+</div>
+
+</div>
+
+<div class="brand" style="text-align:center">
+KONRAD CZACHOR<br>
+Advisory & Partners
+</div>
+
+<script>
+
+/* detect language */
+
+function detect(){
+const l=navigator.language.toLowerCase();
+if(l.startsWith("pl")) return "pl";
+if(l.startsWith("de")) return "de";
+return "en";
+}
+
+/* switch */
+
+function setLang(l){
+document.querySelectorAll('.lang').forEach(x=>x.classList.remove('active'));
+document.getElementById(l).classList.add('active');
+
+setTimeout(()=>{
+document.querySelector('#'+l+' .mm').classList.add('show');
+},50);
+}
+
+/* init */
+
+setLang(detect());
+
+/* fade observer */
+
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting)x.target.classList.add("show");
+});
+});
+
+document.querySelectorAll(".mm").forEach(el=>obs.observe(el));
+
+</script>
+
+</body>
+</html>
 
