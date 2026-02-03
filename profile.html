@@ -54,17 +54,8 @@ justify-content:space-between;
 gap:60px;
 }
 
-/* MM */
-
 .mm{flex:0 0 62%}
-
-.mm img{
-width:100%;
-max-width:720px;
-margin-bottom:25px;
-}
-
-/* PHOTO */
+.mm img{width:100%;max-width:720px;margin-bottom:25px}
 
 .profile{flex:0 0 38%;display:flex;justify-content:center}
 
@@ -78,8 +69,6 @@ transition:.4s ease;
 .profile img:hover{
 transform:translateY(-6px) scale(1.02);
 }
-
-/* COPY */
 
 .copy{
 font-size:22px;
@@ -119,10 +108,7 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 
 /* TRUSTED */
 
-.trusted{
-margin-top:100px;
-text-align:center;
-}
+.trusted{margin-top:100px;text-align:center}
 
 .trusted h3{
 font-weight:normal;
@@ -137,26 +123,39 @@ letter-spacing:1px;
 opacity:.6;
 }
 
+/* LOGOS GRID */
+
 .logos{
 margin-top:25px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:40px;
 align-items:center;
 }
 
+/* LOGO CARD */
+
 .logos img{
-max-width:140px;
+background:rgba(255,255,255,.92);
+padding:18px;
+border-radius:10px;
+max-height:70px;
+width:auto;
 margin:auto;
-opacity:.75;
-filter:grayscale(1);
-transition:.3s ease;
+opacity:0;
+filter:grayscale(1) blur(8px);
+transition:.5s ease;
+}
+
+.logos img.loaded{
+opacity:.9;
+filter:grayscale(1) blur(0);
 }
 
 .logos img:hover{
 opacity:1;
 filter:none;
-transform:scale(1.05);
+transform:translateY(-6px) scale(1.05);
 }
 
 /* REVEAL */
@@ -204,11 +203,25 @@ cursor:pointer;
 
 .copy{margin:auto;font-size:20px}
 
+/* carousel */
+
+.logos{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
 }
 
-/* BG ZOOM */
+.logos img{
+flex:0 0 70%;
+scroll-snap-align:center;
+}
 
-@keyframes fade{to{opacity:1}}
+}
+
+/* hide scrollbar */
+
+.logos::-webkit-scrollbar{display:none}
 </style>
 </head>
 
@@ -236,7 +249,7 @@ cursor:pointer;
 </div>
 
 <div class="profile">
-<img src="img/Konrad Czachor.jpg" id="photo">
+<img src="img/Konrad Czachor.jpg">
 </div>
 
 </div>
@@ -249,20 +262,20 @@ cursor:pointer;
 
 <h4>Clients & Employers</h4>
 <div class="logos">
-<img src="img/KK windsolutions.png">
-<img src="img/alps_electric_logo.jpg">
-<img src="img/BMW.png">
-<img src="img/Delphi.png">
-<img src="img/Garmin.png">
-<img src="img/KIRCHHOFF_Automotive_Logo.svg.png">
-<img src="img/Magna.jpg">
-<img src="img/Nidec.png">
+<img src="img/KK windsolutions.png" loading="lazy">
+<img src="img/alps_electric_logo.jpg" loading="lazy">
+<img src="img/BMW.png" loading="lazy">
+<img src="img/Delphi.png" loading="lazy">
+<img src="img/Garmin.png" loading="lazy">
+<img src="img/KIRCHHOFF_Automotive_Logo.svg.png" loading="lazy">
+<img src="img/Magna.jpg" loading="lazy">
+<img src="img/Nidec.png" loading="lazy">
 </div>
 
 <h4>Partners & Organizations</h4>
 <div class="logos">
-<img src="img/AHK.jpg">
-<img src="img/polska-izba-kolei.png">
+<img src="img/AHK.jpg" loading="lazy">
+<img src="img/polska-izba-kolei.png" loading="lazy">
 </div>
 
 </div>
@@ -306,13 +319,22 @@ window.addEventListener("scroll",()=>{
 bg.style.backgroundSize=(100+window.scrollY/800*5)+"%";
 });
 
-/* REVEAL */
+/* SECTION REVEAL */
 
 const obs=new IntersectionObserver(e=>{
 e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"))
 },{threshold:.15});
 
 document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
+
+/* LOGO CASCADE + LAZY BLUR */
+
+document.querySelectorAll(".logos").forEach(group=>{
+[...group.querySelectorAll("img")].forEach((img,i)=>{
+img.onload=()=>img.classList.add("loaded");
+setTimeout(()=>img.classList.add("loaded"),300+i*120);
+});
+});
 </script>
 
 </body>
