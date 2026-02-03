@@ -70,8 +70,6 @@ transition:.4s ease;
 
 .profile img:hover{transform:translateY(-6px) scale(1.02)}
 
-.copy{font-size:22px;line-height:1.5;max-width:650px}
-
 /* ABOUT */
 
 .about{
@@ -134,7 +132,7 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 .trusted h3{font-weight:400;letter-spacing:2px;opacity:.8}
 .trusted h4{margin-top:50px;font-weight:400;letter-spacing:1px;opacity:.6}
 
-/* LOGOS – EXACTLY 3 ROWS DESKTOP */
+/* DESKTOP LOGOS – 3 ROWS */
 
 .logos{
 margin-top:35px;
@@ -144,6 +142,16 @@ grid-auto-flow:column;
 grid-auto-columns:1fr;
 gap:50px;
 align-items:center;
+}
+
+/* CENTER PARTNERS (AHK / PKI) */
+
+.trusted .logos:last-of-type{
+grid-template-rows:1fr;
+grid-auto-flow:row;
+grid-template-columns:repeat(2,1fr);
+max-width:500px;
+margin:35px auto 0;
 }
 
 /* LOGO CARD */
@@ -158,6 +166,7 @@ object-fit:contain;
 margin:auto;
 opacity:0;
 filter:grayscale(1) blur(8px);
+box-shadow:0 6px 18px rgba(0,0,0,.35);   /* light shadow cards */
 transition:.5s ease;
 }
 
@@ -195,7 +204,7 @@ margin-left:6px;
 cursor:pointer;
 }
 
-/* MOBILE */
+/* MOBILE BASE (2 COLS) */
 
 @media(max-width:900px){
 
@@ -203,13 +212,12 @@ cursor:pointer;
 .grid{flex-direction:column;text-align:center}
 .profile{order:-1}
 .profile img{width:60%}
-.copy,.about{margin:auto;font-size:17px}
-
-/* MOBILE LOGOS MINI GRID */
+.about{margin:auto;font-size:17px}
 
 .logos{
 display:grid;
 grid-template-columns:repeat(2,1fr);
+grid-auto-flow:row;
 gap:20px;
 }
 
@@ -217,9 +225,22 @@ gap:20px;
 height:90px;
 padding:14px;
 }
+
+/* center partners */
+
+.trusted .logos:last-of-type{
+grid-template-columns:repeat(2,1fr);
+}
 }
 
-.logos::-webkit-scrollbar{display:none}
+/* LARGE PHONES – 3 COLS */
+
+@media(min-width:600px) and (max-width:900px){
+.logos{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
 </style>
 </head>
 
@@ -286,11 +307,8 @@ const content={
 pl:{
 img:"Profile_MM_PL.png",
 cta:"Porozmawiajmy",
-about:`
-Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczeniem w automotive, elektronice i przemyśle ciężkim.<br><br>
-
+about:`Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczeniem w automotive, elektronice i przemyśle ciężkim.<br><br>
 Łączę inżynierską precyzję z biznesowym mindsetem Executive MBA. Przez lata odpowiadałem za jakość, transformacje procesowe, rozwój zespołów i ekspansję biznesową — od Delphi i Alpine Electronics po Garmin oraz Orban Consulting.
-
 <ul>
 <li>skalowaniu organizacji</li>
 <li>budowie struktur jakości i compliance</li>
@@ -298,18 +316,13 @@ Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczenie
 <li>rozwoju leadership teams</li>
 <li>wdrażaniu strategii w realnych warunkach fabrycznych</li>
 </ul>
-
-<div class="signature">Nie projektuję slajdów. Projektuję wyniki.</div>
-`
+<div class="signature">Nie projektuję slajdów. Projektuję wyniki.</div>`
 },
 en:{
 img:"Profile_MM_GB.png",
 cta:"Let’s talk",
-about:`
-I am an operational leader and General Manager with international experience across automotive, electronics, and heavy industry.<br><br>
-
+about:`I am an operational leader and General Manager with international experience across automotive, electronics, and heavy industry.<br><br>
 I combine engineering precision with an Executive MBA business mindset. Over the years, I have led quality, process transformation, team development, and business expansion — from Delphi and Alpine Electronics to Garmin and Orban Consulting.
-
 <ul>
 <li>organizational scaling</li>
 <li>quality & compliance structures</li>
@@ -317,18 +330,13 @@ I combine engineering precision with an Executive MBA business mindset. Over the
 <li>leadership team development</li>
 <li>strategy execution in real factory environments</li>
 </ul>
-
-<div class="signature">I don’t design slides. I design results.</div>
-`
+<div class="signature">I don’t design slides. I design results.</div>`
 },
 de:{
 img:"Profile_MM_GER.png",
 cta:"Kontakt aufnehmen",
-about:`
-Ich bin operativer Leader und General Manager mit internationaler Erfahrung in Automotive, Elektronik und Schwerindustrie.<br><br>
-
-Ich verbinde ingenieurtechnische Präzision mit einem Executive-MBA-Business-Mindset. Seit Jahren verantworte ich Qualität, Prozess­transformation, Teamentwicklung und Geschäftsausbau — von Delphi und Alpine Electronics bis Garmin und Orban Consulting.
-
+about:`Ich bin operativer Leader und General Manager mit internationaler Erfahrung in Automotive, Elektronik und Schwerindustrie.<br><br>
+Ich verbinde ingenieurtechnische Präzision mit einem Executive-MBA-Business-Mindset.
 <ul>
 <li>Skalierung von Organisationen</li>
 <li>Aufbau von Qualitäts- und Compliance-Strukturen</li>
@@ -336,9 +344,7 @@ Ich verbinde ingenieurtechnische Präzision mit einem Executive-MBA-Business-Min
 <li>Entwicklung von Leadership-Teams</li>
 <li>Strategieumsetzung in realen Produktionsumgebungen</li>
 </ul>
-
-<div class="signature">Ich gestalte keine Folien. Ich liefere Ergebnisse.</div>
-`
+<div class="signature">Ich gestalte keine Folien. Ich liefere Ergebnisse.</div>`
 }
 };
 
@@ -353,19 +359,16 @@ localStorage.lang=l;
 const auto=(navigator.language||"en").substring(0,2);
 setLang(localStorage.lang || (auto in content?auto:"en"));
 
-/* BG zoom */
 window.addEventListener("scroll",()=>{
 bg.style.backgroundSize=(100+window.scrollY/800*5)+"%";
 });
 
-/* reveal */
 const obs=new IntersectionObserver(e=>{
 e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"))
 },{threshold:.15});
 
 document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
 
-/* logo cascade + lazy blur */
 document.querySelectorAll(".logos").forEach(group=>{
 [...group.querySelectorAll("img")].forEach((img,i)=>{
 img.onload=()=>img.classList.add("loaded");
