@@ -134,19 +134,23 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 .trusted h3{font-weight:400;letter-spacing:2px;opacity:.8}
 .trusted h4{margin-top:50px;font-weight:400;letter-spacing:1px;opacity:.6}
 
+/* LOGOS GRID */
+
 .logos{
-margin-top:25px;
+margin-top:35px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:50px;
 align-items:center;
 }
 
+/* LOGO CARD – 2× SIZE */
+
 .logos img{
 background:rgba(255,255,255,.92);
-padding:18px;
-border-radius:10px;
-max-height:70px;
+padding:26px;
+border-radius:14px;
+max-height:140px;   /* was 70 */
 width:auto;
 margin:auto;
 opacity:0;
@@ -162,7 +166,7 @@ filter:grayscale(1) blur(0);
 .logos img:hover{
 opacity:1;
 filter:none;
-transform:translateY(-6px) scale(1.05);
+transform:translateY(-8px) scale(1.05);
 }
 
 /* REVEAL */
@@ -198,15 +202,19 @@ cursor:pointer;
 .profile img{width:60%}
 .copy,.about{margin:auto;font-size:17px}
 
+/* carousel */
+
 .logos{
 display:flex;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
+padding-bottom:10px;
 }
 
 .logos img{
-flex:0 0 70%;
+flex:0 0 85%;
 scroll-snap-align:center;
+max-height:160px;
 }
 }
 
@@ -233,8 +241,6 @@ scroll-snap-align:center;
 
 <div class="mm">
 <img id="mm" src="Profile_MM_PL.png">
-
-<div class="copy" id="text"></div>
 
 <div class="about" id="about"></div>
 
@@ -279,7 +285,6 @@ const content={
 pl:{
 img:"Profile_MM_PL.png",
 cta:"Porozmawiajmy",
-text:"",
 about:`
 Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczeniem w automotive, elektronice i przemyśle ciężkim.<br><br>
 
@@ -299,7 +304,6 @@ Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczenie
 en:{
 img:"Profile_MM_GB.png",
 cta:"Let’s talk",
-text:"",
 about:`
 I am an operational leader and General Manager with international experience across automotive, electronics, and heavy industry.<br><br>
 
@@ -319,7 +323,6 @@ I combine engineering precision with an Executive MBA business mindset. Over the
 de:{
 img:"Profile_MM_GER.png",
 cta:"Kontakt aufnehmen",
-text:"",
 about:`
 Ich bin operativer Leader und General Manager mit internationaler Erfahrung in Automotive, Elektronik und Schwerindustrie.<br><br>
 
@@ -361,7 +364,7 @@ e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"))
 
 document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
 
-/* logo cascade */
+/* logo cascade + lazy blur */
 document.querySelectorAll(".logos").forEach(group=>{
 [...group.querySelectorAll("img")].forEach((img,i)=>{
 img.onload=()=>img.classList.add("loaded");
@@ -372,4 +375,3 @@ setTimeout(()=>img.classList.add("loaded"),300+i*120);
 
 </body>
 </html>
-
