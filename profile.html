@@ -134,7 +134,7 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 .trusted h3{font-weight:400;letter-spacing:2px;opacity:.8}
 .trusted h4{margin-top:50px;font-weight:400;letter-spacing:1px;opacity:.6}
 
-/* LOGOS – EXACTLY 3 ROWS */
+/* LOGOS – EXACTLY 3 ROWS DESKTOP */
 
 .logos{
 margin-top:35px;
@@ -205,19 +205,17 @@ cursor:pointer;
 .profile img{width:60%}
 .copy,.about{margin:auto;font-size:17px}
 
-/* carousel */
+/* MOBILE LOGOS MINI GRID */
 
 .logos{
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:10px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
 }
 
 .logos img{
-flex:0 0 85%;
-scroll-snap-align:center;
-height:160px;
+height:90px;
+padding:14px;
 }
 }
 
