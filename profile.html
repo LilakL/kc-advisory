@@ -35,7 +35,7 @@ padding:60px;
 position:relative;
 }
 
-/* BACK HOME */
+/* HOME */
 
 .home{
 position:absolute;
@@ -54,7 +54,7 @@ justify-content:space-between;
 gap:60px;
 }
 
-/* GRAFIKA */
+/* MM */
 
 .mm{flex:0 0 62%}
 
@@ -64,7 +64,7 @@ max-width:720px;
 margin-bottom:25px;
 }
 
-/* FOTO */
+/* PHOTO */
 
 .profile{flex:0 0 38%;display:flex;justify-content:center}
 
@@ -130,8 +130,15 @@ letter-spacing:2px;
 opacity:.8;
 }
 
+.trusted h4{
+margin-top:50px;
+font-weight:normal;
+letter-spacing:1px;
+opacity:.6;
+}
+
 .logos{
-margin-top:30px;
+margin-top:25px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 gap:40px;
@@ -141,24 +148,15 @@ align-items:center;
 .logos img{
 max-width:140px;
 margin:auto;
-opacity:.7;
+opacity:.75;
 filter:grayscale(1);
+transition:.3s ease;
 }
 
-/* TESTIMONIALS */
-
-.testimonials{
-margin-top:100px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
-}
-
-.quote{
-border-left:2px solid #d4af37;
-padding-left:20px;
-font-size:18px;
-opacity:.9;
+.logos img:hover{
+opacity:1;
+filter:none;
+transform:scale(1.05);
 }
 
 /* REVEAL */
@@ -207,6 +205,10 @@ cursor:pointer;
 .copy{margin:auto;font-size:20px}
 
 }
+
+/* BG ZOOM */
+
+@keyframes fade{to{opacity:1}}
 </style>
 </head>
 
@@ -242,21 +244,27 @@ cursor:pointer;
 <!-- TRUSTED -->
 
 <div class="trusted reveal">
+
 <h3>Trusted by industry leaders</h3>
+
+<h4>Clients & Employers</h4>
 <div class="logos">
-<img src="img/logo1.png">
-<img src="img/logo2.png">
-<img src="img/logo3.png">
-<img src="img/logo4.png">
-</div>
+<img src="img/KK windsolutions.png">
+<img src="img/alps_electric_logo.jpg">
+<img src="img/BMW.png">
+<img src="img/Delphi.png">
+<img src="img/Garmin.png">
+<img src="img/KIRCHHOFF_Automotive_Logo.svg.png">
+<img src="img/Magna.jpg">
+<img src="img/Nidec.png">
 </div>
 
-<!-- TESTIMONIALS -->
+<h4>Partners & Organizations</h4>
+<div class="logos">
+<img src="img/AHK.jpg">
+<img src="img/polska-izba-kolei.png">
+</div>
 
-<div class="testimonials reveal">
-<div class="quote">“Konrad delivers clarity where others bring slides.”</div>
-<div class="quote">“Operational impact within weeks, not quarters.”</div>
-<div class="quote">“True execution partner.”</div>
 </div>
 
 </div>
@@ -292,13 +300,13 @@ localStorage.lang=l;
 const auto=(navigator.language||"en").substring(0,2);
 setLang(localStorage.lang || (auto in content?auto:"en"));
 
-/* bg zoom */
+/* BG ZOOM */
 
 window.addEventListener("scroll",()=>{
 bg.style.backgroundSize=(100+window.scrollY/800*5)+"%";
 });
 
-/* reveal */
+/* REVEAL */
 
 const obs=new IntersectionObserver(e=>{
 e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"))
