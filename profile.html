@@ -51,7 +51,7 @@ opacity:.8;
 
 .grid{
 display:flex;
-align-items:center;
+align-items:flex-start;
 justify-content:space-between;
 gap:60px;
 }
@@ -134,24 +134,27 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 .trusted h3{font-weight:400;letter-spacing:2px;opacity:.8}
 .trusted h4{margin-top:50px;font-weight:400;letter-spacing:1px;opacity:.6}
 
-/* LOGOS GRID */
+/* LOGOS – EXACTLY 3 ROWS */
 
 .logos{
 margin-top:35px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-rows:repeat(3,1fr);
+grid-auto-flow:column;
+grid-auto-columns:1fr;
 gap:50px;
 align-items:center;
 }
 
-/* LOGO CARD – 2× SIZE */
+/* LOGO CARD */
 
 .logos img{
 background:rgba(255,255,255,.92);
 padding:26px;
 border-radius:14px;
-max-height:140px;   /* was 70 */
-width:auto;
+height:160px;
+width:100%;
+object-fit:contain;
 margin:auto;
 opacity:0;
 filter:grayscale(1) blur(8px);
@@ -214,7 +217,7 @@ padding-bottom:10px;
 .logos img{
 flex:0 0 85%;
 scroll-snap-align:center;
-max-height:160px;
+height:160px;
 }
 }
 
