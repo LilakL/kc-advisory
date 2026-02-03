@@ -5,12 +5,14 @@
 <title>Konrad Czachor – Advisory & Partners</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Inter,Arial,Helvetica,sans-serif;
 color:#fff;
 background:#000;
 overflow-x:hidden;
@@ -66,14 +68,36 @@ box-shadow:0 0 35px rgba(255,255,255,.2);
 transition:.4s ease;
 }
 
-.profile img:hover{
-transform:translateY(-6px) scale(1.02);
+.profile img:hover{transform:translateY(-6px) scale(1.02)}
+
+.copy{font-size:22px;line-height:1.5;max-width:650px}
+
+/* ABOUT */
+
+.about{
+margin-top:40px;
+max-width:720px;
+font-size:18px;
+line-height:1.7;
+opacity:.9;
 }
 
-.copy{
-font-size:22px;
-line-height:1.5;
-max-width:650px;
+.about ul{
+margin-top:20px;
+padding-left:0;
+list-style:none;
+}
+
+.about li{
+margin:10px 0;
+padding-left:18px;
+border-left:2px solid #d4af37;
+}
+
+.signature{
+margin-top:20px;
+font-weight:500;
+letter-spacing:.3px;
 }
 
 /* CTA */
@@ -87,10 +111,7 @@ color:#d4af37;
 transition:.3s;
 }
 
-.cta:hover{
-background:#d4af37;
-color:#000;
-}
+.cta:hover{background:#d4af37;color:#000}
 
 /* STICKY CTA */
 
@@ -101,7 +122,7 @@ right:20px;
 background:#d4af37;
 color:#000;
 padding:14px 22px;
-font-weight:bold;
+font-weight:600;
 z-index:20;
 box-shadow:0 0 25px rgba(0,0,0,.5);
 }
@@ -110,20 +131,8 @@ box-shadow:0 0 25px rgba(0,0,0,.5);
 
 .trusted{margin-top:100px;text-align:center}
 
-.trusted h3{
-font-weight:normal;
-letter-spacing:2px;
-opacity:.8;
-}
-
-.trusted h4{
-margin-top:50px;
-font-weight:normal;
-letter-spacing:1px;
-opacity:.6;
-}
-
-/* LOGOS GRID */
+.trusted h3{font-weight:400;letter-spacing:2px;opacity:.8}
+.trusted h4{margin-top:50px;font-weight:400;letter-spacing:1px;opacity:.6}
 
 .logos{
 margin-top:25px;
@@ -132,8 +141,6 @@ grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:40px;
 align-items:center;
 }
-
-/* LOGO CARD */
 
 .logos img{
 background:rgba(255,255,255,.92);
@@ -160,16 +167,8 @@ transform:translateY(-6px) scale(1.05);
 
 /* REVEAL */
 
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:1s ease;
-}
-
-.reveal.visible{
-opacity:1;
-transform:none;
-}
+.reveal{opacity:0;transform:translateY(30px);transition:1s ease}
+.reveal.visible{opacity:1;transform:none}
 
 /* LANG */
 
@@ -194,32 +193,22 @@ cursor:pointer;
 @media(max-width:900px){
 
 .overlay{padding:40px 20px}
-
 .grid{flex-direction:column;text-align:center}
-
 .profile{order:-1}
-
 .profile img{width:60%}
-
-.copy{margin:auto;font-size:20px}
-
-/* carousel */
+.copy,.about{margin:auto;font-size:17px}
 
 .logos{
 display:flex;
 overflow-x:auto;
 scroll-snap-type:x mandatory;
-padding-bottom:10px;
 }
 
 .logos img{
 flex:0 0 70%;
 scroll-snap-align:center;
 }
-
 }
-
-/* hide scrollbar */
 
 .logos::-webkit-scrollbar{display:none}
 </style>
@@ -244,7 +233,11 @@ scroll-snap-align:center;
 
 <div class="mm">
 <img id="mm" src="Profile_MM_PL.png">
+
 <div class="copy" id="text"></div>
+
+<div class="about" id="about"></div>
+
 <a href="mailto:kontakt@kc-adp.com" class="cta" id="cta"></a>
 </div>
 
@@ -253,8 +246,6 @@ scroll-snap-align:center;
 </div>
 
 </div>
-
-<!-- TRUSTED -->
 
 <div class="trusted reveal">
 
@@ -287,24 +278,69 @@ scroll-snap-align:center;
 const content={
 pl:{
 img:"Profile_MM_PL.png",
-text:"Jeśli szukasz doradcy – poszukaj dalej.<br>Jeśli chcesz partnera w realizacji – jesteś we właściwym miejscu.",
-cta:"Porozmawiajmy"
+cta:"Porozmawiajmy",
+text:"",
+about:`
+Jestem operacyjnym liderem i General Managerem z międzynarodowym doświadczeniem w automotive, elektronice i przemyśle ciężkim.<br><br>
+
+Łączę inżynierską precyzję z biznesowym mindsetem Executive MBA. Przez lata odpowiadałem za jakość, transformacje procesowe, rozwój zespołów i ekspansję biznesową — od Delphi i Alpine Electronics po Garmin oraz Orban Consulting.
+
+<ul>
+<li>skalowaniu organizacji</li>
+<li>budowie struktur jakości i compliance</li>
+<li>turnaroundach operacyjnych</li>
+<li>rozwoju leadership teams</li>
+<li>wdrażaniu strategii w realnych warunkach fabrycznych</li>
+</ul>
+
+<div class="signature">Nie projektuję slajdów. Projektuję wyniki.</div>
+`
 },
 en:{
 img:"Profile_MM_GB.png",
-text:"If you’re looking for a consultant — keep searching.<br>If you want an execution partner — you’re in the right place.",
-cta:"Let’s talk"
+cta:"Let’s talk",
+text:"",
+about:`
+I am an operational leader and General Manager with international experience across automotive, electronics, and heavy industry.<br><br>
+
+I combine engineering precision with an Executive MBA business mindset. Over the years, I have led quality, process transformation, team development, and business expansion — from Delphi and Alpine Electronics to Garmin and Orban Consulting.
+
+<ul>
+<li>organizational scaling</li>
+<li>quality & compliance structures</li>
+<li>operational turnarounds</li>
+<li>leadership team development</li>
+<li>strategy execution in real factory environments</li>
+</ul>
+
+<div class="signature">I don’t design slides. I design results.</div>
+`
 },
 de:{
 img:"Profile_MM_GER.png",
-text:"Wenn Sie einen Berater suchen – suchen Sie weiter.<br>Wenn Sie einen Umsetzungspartner wollen – hier sind Sie richtig.",
-cta:"Kontakt aufnehmen"
+cta:"Kontakt aufnehmen",
+text:"",
+about:`
+Ich bin operativer Leader und General Manager mit internationaler Erfahrung in Automotive, Elektronik und Schwerindustrie.<br><br>
+
+Ich verbinde ingenieurtechnische Präzision mit einem Executive-MBA-Business-Mindset. Seit Jahren verantworte ich Qualität, Prozess­transformation, Teamentwicklung und Geschäftsausbau — von Delphi und Alpine Electronics bis Garmin und Orban Consulting.
+
+<ul>
+<li>Skalierung von Organisationen</li>
+<li>Aufbau von Qualitäts- und Compliance-Strukturen</li>
+<li>operative Turnarounds</li>
+<li>Entwicklung von Leadership-Teams</li>
+<li>Strategieumsetzung in realen Produktionsumgebungen</li>
+</ul>
+
+<div class="signature">Ich gestalte keine Folien. Ich liefere Ergebnisse.</div>
+`
 }
 };
 
 function setLang(l){
 mm.src=content[l].img;
-text.innerHTML=content[l].text;
+about.innerHTML=content[l].about;
 cta.innerHTML=content[l].cta;
 document.querySelector(".sticky").innerHTML=content[l].cta;
 localStorage.lang=l;
@@ -313,22 +349,19 @@ localStorage.lang=l;
 const auto=(navigator.language||"en").substring(0,2);
 setLang(localStorage.lang || (auto in content?auto:"en"));
 
-/* BG ZOOM */
-
+/* BG zoom */
 window.addEventListener("scroll",()=>{
 bg.style.backgroundSize=(100+window.scrollY/800*5)+"%";
 });
 
-/* SECTION REVEAL */
-
+/* reveal */
 const obs=new IntersectionObserver(e=>{
 e.forEach(x=>x.isIntersecting&&x.target.classList.add("visible"))
 },{threshold:.15});
 
 document.querySelectorAll(".reveal").forEach(r=>obs.observe(r));
 
-/* LOGO CASCADE + LAZY BLUR */
-
+/* logo cascade */
 document.querySelectorAll(".logos").forEach(group=>{
 [...group.querySelectorAll("img")].forEach((img,i)=>{
 img.onload=()=>img.classList.add("loaded");
@@ -339,3 +372,4 @@ setTimeout(()=>img.classList.add("loaded"),300+i*120);
 
 </body>
 </html>
+
