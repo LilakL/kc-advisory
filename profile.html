@@ -6,19 +6,14 @@
 <title>O mnie</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 background:#f4f4f4;
 color:#222;
 }
-
-/* ===== HEADER ===== */
 
 header{
 display:flex;
@@ -29,9 +24,7 @@ background:#ffffff;
 flex-wrap:wrap;
 }
 
-.logo img{
-height:120px;
-}
+.logo img{height:120px;}
 
 nav{
 display:flex;
@@ -61,8 +54,6 @@ color:#fff;
 border:none;
 }
 
-/* ===== HERO - jednolite tło jak index ===== */
-
 .hero{
 background:#1d3c6a;
 color:#fff;
@@ -71,8 +62,6 @@ text-align:center;
 font-size:48px;
 font-weight:700;
 }
-
-/* ===== SEKCJA ===== */
 
 .section{
 width:100%;
@@ -103,8 +92,6 @@ font-size:20px;
 line-height:1.8;
 }
 
-/* ===== MM ===== */
-
 .mm-section{
 width:100%;
 margin-top:100px;
@@ -127,8 +114,6 @@ border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.12);
 display:none;
 }
-
-/* ===== CLIENTS ===== */
 
 .clients{
 margin-top:120px;
@@ -160,41 +145,20 @@ opacity:1;
 transform:scale(1.05);
 }
 
-/* ===== MOBILE ===== */
-
 @media(max-width:768px){
 
-header{
-padding:20px;
-}
-
-.section{
-padding:60px 20px;
-}
+.section{padding:60px 20px;}
 
 .hero{
 padding:80px 20px;
 font-size:32px;
 }
 
-.profile-grid{
-gap:40px;
-}
+.profile-text{font-size:18px;}
 
-.profile-text{
-font-size:18px;
+.client-logos{gap:25px;}
+.client-logos img{height:45px;}
 }
-
-.client-logos{
-gap:25px;
-}
-
-.client-logos img{
-height:45px;
-}
-
-}
-
 </style>
 </head>
 
@@ -218,7 +182,7 @@ height:45px;
 </nav>
 </header>
 
-<div class="hero">
+<div class="hero" id="hero-title">
 O mnie
 </div>
 
@@ -228,12 +192,7 @@ O mnie
 
 <img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
 
-<div class="profile-text">
-<p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
-<p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
-<p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
-<p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
-</div>
+<div class="profile-text" id="profile-text"></div>
 
 </div>
 
@@ -246,7 +205,7 @@ O mnie
 </div>
 
 <div class="clients">
-<h2>Wybrane realizacje / Klienci</h2>
+<h2 id="clients-title">Wybrane realizacje / Klienci</h2>
 
 <div class="client-logos">
 <img src="img/BMW.png">
@@ -266,7 +225,44 @@ O mnie
 
 <script>
 
+const content = {
+pl: {
+title: "O mnie",
+clients: "Wybrane realizacje / Klienci",
+text: `
+<p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
+<p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
+<p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
+<p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
+`
+},
+en: {
+title: "About me",
+clients: "Selected Projects / Clients",
+text: `
+<p>I have been working in industrial and international environments for over 20 years.</p>
+<p>I combine operational experience with a practical approach to change management.</p>
+<p>I specialize in operational transformation, quality systems and building strong management structures.</p>
+<p>My goal is real results – execution beyond presentation.</p>
+`
+},
+de: {
+title: "Über mich",
+clients: "Ausgewählte Projekte / Kunden",
+text: `
+<p>Seit über 20 Jahren arbeite ich im industriellen und internationalen Umfeld.</p>
+<p>Ich verbinde operative Erfahrung mit einem praxisorientierten Ansatz im Veränderungsmanagement.</p>
+<p>Ich spezialisiere mich auf operative Transformation, Qualitätssysteme und den Aufbau starker Führungsstrukturen.</p>
+<p>Mein Ziel ist ein reales Ergebnis – Umsetzung statt Präsentation.</p>
+`
+}
+};
+
 const buttons = document.querySelectorAll(".lang button");
+const profileText = document.getElementById("profile-text");
+const heroTitle = document.getElementById("hero-title");
+const clientsTitle = document.getElementById("clients-title");
+
 const images = {
 pl: document.getElementById("mm-pl"),
 en: document.getElementById("mm-en"),
@@ -274,8 +270,13 @@ de: document.getElementById("mm-de")
 };
 
 function setLang(lang){
+
+heroTitle.innerText = content[lang].title;
+clientsTitle.innerText = content[lang].clients;
+profileText.innerHTML = content[lang].text;
+
 Object.values(images).forEach(img => img.style.display="none");
-images[lang].style.display="block";
+images[lang].style.display="block;
 
 buttons.forEach(btn => btn.classList.remove("active"));
 document.querySelector(`[data-lang="${lang}"]`).classList.add("active");
