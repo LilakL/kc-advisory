@@ -1,75 +1,56 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile</title>
+<title>Konrad Czachor | Profile</title>
 
 <style>
 
 :root{
 --primary:#1d3c6a;
---text:#222;
 --light:#f4f4f4;
---spacing-section:90px;
---spacing-mobile:60px;
+--dark:#111;
 }
-
-*{box-sizing:border-box;}
 
 body{
 margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--light);
-color:var(--text);
+color:var(--dark);
 line-height:1.6;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 
 header{
 display:flex;
 justify-content:space-between;
-align-items:flex-start;
-padding:28px 50px;
-background:#ffffff;
+align-items:center;
+padding:20px 40px;
+background:#fff;
 }
 
-.logo img{
-height:110px;
-}
+.logo img{height:70px;}
 
 nav{
 display:flex;
-flex-direction:column;
-align-items:flex-end;
-gap:12px;
+align-items:center;
+gap:30px;
 }
 
-.nav-links{
-display:flex;
-gap:32px;
-font-size:15px;
-letter-spacing:.5px;
-}
-
-.nav-links a{
+nav a{
 text-decoration:none;
 color:#111;
-}
-
-.lang{
-display:flex;
-gap:10px;
+font-size:14px;
 }
 
 .lang button{
-padding:6px 14px;
+padding:5px 12px;
 border-radius:20px;
 border:1px solid #ccc;
 background:#f2f2f2;
-cursor:pointer;
-font-size:13px;
+font-size:12px;
 }
 
 .lang button.active{
@@ -78,203 +59,61 @@ color:#fff;
 border:none;
 }
 
-.home-link{
-font-size:13px;
-text-decoration:none;
-color:var(--primary);
-opacity:.85;
-}
-
-/* ===== HERO ===== */
+/* HERO */
 
 .hero{
 background:var(--primary);
 color:#fff;
-padding:140px 20px;
+padding:120px 20px;
 text-align:center;
-font-size:52px;
-font-weight:600;
-letter-spacing:1px;
+font-size:40px;
 }
 
-/* ===== SECTION ===== */
+/* PROFILE */
 
 .section{
-padding:var(--spacing-section) 60px;
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
 }
 
 .profile-grid{
 display:flex;
 gap:80px;
 align-items:center;
-justify-content:center;
 flex-wrap:wrap;
-max-width:1300px;
-margin:auto;
 }
 
 .profile-photo{
-width:420px;
-max-width:100%;
-border-radius:22px;
-box-shadow:0 30px 60px rgba(0,0,0,0.15);
+width:380px;
+border-radius:20px;
+box-shadow:0 25px 50px rgba(0,0,0,0.15);
 }
 
 .profile-text{
 flex:1;
-min-width:300px;
-font-size:20px;
+font-size:19px;
 }
 
-.profile-text p{
-margin-bottom:22px;
+.profile-text h2{
+margin-top:0;
 }
-
-/* ===== MM ===== */
-
-.mm-section{
-margin-top:120px;
-display:flex;
-justify-content:center;
-}
-
-.mm-wrapper{
-max-width:1100px;
-width:100%;
-}
-
-.mm-wrapper img{
-width:100%;
-border-radius:22px;
-box-shadow:0 25px 50px rgba(0,0,0,0.12);
-display:none;
-}
-
-/* ===== CLIENTS ===== */
 
 .clients{
-margin-top:140px;
+margin-top:120px;
 text-align:center;
-}
-
-.clients h2{
-font-size:26px;
-margin-bottom:50px;
-letter-spacing:.5px;
 }
 
 .client-logos{
 display:flex;
 flex-wrap:wrap;
-gap:50px;
-justify-content:center;
-align-items:center;
-}
-
-.client-logos img{
-height:65px;
-opacity:.85;
-transition:.3s;
-}
-
-.client-logos img:hover{
-opacity:1;
-transform:scale(1.06);
-}
-
-/* ===================== */
-/* ===== MOBILE ===== */
-/* ===================== */
-
-@media(max-width:768px){
-
-header{
-flex-direction:column;
-align-items:flex-start;
-padding:24px 24px;
-gap:18px;
-}
-
-.logo img{
-height:80px;
-}
-
-nav{
-width:100%;
-align-items:flex-start;
-gap:16px;
-}
-
-.nav-links{
-gap:20px;
-font-size:14px;
-}
-
-.lang{
-gap:8px;
-}
-
-.lang button{
-padding:6px 12px;
-font-size:12px;
-}
-
-.home-link{
-font-size:12px;
-margin-top:6px;
-}
-
-.hero{
-padding:90px 20px;
-font-size:34px;
-letter-spacing:.5px;
-}
-
-.section{
-padding:var(--spacing-mobile) 22px;
-}
-
-.profile-grid{
 gap:40px;
-}
-
-.profile-photo{
-border-radius:18px;
-}
-
-.profile-text{
-font-size:17px;
-}
-
-.profile-text p{
-margin-bottom:18px;
-}
-
-.mm-section{
-margin-top:80px;
-}
-
-.mm-wrapper img{
-border-radius:18px;
-}
-
-.clients{
-margin-top:100px;
-}
-
-.clients h2{
-font-size:20px;
-margin-bottom:35px;
-}
-
-.client-logos{
-gap:28px;
+justify-content:center;
 }
 
 .client-logos img{
-height:42px;
-}
-
+height:60px;
+opacity:.85;
 }
 
 </style>
@@ -284,45 +123,48 @@ height:42px;
 
 <header>
 <div class="logo">
-<img src="img/logo.png" alt="Logo">
+<img src="img/logo.png">
 </div>
 
 <nav>
-<div class="nav-links">
-<a href="index.html" id="nav-services">Usługi</a>
-<a href="profile.html" id="nav-about">O mnie</a>
-<a href="#" id="nav-contact">Kontakt</a>
-</div>
+<a href="index.html">Services</a>
+<a href="profile.html">Profile</a>
+<a href="index.html#contact">Contact</a>
 
 <div class="lang">
-<button data-lang="pl" class="active">PL</button>
-<button data-lang="en">GB</button>
-<button data-lang="de">DE</button>
+<button>PL</button>
+<button class="active">EN</button>
+<button>DE</button>
 </div>
-
-<a href="index.html" class="home-link" id="home-link">← Strona główna</a>
 </nav>
 </header>
 
-<div class="hero" id="hero-title">O mnie</div>
+<div class="hero">
+Executive Leadership. Operational Execution.
+</div>
 
 <section class="section">
 
 <div class="profile-grid">
-<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
-<div class="profile-text" id="profile-text"></div>
-</div>
 
-<div class="mm-section">
-<div class="mm-wrapper">
-<img src="Profile_MM_PL.png" id="mm-pl">
-<img src="Profile_MM_GB.png" id="mm-en">
-<img src="Profile_MM_GER.png" id="mm-de">
+<img src="img/Konrad-Czachor.jpg" class="profile-photo">
+
+<div class="profile-text">
+
+<h2>Konrad Czachor</h2>
+
+<p>I support manufacturing companies in critical phases: performance decline, restructuring, post-acquisition integration and rapid scaling.</p>
+
+<p>My focus areas include operational turnaround, production performance recovery, plant stabilization and cross-border execution within CEE.</p>
+
+<p>Hands-on leadership. Clear metrics. Measurable results.</p>
+
 </div>
 </div>
 
 <div class="clients">
-<h2 id="clients-title">Wybrane realizacje / Klienci</h2>
+
+<h2>Selected Projects / Clients</h2>
 
 <div class="client-logos">
 <img src="img/BMW.png">
@@ -331,19 +173,11 @@ height:42px;
 <img src="img/Garmin.png">
 <img src="img/Magna.jpg">
 <img src="img/Nidec.png">
-<img src="img/KK windsolutions.png">
-<img src="img/OC.png">
-<img src="img/alps_electric_logo.jpg">
 </div>
+
 </div>
 
 </section>
-
-<script>
-
-/* JS pozostaje bez zmian — funkcjonalność taka sama */
-
-</script>
 
 </body>
 </html>
