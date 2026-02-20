@@ -1,4 +1,5 @@
 <script>
+
 const dict = {
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
@@ -34,29 +35,34 @@ text:[
 
 function setLang(lang){
 
-localStorage.setItem("lang",lang);
+localStorage.setItem("lang", lang);
 
+/* aktywny przycisk */
 document.querySelectorAll(".lang button")
-.forEach(b=>b.classList.remove("active"));
+.forEach(btn => btn.classList.remove("active"));
 
 document.querySelector(`[data-lang="${lang}"]`)
 .classList.add("active");
 
+/* menu */
 document.getElementById("navServices").innerText = dict[lang].nav[0];
-document.getElementById("navAbout").innerText = dict[lang].nav[1];
-document.getElementById("navContact").innerText = dict[lang].nav[2];
+document.getElementById("navAbout").innerText    = dict[lang].nav[1];
+document.getElementById("navContact").innerText  = dict[lang].nav[2];
 
+/* nagłówek */
 document.getElementById("title").innerText = dict[lang].title;
 
+/* tekst */
 dict[lang].text.forEach((t,i)=>{
 document.getElementById("p"+(i+1)).innerText = t;
 });
 
 }
 
-/* Ustawiamy zdjęcie na stałe */
+/* stałe zdjęcie profilowe */
 document.getElementById("profilePhoto").src = "img/Konrad-Czachor.jpg";
 
+/* obsługa kliknięć języka */
 document.querySelectorAll(".lang button")
 .forEach(btn=>{
 btn.addEventListener("click",()=>{
@@ -64,5 +70,7 @@ setLang(btn.dataset.lang);
 });
 });
 
+/* start */
 setLang(localStorage.getItem("lang") || "pl");
+
 </script>
