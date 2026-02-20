@@ -62,7 +62,7 @@ letter-spacing:.5px;
 color:var(--text);
 }
 
-.lang button, .mode-toggle{
+.lang button,.mode-toggle{
 border:none;
 background:none;
 cursor:pointer;
@@ -85,7 +85,7 @@ font-weight:600;
 /* HERO */
 
 .hero{
-padding:160px 20px;
+padding:170px 20px;
 text-align:center;
 max-width:1000px;
 margin:auto;
@@ -140,7 +140,7 @@ font-size:14px;
 color:var(--muted);
 }
 
-/* SECTION */
+/* SERVICES */
 
 .section{
 padding:150px 20px;
@@ -174,7 +174,7 @@ font-size:17px;
 background:var(--primary);
 color:#fff;
 text-align:center;
-padding:130px 20px;
+padding:140px 20px;
 }
 
 .footer a{
@@ -212,10 +212,11 @@ header{padding:20px;}
 
 <header>
 <div class="logo"><img src="img/logo.png"></div>
+
 <nav>
 <a href="#services" data-i18n="nav_services">Services</a>
 <a href="profile.html" data-i18n="nav_profile">Profile</a>
-<a href="#contact" data-i18n="nav_contact">Contact</a>
+<a href="contact.html" data-i18n="nav_contact">Contact</a>
 
 <div class="lang">
 <button data-lang="pl">PL</button>
@@ -228,9 +229,15 @@ header{padding:20px;}
 </header>
 
 <section class="hero fade">
-<h1 data-i18n="hero_title">Executive Interim & Value Creation in Manufacturing</h1>
-<p data-i18n="hero_sub">Operational stabilization, EBITDA protection and performance acceleration for Private Equity and Automotive Tier 1–2.</p>
-<a href="#contact" class="cta" data-i18n="hero_cta">Schedule Executive Discussion</a>
+<h1 data-i18n="hero_title">
+Executive Interim & Value Creation in Manufacturing
+</h1>
+<p data-i18n="hero_sub">
+Operational stabilization, EBITDA protection and performance acceleration for Private Equity and Automotive Tier 1–2.
+</p>
+<a href="contact.html" class="cta" data-i18n="hero_cta">
+Schedule Executive Discussion
+</a>
 </section>
 
 <section class="metrics fade">
@@ -267,14 +274,18 @@ header{padding:20px;}
 </div>
 </section>
 
-<section class="footer fade" id="contact">
-<h2 data-i18n="footer_title">Ready to protect and scale enterprise value?</h2>
-<a href="mailto:kontakt@kc-adp.com" data-i18n="footer_cta">Contact Directly</a>
+<section class="footer fade">
+<h2 data-i18n="footer_title">
+Ready to protect and scale enterprise value?
+</h2>
+<a href="contact.html" data-i18n="footer_cta">
+Contact Directly
+</a>
 </section>
 
 <script>
 
-/* Fade-in */
+/* Fade */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){entry.target.classList.add("visible");}
@@ -354,6 +365,7 @@ el.textContent=translations[lang][el.dataset.i18n];
 });
 });
 });
+
 </script>
 
 </body>
