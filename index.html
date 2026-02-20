@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konrad Czachor | Executive Interim & PE Operations</title>
+<title>Konrad Czachor | Executive Interim</title>
 
 <style>
 
@@ -12,6 +12,15 @@
 --text:#111;
 --muted:#6b7280;
 --bg:#f7f8fa;
+--card:#ffffff;
+}
+
+body.dark{
+--primary:#1e3a5f;
+--text:#f3f4f6;
+--muted:#9ca3af;
+--bg:#0f172a;
+--card:#111827;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -20,6 +29,7 @@ body{
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
+transition:background .3s,color .3s;
 line-height:1.6;
 }
 
@@ -30,8 +40,12 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:22px 60px;
-background:#fff;
-border-bottom:1px solid #e5e7eb;
+background:var(--card);
+border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+body.dark header{
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo img{height:58px;}
@@ -39,23 +53,22 @@ border-bottom:1px solid #e5e7eb;
 nav{
 display:flex;
 align-items:center;
-gap:40px;
+gap:30px;
 }
 
 nav a{
 text-decoration:none;
 font-size:14px;
-letter-spacing:.6px;
-color:#111;
+color:var(--text);
 }
 
-.lang button{
+.lang button, .mode-toggle{
 border:none;
 background:none;
 cursor:pointer;
 font-size:13px;
-letter-spacing:.6px;
 opacity:.6;
+color:var(--text);
 }
 
 .lang button.active{
@@ -63,10 +76,14 @@ opacity:1;
 font-weight:600;
 }
 
+.mode-toggle{
+opacity:1;
+font-weight:600;
+}
+
 /* HERO */
 
 .hero{
-background:#fff;
 padding:140px 20px;
 text-align:center;
 max-width:1100px;
@@ -75,7 +92,6 @@ margin:auto;
 
 .hero h1{
 font-size:48px;
-font-weight:600;
 margin-bottom:25px;
 }
 
@@ -93,6 +109,12 @@ color:#fff;
 text-decoration:none;
 border-radius:40px;
 font-weight:600;
+transition:.3s;
+}
+
+.cta:hover{
+transform:translateY(-2px);
+opacity:.9;
 }
 
 /* METRICS */
@@ -102,7 +124,10 @@ display:flex;
 justify-content:center;
 gap:120px;
 padding:100px 20px;
-background:#fff;
+background:var(--card);
+}
+
+.metric{
 text-align:center;
 }
 
@@ -115,7 +140,6 @@ color:var(--primary);
 font-size:14px;
 margin-top:10px;
 color:var(--muted);
-letter-spacing:.5px;
 }
 
 /* SERVICES */
@@ -127,9 +151,9 @@ margin:auto;
 }
 
 .section h2{
+text-align:center;
 font-size:34px;
 margin-bottom:70px;
-text-align:center;
 }
 
 .service{
@@ -137,16 +161,14 @@ margin-bottom:60px;
 }
 
 .service h3{
-font-size:20px;
 margin-bottom:12px;
 }
 
 .service p{
 color:var(--muted);
-font-size:17px;
 }
 
-/* FOOTER CTA */
+/* FOOTER */
 
 .footer-cta{
 background:var(--primary);
@@ -166,10 +188,23 @@ text-decoration:none;
 font-weight:600;
 }
 
+/* MICRO ANIMATION */
+
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:all .8s ease;
+}
+
+.fade.visible{
+opacity:1;
+transform:translateY(0);
+}
+
 @media(max-width:768px){
 header{padding:20px;}
-.hero h1{font-size:34px;}
 .metrics{flex-direction:column;gap:60px;}
+.hero h1{font-size:34px;}
 }
 
 </style>
@@ -182,128 +217,95 @@ header{padding:20px;}
 </div>
 
 <nav>
-<a href="#services" data-i18n="nav_services">Services</a>
-<a href="profile.html" data-i18n="nav_profile">Profile</a>
-<a href="#contact" data-i18n="nav_contact">Contact</a>
+<a href="#services">Services</a>
+<a href="profile.html">Profile</a>
+<a href="#contact">Contact</a>
 
 <div class="lang">
 <button data-lang="pl">PL</button>
 <button data-lang="en" class="active">EN</button>
 <button data-lang="de">DE</button>
 </div>
+
+<button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
-<section class="hero">
-<h1 data-i18n="hero_title">
-Executive Interim & Value Creation in Manufacturing
-</h1>
-<p data-i18n="hero_sub">
-Operational stabilization, EBITDA protection and performance acceleration for Private Equity and Automotive Tier 1–2.
-</p>
-<a href="#contact" class="cta" data-i18n="hero_cta">Schedule Executive Discussion</a>
+<section class="hero fade">
+<h1>Executive Interim & Value Creation in Manufacturing</h1>
+<p>Operational stabilization, EBITDA protection and performance acceleration for Private Equity and Automotive Tier 1–2.</p>
+<a href="#contact" class="cta">Schedule Executive Discussion</a>
 </section>
 
-<section class="metrics">
+<section class="metrics fade">
 <div class="metric">
 <h3>80+</h3>
-<p data-i18n="metric_1">Interim Experts Network</p>
+<p>Interim Experts Network</p>
 </div>
 <div class="metric">
 <h3>CEE</h3>
-<p data-i18n="metric_2">Cross-Border Plant Execution</p>
+<p>Cross-Border Plant Execution</p>
 </div>
 <div class="metric">
 <h3>Board</h3>
-<p data-i18n="metric_3">Level Reporting & Governance</p>
+<p>Level Reporting & Governance</p>
 </div>
 </section>
 
-<section class="section" id="services">
-<h2 data-i18n="services_title">Core Engagement Areas</h2>
+<section class="section fade" id="services">
+<h2>Core Engagement Areas</h2>
 
 <div class="service">
-<h3 data-i18n="s1_title">Turnaround & Stabilization</h3>
-<p data-i18n="s1_text">
-Rapid plant assessment, liquidity protection, supply chain recovery and operational reset within 90 days.
-</p>
+<h3>Turnaround & Stabilization</h3>
+<p>Rapid plant assessment, liquidity protection and operational reset within 90 days.</p>
 </div>
 
 <div class="service">
-<h3 data-i18n="s2_title">Private Equity Operations Support</h3>
-<p data-i18n="s2_text">
-Pre-acquisition operational due diligence, post-deal integration and value creation roadmap execution.
-</p>
+<h3>Private Equity Operations Support</h3>
+<p>Operational due diligence and post-acquisition value creation execution.</p>
 </div>
 
 <div class="service">
-<h3 data-i18n="s3_title">Tier 1 / Tier 2 Performance Recovery</h3>
-<p data-i18n="s3_text">
-Cost reduction, productivity recovery, KPI governance and OEM alignment.
-</p>
+<h3>Tier 1 / Tier 2 Performance Recovery</h3>
+<p>Cost reduction, KPI governance and OEM alignment.</p>
 </div>
 
 </section>
 
-<section class="footer-cta" id="contact">
-<h2 data-i18n="footer_title">Ready to protect and scale enterprise value?</h2>
-<a href="mailto:kontakt@kc-adp.com" data-i18n="footer_cta">Contact Directly</a>
+<section class="footer-cta fade" id="contact">
+<h2>Ready to protect and scale enterprise value?</h2>
+<a href="mailto:kontakt@kc-adp.com">Contact Directly</a>
 </section>
 
 <script>
 
-const translations = {
-pl:{
-nav_services:"Usługi",
-nav_profile:"Profil",
-nav_contact:"Kontakt",
-hero_title:"Executive Interim & Kreowanie Wartości w Produkcji",
-hero_sub:"Stabilizacja operacyjna, ochrona EBITDA i przyspieszenie wyników dla Private Equity oraz Automotive Tier 1–2.",
-hero_cta:"Umów Rozmowę Zarządczą",
-metric_1:"Sieć 80+ Interim Managerów",
-metric_2:"Realizacje Zakładów CEE",
-metric_3:"Raportowanie na poziomie Zarządu",
-services_title:"Kluczowe Obszary Współpracy",
-s1_title:"Turnaround i Stabilizacja",
-s1_text:"Szybka diagnoza zakładu, ochrona płynności, odbudowa łańcucha dostaw i reset operacyjny w 90 dni.",
-s2_title:"Wsparcie Operacyjne Private Equity",
-s2_text:"Due diligence operacyjne, integracja po przejęciu oraz realizacja planu wzrostu wartości.",
-s3_title:"Poprawa Wyników Tier 1 / Tier 2",
-s3_text:"Redukcja kosztów, odbudowa produktywności i zarządzanie KPI zgodnie z wymaganiami OEM.",
-footer_title:"Gotowy na ochronę i wzrost wartości przedsiębiorstwa?",
-footer_cta:"Skontaktuj się Bezpośrednio"
-},
-de:{
-nav_services:"Leistungen",
-nav_profile:"Profil",
-nav_contact:"Kontakt",
-hero_title:"Executive Interim & Wertsteigerung in der Produktion",
-hero_sub:"Operative Stabilisierung, EBITDA-Sicherung und Performance-Beschleunigung für Private Equity und Automotive Tier 1–2.",
-hero_cta:"Strategisches Gespräch Vereinbaren",
-metric_1:"Netzwerk von 80+ Interim-Experten",
-metric_2:"CEE-Werkseinsätze",
-metric_3:"Berichterstattung auf Vorstandsebene",
-services_title:"Kernkompetenzen",
-s1_title:"Turnaround & Stabilisierung",
-s1_text:"Schnelle Werksanalyse, Liquiditätssicherung und operative Neuausrichtung innerhalb von 90 Tagen.",
-s2_title:"Private Equity Operations Support",
-s2_text:"Operative Due Diligence und Post-Merger Integration mit Fokus auf Wertsteigerung.",
-s3_title:"Performance Recovery Tier 1 / 2",
-s3_text:"Kostenoptimierung, Produktivitätssteigerung und KPI-Governance.",
-footer_title:"Bereit, Unternehmenswert zu sichern und zu steigern?",
-footer_cta:"Direkt Kontaktieren"
+/* Fade-in on scroll */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
 }
-};
+});
+},{threshold:.2});
 
-document.querySelectorAll(".lang button").forEach(btn=>{
-btn.addEventListener("click",()=>{
-document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-const lang=btn.dataset.lang;
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.textContent=translations[lang][el.dataset.i18n];
-});
-});
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+/* Dark mode */
+const toggle=document.getElementById("modeToggle");
+if(localStorage.getItem("mode")==="dark"){
+document.body.classList.add("dark");
+toggle.textContent="Light";
+}
+
+toggle.addEventListener("click",()=>{
+document.body.classList.toggle("dark");
+if(document.body.classList.contains("dark")){
+localStorage.setItem("mode","dark");
+toggle.textContent="Light";
+}else{
+localStorage.setItem("mode","light");
+toggle.textContent="Dark";
+}
 });
 
 </script>
