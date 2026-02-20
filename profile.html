@@ -57,10 +57,19 @@ border:none;
 .hero{
 background:#1d3c6a;
 color:#fff;
-padding:120px 20px;
+padding:80px 20px 120px 20px;
 text-align:center;
 font-size:48px;
 font-weight:700;
+}
+
+.hero a{
+color:#ffffff;
+text-decoration:none;
+font-size:16px;
+opacity:0.85;
+display:inline-block;
+margin-bottom:20px;
 }
 
 .section{
@@ -147,7 +156,7 @@ transform:scale(1.05);
 
 @media(max-width:768px){
 .section{padding:60px 20px;}
-.hero{padding:80px 20px;font-size:32px;}
+.hero{font-size:32px;}
 .profile-text{font-size:18px;}
 .client-logos{gap:25px;}
 .client-logos img{height:45px;}
@@ -175,7 +184,10 @@ transform:scale(1.05);
 </nav>
 </header>
 
-<div class="hero" id="hero-title">O mnie</div>
+<div class="hero">
+<a href="index.html" id="home-link">← Strona główna</a>
+<div id="hero-title">O mnie</div>
+</div>
 
 <section class="section">
 
@@ -217,6 +229,7 @@ const content={
 pl:{
 title:"O mnie",
 clients:"Wybrane realizacje / Klienci",
+home:"← Strona główna",
 nav:{services:"Usługi",about:"O mnie",contact:"Kontakt"},
 text:`
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
@@ -227,6 +240,7 @@ text:`
 en:{
 title:"About me",
 clients:"Selected Projects / Clients",
+home:"← Home",
 nav:{services:"Services",about:"About me",contact:"Contact"},
 text:`
 <p>I have been working in industrial and international environments for over 20 years.</p>
@@ -237,6 +251,7 @@ text:`
 de:{
 title:"Über mich",
 clients:"Ausgewählte Projekte / Kunden",
+home:"← Startseite",
 nav:{services:"Leistungen",about:"Über mich",contact:"Kontakt"},
 text:`
 <p>Seit über 20 Jahren arbeite ich im industriellen und internationalen Umfeld.</p>
@@ -250,6 +265,7 @@ const buttons=document.querySelectorAll(".lang button");
 const profileText=document.getElementById("profile-text");
 const heroTitle=document.getElementById("hero-title");
 const clientsTitle=document.getElementById("clients-title");
+const homeLink=document.getElementById("home-link");
 
 const navServices=document.getElementById("nav-services");
 const navAbout=document.getElementById("nav-about");
@@ -266,6 +282,7 @@ function setLang(lang){
 heroTitle.innerText=content[lang].title;
 clientsTitle.innerText=content[lang].clients;
 profileText.innerHTML=content[lang].text;
+homeLink.innerText=content[lang].home;
 
 navServices.innerText=content[lang].nav.services;
 navAbout.innerText=content[lang].nav.about;
