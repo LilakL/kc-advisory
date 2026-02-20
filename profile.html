@@ -38,6 +38,21 @@ text-decoration:none;
 color:#000;
 }
 
+.lang button{
+margin-left:10px;
+padding:6px 12px;
+border-radius:8px;
+border:1px solid #ccc;
+background:#f0f0f0;
+cursor:pointer;
+}
+
+.lang button.active{
+background:#1d3c6a;
+color:#fff;
+border:none;
+}
+
 .hero{
 height:300px;
 background:url('img/background_profile.jpg') center/cover no-repeat;
@@ -76,17 +91,15 @@ line-height:1.8;
 
 .mm-section{
 margin-top:80px;
-display:flex;
-flex-direction:column;
-gap:40px;
+text-align:center;
 }
 
 .mm-section img{
 width:100%;
 max-width:900px;
-margin:auto;
 border-radius:20px;
 box-shadow:0 15px 30px rgba(0,0,0,0.1);
+display:none;
 }
 
 .clients{
@@ -142,10 +155,17 @@ max-width:400px;
 <a href="index.html">Usługi</a>
 <a href="profile.html">O mnie</a>
 <a href="#">Kontakt</a>
+
+<div class="lang">
+<button data-lang="pl" class="active">PL</button>
+<button data-lang="en">GB</button>
+<button data-lang="de">DE</button>
+</div>
+
 </nav>
 </header>
 
-<div class="hero">
+<div class="hero" id="title">
 O mnie
 </div>
 
@@ -155,7 +175,7 @@ O mnie
 
 <img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
 
-<div class="profile-text">
+<div class="profile-text" id="text">
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
 <p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
 <p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
@@ -165,9 +185,9 @@ O mnie
 </div>
 
 <div class="mm-section">
-<img src="Profile_MM_PL.png" alt="Profil PL">
-<img src="Profile_MM_GB.png" alt="Profil GB">
-<img src="Profile_MM_GER.png" alt="Profil GER">
+<img src="Profile_MM_PL.png" id="mm-pl">
+<img src="Profile_MM_GB.png" id="mm-en">
+<img src="Profile_MM_GER.png" id="mm-de">
 </div>
 
 <div class="clients">
@@ -175,20 +195,50 @@ O mnie
 <h2>Wybrane realizacje / Klienci</h2>
 
 <div class="client-logos">
-<img src="img/BMW.png" alt="BMW">
-<img src="img/KIRCHHOFF_Automotive_Logo.svg.png" alt="Kirchhoff">
-<img src="img/Delphi.png" alt="Delphi">
-<img src="img/Garmin.png" alt="Garmin">
-<img src="img/Magna.jpg" alt="Magna">
-<img src="img/Nidec.png" alt="Nidec">
-<img src="img/KK windsolutions.png" alt="KK Wind">
-<img src="img/OC.png" alt="OC">
-<img src="img/alps_electric_logo.jpg" alt="Alps Electric">
+<img src="img/BMW.png">
+<img src="img/KIRCHHOFF_Automotive_Logo.svg.png">
+<img src="img/Delphi.png">
+<img src="img/Garmin.png">
+<img src="img/Magna.jpg">
+<img src="img/Nidec.png">
+<img src="img/KK windsolutions.png">
+<img src="img/OC.png">
+<img src="img/alps_electric_logo.jpg">
 </div>
 
 </div>
 
 </section>
+
+<script>
+
+const buttons = document.querySelectorAll(".lang button");
+const images = {
+pl: document.getElementById("mm-pl"),
+en: document.getElementById("mm-en"),
+de: document.getElementById("mm-de")
+};
+
+function setLang(lang){
+
+Object.values(images).forEach(img => img.style.display="none");
+images[lang].style.display="block";
+
+buttons.forEach(btn => btn.classList.remove("active"));
+document.querySelector(`[data-lang="${lang}"]`).classList.add("active");
+
+localStorage.setItem("lang", lang);
+}
+
+buttons.forEach(btn=>{
+btn.addEventListener("click",()=>{
+setLang(btn.dataset.lang);
+});
+});
+
+setLang(localStorage.getItem("lang") || "pl");
+
+</script>
 
 </body>
 </html>
