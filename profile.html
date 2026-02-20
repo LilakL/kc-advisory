@@ -11,6 +11,7 @@ body{
 margin:0;
 font-family: Arial, sans-serif;
 background:#f4f4f4;
+color:#222;
 }
 
 header{
@@ -37,15 +38,6 @@ text-decoration:none;
 color:#000;
 }
 
-.lang button{
-margin-left:10px;
-padding:6px 12px;
-border-radius:8px;
-border:1px solid #ccc;
-background:#f0f0f0;
-cursor:pointer;
-}
-
 .hero{
 height:300px;
 background:url('img/background_profile.jpg') center/cover no-repeat;
@@ -57,24 +49,83 @@ font-size:48px;
 font-weight:700;
 }
 
-.content{
+.section{
 max-width:1200px;
 margin:80px auto;
-display:flex;
-gap:60px;
-align-items:center;
 padding:0 40px;
 }
 
-.content img{
-width:450px;
+.profile-grid{
+display:flex;
+gap:60px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.profile-photo{
+width:400px;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
-.text{
+.profile-text{
+flex:1;
 font-size:20px;
 line-height:1.8;
+}
+
+.mm-section{
+margin-top:80px;
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+.mm-section img{
+width:100%;
+max-width:900px;
+margin:auto;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+.clients{
+margin-top:100px;
+text-align:center;
+}
+
+.clients h2{
+margin-bottom:40px;
+font-size:28px;
+}
+
+.client-logos{
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+justify-content:center;
+align-items:center;
+}
+
+.client-logos img{
+height:60px;
+opacity:0.8;
+transition:0.3s;
+}
+
+.client-logos img:hover{
+opacity:1;
+transform:scale(1.05);
+}
+
+@media(max-width:900px){
+.profile-grid{
+flex-direction:column;
+}
+.profile-photo{
+width:100%;
+max-width:400px;
+}
 }
 
 </style>
@@ -90,13 +141,7 @@ line-height:1.8;
 <nav>
 <a href="index.html">Usługi</a>
 <a href="profile.html">O mnie</a>
-<a href="contact.html">Kontakt</a>
-
-<div class="lang">
-<button>PL</button>
-<button>GB</button>
-<button>DE</button>
-</div>
+<a href="#">Kontakt</a>
 </nav>
 </header>
 
@@ -104,15 +149,43 @@ line-height:1.8;
 O mnie
 </div>
 
-<section class="content">
+<section class="section">
 
-<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor">
+<div class="profile-grid">
 
-<div class="text">
+<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
+
+<div class="profile-text">
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
 <p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
 <p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
 <p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
+</div>
+
+</div>
+
+<div class="mm-section">
+<img src="Profile_MM_PL.png" alt="Profil PL">
+<img src="Profile_MM_GB.png" alt="Profil GB">
+<img src="Profile_MM_GER.png" alt="Profil GER">
+</div>
+
+<div class="clients">
+
+<h2>Wybrane realizacje / Klienci</h2>
+
+<div class="client-logos">
+<img src="img/BMW.png" alt="BMW">
+<img src="img/KIRCHHOFF_Automotive_Logo.svg.png" alt="Kirchhoff">
+<img src="img/Delphi.png" alt="Delphi">
+<img src="img/Garmin.png" alt="Garmin">
+<img src="img/Magna.jpg" alt="Magna">
+<img src="img/Nidec.png" alt="Nidec">
+<img src="img/KK windsolutions.png" alt="KK Wind">
+<img src="img/OC.png" alt="OC">
+<img src="img/alps_electric_logo.jpg" alt="Alps Electric">
+</div>
+
 </div>
 
 </section>
