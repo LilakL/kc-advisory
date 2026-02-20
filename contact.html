@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Contact</title>
+
+<style>
+:root{
+--primary:#0f2e4f;
+--text:#111827;
+--muted:#6b7280;
+--bg:#f7f8fa;
+--card:#ffffff;
+}
+
+body.dark{
+--primary:#1e3a5f;
+--text:#e5e7eb;
+--muted:#9ca3af;
+--bg:#0b1220;
+--card:#111827;
+}
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:.3s;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:24px 60px;
+background:var(--card);
+}
+
+.logo img{height:56px;}
+
+nav a{
+text-decoration:none;
+font-size:14px;
+color:var(--text);
+}
+
+.mode-toggle{
+border:none;
+background:none;
+cursor:pointer;
+font-size:13px;
+}
+
+.section{
+max-width:700px;
+margin:auto;
+padding:160px 20px;
+text-align:center;
+}
+
+.section h1{
+font-size:36px;
+margin-bottom:30px;
+}
+
+.section p{
+color:var(--muted);
+margin-bottom:60px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+input, textarea{
+padding:16px;
+border-radius:10px;
+border:1px solid #d1d5db;
+font-size:16px;
+background:var(--card);
+color:var(--text);
+}
+
+textarea{min-height:140px;}
+
+button{
+padding:16px;
+border:none;
+background:var(--primary);
+color:#fff;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+font-weight:600;
+}
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:.8s ease;
+}
+.fade.visible{
+opacity:1;
+transform:translateY(0);
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo"><img src="img/logo.png"></div>
+<nav>
+<a href="index.html">← Back</a>
+<button class="mode-toggle" id="modeToggle">Dark</button>
+</nav>
+</header>
+
+<section class="section fade">
+
+<h1>Executive Contact</h1>
+<p>Confidential discussion regarding turnaround, stabilization or value creation.</p>
+
+<form>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email Address" required>
+<input type="text" placeholder="Company">
+<textarea placeholder="Brief description of your situation"></textarea>
+<button type="submit">Request Executive Discussion</button>
+</form>
+
+</section>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");}});
+},{threshold:.15});
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+const toggle=document.getElementById("modeToggle");
+if(localStorage.getItem("mode")==="dark"){
+document.body.classList.add("dark");
+toggle.textContent="Light";
+}
+toggle.addEventListener("click",()=>{
+document.body.classList.toggle("dark");
+if(document.body.classList.contains("dark")){
+localStorage.setItem("mode","dark");
+toggle.textContent="Light";
+}else{
+localStorage.setItem("mode","light");
+toggle.textContent="Dark";
+}
+});
+</script>
+
+</body>
+</html>
