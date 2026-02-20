@@ -7,9 +7,13 @@
 
 <style>
 
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
-font-family: Arial, sans-serif;
+font-family:Arial, sans-serif;
 background:#f4f4f4;
 color:#222;
 }
@@ -20,17 +24,19 @@ justify-content:space-between;
 align-items:center;
 padding:25px 40px;
 background:#fff;
+flex-wrap:wrap;
 }
 
 .logo img{
-height:140px;
+height:120px;
 }
 
 nav{
 display:flex;
 align-items:center;
-gap:40px;
+gap:30px;
 font-weight:600;
+flex-wrap:wrap;
 }
 
 nav a{
@@ -54,56 +60,72 @@ border:none;
 }
 
 .hero{
-height:300px;
+height:280px;
 background:url('img/background_profile.jpg') center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 color:#fff;
-font-size:48px;
+font-size:42px;
 font-weight:700;
+text-align:center;
+padding:20px;
 }
 
 .section{
-max-width:1200px;
-margin:80px auto;
-padding:0 40px;
+width:100%;
+padding:80px 40px;
 }
 
 .profile-grid{
 display:flex;
 gap:60px;
 align-items:center;
+justify-content:center;
 flex-wrap:wrap;
+max-width:1400px;
+margin:auto;
 }
 
 .profile-photo{
 width:400px;
+max-width:100%;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
 .profile-text{
 flex:1;
+min-width:300px;
 font-size:20px;
 line-height:1.8;
 }
 
 .mm-section{
-margin-top:80px;
-text-align:center;
+width:100%;
+margin-top:100px;
+display:flex;
+justify-content:center;
 }
 
-.mm-section img{
+.mm-wrapper{
 width:100%;
-max-width:900px;
+max-width:1200px;
+display:flex;
+justify-content:center;
+}
+
+.mm-wrapper img{
+width:100%;
+max-width:1100px;
+height:auto;
 border-radius:20px;
-box-shadow:0 15px 30px rgba(0,0,0,0.1);
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
 display:none;
 }
 
 .clients{
-margin-top:100px;
+margin-top:120px;
 text-align:center;
 }
 
@@ -118,11 +140,12 @@ flex-wrap:wrap;
 gap:40px;
 justify-content:center;
 align-items:center;
+padding:0 20px;
 }
 
 .client-logos img{
 height:60px;
-opacity:0.8;
+opacity:0.85;
 transition:0.3s;
 }
 
@@ -131,14 +154,47 @@ opacity:1;
 transform:scale(1.05);
 }
 
-@media(max-width:900px){
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+header{
+padding:20px;
+}
+
+.section{
+padding:60px 20px;
+}
+
 .profile-grid{
-flex-direction:column;
+gap:40px;
 }
-.profile-photo{
-width:100%;
-max-width:400px;
+
+.hero{
+height:220px;
+font-size:32px;
 }
+
+.profile-text{
+font-size:18px;
+}
+
+.mm-wrapper{
+max-width:100%;
+}
+
+.mm-wrapper img{
+border-radius:14px;
+}
+
+.client-logos{
+gap:25px;
+}
+
+.client-logos img{
+height:45px;
+}
+
 }
 
 </style>
@@ -161,11 +217,10 @@ max-width:400px;
 <button data-lang="en">GB</button>
 <button data-lang="de">DE</button>
 </div>
-
 </nav>
 </header>
 
-<div class="hero" id="title">
+<div class="hero">
 O mnie
 </div>
 
@@ -175,7 +230,7 @@ O mnie
 
 <img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
 
-<div class="profile-text" id="text">
+<div class="profile-text">
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
 <p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
 <p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
@@ -185,13 +240,14 @@ O mnie
 </div>
 
 <div class="mm-section">
+<div class="mm-wrapper">
 <img src="Profile_MM_PL.png" id="mm-pl">
 <img src="Profile_MM_GB.png" id="mm-en">
 <img src="Profile_MM_GER.png" id="mm-de">
 </div>
+</div>
 
 <div class="clients">
-
 <h2>Wybrane realizacje / Klienci</h2>
 
 <div class="client-logos">
@@ -220,7 +276,6 @@ de: document.getElementById("mm-de")
 };
 
 function setLang(lang){
-
 Object.values(images).forEach(img => img.style.display="none");
 images[lang].style.display="block";
 
