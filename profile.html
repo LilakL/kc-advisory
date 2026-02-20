@@ -18,7 +18,7 @@ color:#222;
 header{
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:flex-start;
 padding:25px 40px;
 background:#ffffff;
 flex-wrap:wrap;
@@ -28,19 +28,30 @@ flex-wrap:wrap;
 
 nav{
 display:flex;
-align-items:center;
-gap:30px;
+flex-direction:column;
+align-items:flex-end;
+gap:10px;
 font-weight:600;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
 flex-wrap:wrap;
 }
 
-nav a{
+.nav-links a{
 text-decoration:none;
 color:#000;
 }
 
+.lang{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
 .lang button{
-margin-left:10px;
 padding:6px 12px;
 border-radius:8px;
 border:1px solid #ccc;
@@ -54,22 +65,21 @@ color:#fff;
 border:none;
 }
 
+.home-link{
+font-size:14px;
+opacity:0.8;
+text-decoration:none;
+color:#1d3c6a;
+margin-top:4px;
+}
+
 .hero{
 background:#1d3c6a;
 color:#fff;
-padding:80px 20px 120px 20px;
+padding:120px 20px;
 text-align:center;
 font-size:48px;
 font-weight:700;
-}
-
-.hero a{
-color:#ffffff;
-text-decoration:none;
-font-size:16px;
-opacity:0.85;
-display:inline-block;
-margin-bottom:20px;
 }
 
 .section{
@@ -155,6 +165,16 @@ transform:scale(1.05);
 }
 
 @media(max-width:768px){
+
+header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+nav{
+align-items:flex-start;
+}
+
 .section{padding:60px 20px;}
 .hero{font-size:32px;}
 .profile-text{font-size:18px;}
@@ -172,22 +192,25 @@ transform:scale(1.05);
 </div>
 
 <nav>
+
+<div class="nav-links">
 <a href="index.html" id="nav-services">Usługi</a>
 <a href="profile.html" id="nav-about">O mnie</a>
 <a href="#" id="nav-contact">Kontakt</a>
+</div>
 
 <div class="lang">
 <button data-lang="pl" class="active">PL</button>
 <button data-lang="en">GB</button>
 <button data-lang="de">DE</button>
 </div>
+
+<a href="index.html" class="home-link" id="home-link">← Strona główna</a>
+
 </nav>
 </header>
 
-<div class="hero">
-<a href="index.html" id="home-link">← Strona główna</a>
-<div id="hero-title">O mnie</div>
-</div>
+<div class="hero" id="hero-title">O mnie</div>
 
 <section class="section">
 
