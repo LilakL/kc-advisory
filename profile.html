@@ -22,10 +22,7 @@ box-shadow:0 2px 10px rgba(0,0,0,.1);
 z-index:10
 }
 
-.logo img{
-height:140px;
-display:block;
-}
+.logo img{height:140px}
 
 .right-menu{
 display:flex;
@@ -104,13 +101,7 @@ border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
-.profile-text p{
-font-size:18px;
-line-height:1.7;
-margin-bottom:24px;
-}
-
-/* TRUSTED BY */
+/* TRUSTED */
 .trusted{
 padding:80px 40px;
 background:#fff;
@@ -153,10 +144,8 @@ text-align:center;
 }
 
 @media(max-width:900px){
-.logo img{height:90px}
-header{flex-direction:column;align-items:center}
-.right-menu{align-items:center}
 .profile-inner{grid-template-columns:1fr}
+.logo img{height:90px}
 }
 </style>
 </head>
@@ -165,7 +154,7 @@ header{flex-direction:column;align-items:center}
 
 <header>
 <div class="logo">
-<img src="img/logo.png" alt="Konrad Czachor Advisory & Partners">
+<img src="img/logo.png" alt="Logo">
 </div>
 
 <div class="right-menu">
@@ -191,7 +180,7 @@ header{flex-direction:column;align-items:center}
 <div class="profile-inner">
 
 <div class="profile-img">
-<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor">
+<img id="profilePhoto" src="Profile_MM_PL.png" alt="Konrad Czachor">
 </div>
 
 <div class="profile-text">
@@ -206,7 +195,6 @@ header{flex-direction:column;align-items:center}
 
 <section class="trusted">
 <h2 id="trustedTitle"></h2>
-
 <div class="logos">
 <img src="img/BMW.png" alt="BMW">
 <img src="img/Delphi.png" alt="Delphi">
@@ -226,6 +214,7 @@ pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
 trusted:"Zaufali mi",
+photo:"Profile_MM_PL.png",
 text:[
 "Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
 "Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.",
@@ -237,6 +226,7 @@ en:{
 nav:["Services","About me","Contact"],
 title:"About me",
 trusted:"Trusted by",
+photo:"Profile_MM_GB.png",
 text:[
 "I have over 20 years of experience in international industrial environments.",
 "I combine operational leadership with practical change management.",
@@ -248,6 +238,7 @@ de:{
 nav:["Leistungen","Über mich","Kontakt"],
 title:"Über mich",
 trusted:"Vertraut von",
+photo:"Profile_MM_GER.png",
 text:[
 "Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
 "Ich verbinde operative Führung mit pragmatischem Change-Management.",
@@ -272,6 +263,8 @@ document.getElementById("navContact").innerText = dict[lang].nav[2];
 
 document.getElementById("title").innerText = dict[lang].title;
 document.getElementById("trustedTitle").innerText = dict[lang].trusted;
+
+document.getElementById("profilePhoto").src = dict[lang].photo;
 
 dict[lang].text.forEach((txt,i)=>{
 document.getElementById("p"+(i+1)).innerText = txt;
