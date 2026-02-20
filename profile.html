@@ -110,6 +110,41 @@ line-height:1.7;
 margin-bottom:24px;
 }
 
+/* TRUSTED BY */
+.trusted{
+padding:80px 40px;
+background:#fff;
+text-align:center;
+}
+
+.trusted h2{
+font-size:32px;
+margin-bottom:50px;
+}
+
+.logos{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.logos img{
+max-width:140px;
+margin:auto;
+filter:grayscale(100%);
+opacity:0.7;
+transition:all 0.3s ease;
+}
+
+.logos img:hover{
+filter:grayscale(0%);
+opacity:1;
+transform:scale(1.05);
+}
+
 footer{
 background:#111;
 color:#fff;
@@ -169,6 +204,19 @@ header{flex-direction:column;align-items:center}
 </div>
 </section>
 
+<section class="trusted">
+<h2 id="trustedTitle"></h2>
+
+<div class="logos">
+<img src="img/BMW.png" alt="BMW">
+<img src="img/Delphi.png" alt="Delphi">
+<img src="img/Garmin.png" alt="Garmin">
+<img src="img/Magna.jpg" alt="Magna">
+<img src="img/Nidec.png" alt="Nidec">
+<img src="img/OC.png" alt="OC">
+</div>
+</section>
+
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
 
 <script>
@@ -177,6 +225,7 @@ const dict = {
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
+trusted:"Zaufali mi",
 text:[
 "Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
 "Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.",
@@ -187,6 +236,7 @@ text:[
 en:{
 nav:["Services","About me","Contact"],
 title:"About me",
+trusted:"Trusted by",
 text:[
 "I have over 20 years of experience in international industrial environments.",
 "I combine operational leadership with practical change management.",
@@ -197,6 +247,7 @@ text:[
 de:{
 nav:["Leistungen","Über mich","Kontakt"],
 title:"Über mich",
+trusted:"Vertraut von",
 text:[
 "Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
 "Ich verbinde operative Führung mit pragmatischem Change-Management.",
@@ -220,6 +271,7 @@ document.getElementById("navAbout").innerText = dict[lang].nav[1];
 document.getElementById("navContact").innerText = dict[lang].nav[2];
 
 document.getElementById("title").innerText = dict[lang].title;
+document.getElementById("trustedTitle").innerText = dict[lang].trusted;
 
 dict[lang].text.forEach((txt,i)=>{
 document.getElementById("p"+(i+1)).innerText = txt;
