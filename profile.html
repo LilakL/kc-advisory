@@ -6,10 +6,9 @@
 <title>Konrad Czachor | Board Profile</title>
 
 <style>
-
 :root{
 --primary:#0f2e4f;
---text:#111;
+--text:#111827;
 --muted:#6b7280;
 --bg:#f7f8fa;
 --card:#ffffff;
@@ -17,41 +16,50 @@
 
 body.dark{
 --primary:#1e3a5f;
---text:#f3f4f6;
+--text:#e5e7eb;
 --muted:#9ca3af;
---bg:#0f172a;
+--bg:#0b1220;
 --card:#111827;
 }
 
+*{box-sizing:border-box;margin:0;padding:0;}
+
 body{
-margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:.3s;
+transition:.3s ease;
+line-height:1.65;
 }
+
+/* HEADER */
 
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:22px 60px;
+padding:24px 60px;
 background:var(--card);
 border-bottom:1px solid rgba(0,0,0,.05);
 }
 
-.logo img{height:58px;}
+body.dark header{
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo img{height:56px;}
 
 nav{
 display:flex;
 align-items:center;
-gap:30px;
+gap:28px;
 }
 
 nav a{
 text-decoration:none;
-color:var(--text);
 font-size:14px;
+letter-spacing:.5px;
+color:var(--text);
 }
 
 .lang button, .mode-toggle{
@@ -59,8 +67,9 @@ border:none;
 background:none;
 cursor:pointer;
 font-size:13px;
-opacity:.6;
+letter-spacing:.5px;
 color:var(--text);
+opacity:.6;
 }
 
 .lang button.active{
@@ -68,17 +77,31 @@ opacity:1;
 font-weight:600;
 }
 
+.mode-toggle{
+opacity:1;
+font-weight:600;
+}
+
+/* HERO */
+
 .hero{
-padding:120px 20px;
+padding:160px 20px 120px 20px;
 text-align:center;
-font-size:36px;
 background:var(--card);
 }
 
-.section{
-max-width:1000px;
+.hero h1{
+font-size:40px;
+max-width:900px;
 margin:auto;
-padding:120px 20px;
+}
+
+/* CONTENT */
+
+.section{
+max-width:900px;
+margin:auto;
+padding:140px 20px;
 }
 
 .profile-grid{
@@ -89,22 +112,27 @@ flex-wrap:wrap;
 }
 
 .profile-photo{
-width:360px;
+width:340px;
 border-radius:18px;
-box-shadow:0 20px 40px rgba(0,0,0,.1);
+box-shadow:0 25px 50px rgba(0,0,0,.12);
+}
+
+.profile-text{
+flex:1;
+font-size:18px;
 }
 
 .profile-text p{
-margin-bottom:22px;
+margin-bottom:28px;
 color:var(--muted);
 }
 
-/* Fade */
+/* FADE */
 
 .fade{
 opacity:0;
-transform:translateY(20px);
-transition:all .8s ease;
+transform:translateY(30px);
+transition:all .9s cubic-bezier(.22,1,.36,1);
 }
 
 .fade.visible{
@@ -115,10 +143,11 @@ transform:translateY(0);
 @media(max-width:768px){
 header{padding:20px;}
 .profile-grid{gap:40px;}
+.hero h1{font-size:28px;}
 }
-
 </style>
 </head>
+
 <body>
 
 <header>
@@ -127,17 +156,25 @@ header{padding:20px;}
 </div>
 
 <nav>
-<a href="index.html">Services</a>
-<a href="profile.html">Profile</a>
-<a href="index.html#contact">Contact</a>
+<a href="index.html" data-i18n="nav_services">Services</a>
+<a href="profile.html" data-i18n="nav_profile">Profile</a>
+<a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+
+<div class="lang">
+<button data-lang="pl">PL</button>
+<button data-lang="en" class="active">EN</button>
+<button data-lang="de">DE</button>
+</div>
 
 <button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
-<div class="hero fade">
+<section class="hero fade">
+<h1 data-i18n="hero_title">
 Board-Level Operational Leadership
-</div>
+</h1>
+</section>
 
 <section class="section fade">
 
@@ -146,30 +183,40 @@ Board-Level Operational Leadership
 <img src="img/Konrad-Czachor.jpg" class="profile-photo">
 
 <div class="profile-text">
-<p>Executive advisor specializing in manufacturing turnaround, operational governance and enterprise value protection.</p>
-<p>Support to Private Equity and Tier 1–2 suppliers during restructuring and integration phases.</p>
-<p>Plant-level execution combined with board-level reporting discipline.</p>
-</div>
 
+<p data-i18n="p1">
+Executive advisor and interim leader specializing in manufacturing turnaround, operational governance and enterprise value protection.
+</p>
+
+<p data-i18n="p2">
+Support to Private Equity, supervisory boards and Tier 1–2 suppliers during restructuring, liquidity pressure or post-acquisition integration.
+</p>
+
+<p data-i18n="p3">
+Hands-on plant execution combined with disciplined board-level reporting and KPI transparency.
+</p>
+
+</div>
 </div>
 
 </section>
 
 <script>
 
-/* Fade */
-const observer=new IntersectionObserver(entries=>{
+/* Fade-in animation */
+const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
 });
-},{threshold:.2});
+},{threshold:.15});
 
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
 /* Dark mode */
 const toggle=document.getElementById("modeToggle");
+
 if(localStorage.getItem("mode")==="dark"){
 document.body.classList.add("dark");
 toggle.textContent="Light";
@@ -184,6 +231,40 @@ toggle.textContent="Light";
 localStorage.setItem("mode","light");
 toggle.textContent="Dark";
 }
+});
+
+/* Translations */
+
+const translations={
+pl:{
+nav_services:"Usługi",
+nav_profile:"Profil",
+nav_contact:"Kontakt",
+hero_title:"Przywództwo Operacyjne na Poziomie Zarządu",
+p1:"Doradca i interim manager specjalizujący się w turnaround produkcyjnym, ładu korporacyjnym oraz ochronie wartości przedsiębiorstwa.",
+p2:"Wsparcie dla funduszy Private Equity, rad nadzorczych oraz dostawców Tier 1–2 w sytuacjach restrukturyzacyjnych i integracyjnych.",
+p3:"Realna praca operacyjna na zakładzie połączona z transparentnym raportowaniem KPI na poziomie zarządu."
+},
+de:{
+nav_services:"Leistungen",
+nav_profile:"Profil",
+nav_contact:"Kontakt",
+hero_title:"Operative Führung auf Vorstandsebene",
+p1:"Executive Advisor mit Fokus auf Produktions-Turnaround, Governance und Sicherung des Unternehmenswerts.",
+p2:"Unterstützung für Private-Equity-Fonds, Aufsichtsräte und Tier 1–2 Zulieferer in Restrukturierungs- und Integrationsphasen.",
+p3:"Operative Werksumsetzung kombiniert mit transparentem KPI-Reporting auf Vorstandsebene."
+}
+};
+
+document.querySelectorAll(".lang button").forEach(btn=>{
+btn.addEventListener("click",()=>{
+document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+const lang=btn.dataset.lang;
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.textContent=translations[lang][el.dataset.i18n];
+});
+});
 });
 
 </script>
