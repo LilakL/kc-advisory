@@ -60,11 +60,11 @@ border-color:#2563eb;
 box-shadow:0 0 0 2px #2563eb inset;
 }
 
-/* HERO – takie samo tło jak index */
+/* HERO – używa background.jpg z katalogu głównego */
 
 .hero{
 height:320px;
-background:url(img/background.jpg) center/cover;
+background:url(background.jpg) center/cover;
 position:relative;
 display:flex;
 align-items:center;
@@ -114,6 +114,19 @@ line-height:1.7;
 margin-bottom:20px;
 }
 
+/* DODATKOWE ZDJĘCIE */
+
+.extra-image{
+margin-top:60px;
+text-align:center;
+}
+
+.extra-image img{
+max-width:100%;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
 footer{
 background:#111;
 color:#fff;
@@ -160,7 +173,7 @@ header{flex-direction:column;align-items:center}
 <div class="profile-inner">
 
 <div class="profile-img">
-<img id="profilePhoto" src="img/Profile_MM_PL.png" alt="Profile Photo">
+<img id="profilePhoto" src="Profile_MM_PL.png" alt="Profile Photo">
 </div>
 
 <div class="profile-text">
@@ -171,6 +184,11 @@ header{flex-direction:column;align-items:center}
 </div>
 
 </div>
+
+<div class="extra-image">
+<img src="Profile_bg2.jpg" alt="Additional Image">
+</div>
+
 </section>
 
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
@@ -180,7 +198,7 @@ const dict={
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
-img:"img/Profile_MM_PL.png",
+img:"Profile_MM_PL.png",
 text:[
 "Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
 "Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.",
@@ -191,7 +209,7 @@ text:[
 en:{
 nav:["Services","About me","Contact"],
 title:"About me",
-img:"img/Profile_MM_GB.png",
+img:"Profile_MM_GB.png",
 text:[
 "I have over 20 years of experience in international industrial environments.",
 "I combine operational leadership with practical change management.",
@@ -202,7 +220,7 @@ text:[
 de:{
 nav:["Leistungen","Über mich","Kontakt"],
 title:"Über mich",
-img:"img/Profile_MM_GER.png",
+img:"Profile_MM_GER.png",
 text:[
 "Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
 "Ich verbinde operative Führung mit pragmatischem Change-Management.",
