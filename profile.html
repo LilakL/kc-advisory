@@ -10,7 +10,6 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial}
 
 /* HEADER */
-
 header{
 position:sticky;
 top:0;
@@ -60,10 +59,10 @@ box-shadow:0 0 0 2px #2563eb inset;
 }
 
 /* HERO */
-
 .hero{
 height:300px;
-background:url("img/background.jpg") center/cover;
+background-size:cover;
+background-position:center;
 position:relative;
 display:flex;
 align-items:center;
@@ -86,7 +85,6 @@ margin:0;
 }
 
 /* PROFILE */
-
 .profile{
 padding:80px 40px;
 background:#f4f4f4;
@@ -133,7 +131,7 @@ header{flex-direction:column;align-items:center}
 
 <header>
 <div class="logo">
-<img src="img/logo.png" alt="Konrad Czachor Advisory & Partners">
+<img id="siteLogo" alt="Konrad Czachor Advisory & Partners">
 </div>
 
 <div class="right-menu">
@@ -151,7 +149,7 @@ header{flex-direction:column;align-items:center}
 </div>
 </header>
 
-<section class="hero">
+<section id="heroSection" class="hero">
 <h1 id="title"></h1>
 </section>
 
@@ -159,7 +157,7 @@ header{flex-direction:column;align-items:center}
 <div class="profile-inner">
 
 <div class="profile-img">
-<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor">
+<img id="profileImage" alt="Konrad Czachor">
 </div>
 
 <div class="profile-text">
@@ -175,6 +173,23 @@ header{flex-direction:column;align-items:center}
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
 
 <script>
+
+/* ===== AUTO BASE PATH ===== */
+const BASE_PATH = window.location.origin;
+
+/* ===== USTAWIENIE OBRAZÓW ===== */
+function setImages(){
+    document.getElementById("profileImage").src =
+        BASE_PATH + "/img/Konrad-Czachor.jpg";
+
+    document.getElementById("siteLogo").src =
+        BASE_PATH + "/img/logo.png";
+
+    document.getElementById("heroSection").style.backgroundImage =
+        "url('" + BASE_PATH + "/img/background.jpg')";
+}
+
+/* ===== JĘZYKI ===== */
 const dict={
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
@@ -210,19 +225,30 @@ text:[
 
 function setLang(l){
 localStorage.setItem("lang",l);
-document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-document.querySelector(`[data-lang=${l}]`).classList.add("active");
 
-navServices.innerText=dict[l].nav[0];
-navAbout.innerText=dict[l].nav[1];
-navContact.innerText=dict[l].nav[2];
+document.querySelectorAll(".lang button")
+.forEach(b=>b.classList.remove("active"));
 
-title.innerText=dict[l].title;
-dict[l].text.forEach((v,i)=>document.getElementById("p"+(i+1)).innerText=v);
+document.querySelector(`[data-lang=${l}]`)
+.classList.add("active");
+
+document.getElementById("navServices").innerText=dict[l].nav[0];
+document.getElementById("navAbout").innerText=dict[l].nav[1];
+document.getElementById("navContact").innerText=dict[l].nav[2];
+
+document.getElementById("title").innerText=dict[l].title;
+
+dict[l].text.forEach((v,i)=>
+document.getElementById("p"+(i+1)).innerText=v
+);
 }
 
-document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+document.querySelectorAll(".lang button")
+.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+
+setImages();
 setLang(localStorage.getItem("lang")||"pl");
+
 </script>
 
 </body>
