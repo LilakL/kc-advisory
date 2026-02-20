@@ -1,238 +1,8 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O mnie | Konrad Czachor Advisory & Partners</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f4f4f4;
-}
-
-/* HEADER */
-header{
-position:sticky;
-top:0;
-background:#fff;
-padding:25px 40px;
-display:flex;
-justify-content:space-between;
-align-items:flex-start;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
-z-index:1000;
-}
-
-.logo img{height:140px;}
-
-.right-menu{
-display:flex;
-flex-direction:column;
-align-items:flex-end;
-}
-
-nav{margin-bottom:15px;}
-
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:#111;
-font-weight:600;
-font-size:18px;
-}
-
-.lang button{
-margin-left:8px;
-padding:8px 14px;
-border:1px solid #ccc;
-background:#fff;
-border-radius:8px;
-font-size:16px;
-cursor:pointer;
-}
-
-.lang button.active{
-border-color:#2563eb;
-box-shadow:0 0 0 2px #2563eb inset;
-}
-
-/* HERO */
-.hero{
-height:300px;
-background:url("background.jpg") center/cover;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.55);
-}
-
-.hero h1{
-position:relative;
-z-index:2;
-font-size:42px;
-margin:0;
-}
-
-/* PROFILE */
-.profile{
-padding:80px 40px;
-}
-
-.profile-inner{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:420px 1fr;
-gap:70px;
-align-items:start;
-}
-
-.profile-left{
-display:flex;
-flex-direction:column;
-gap:40px;
-}
-
-/* Zdjęcie profilowe */
-.profile-photo img{
-width:100%;
-border-radius:20px;
-box-shadow:0 20px 50px rgba(0,0,0,.25);
-}
-
-/* Diagram */
-.profile-diagram img{
-width:100%;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-.profile-text p{
-font-size:18px;
-line-height:1.6;
-margin-bottom:20px;
-color:#222;
-}
-
-/* TRUSTED */
-.trusted{
-padding:80px 40px;
-background:#fff;
-text-align:center;
-}
-
-.trusted h2{
-font-size:32px;
-margin-bottom:50px;
-}
-
-.logos{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:40px;
-align-items:center;
-}
-
-.logos img{
-max-width:140px;
-margin:auto;
-filter:grayscale(100%);
-opacity:0.7;
-transition:all 0.3s ease;
-}
-
-.logos img:hover{
-filter:grayscale(0%);
-opacity:1;
-transform:scale(1.05);
-}
-
-footer{
-background:#111;
-color:#fff;
-padding:25px;
-text-align:center;
-margin-top:60px;
-}
-
-@media(max-width:900px){
-.profile-inner{grid-template-columns:1fr;}
-.logo img{height:90px;}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">
-<img src="img/logo.png" alt="Logo">
-</div>
-
-<div class="right-menu">
-<nav>
-<a href="index.html#services" id="navServices"></a>
-<a href="profile.html" id="navAbout"></a>
-<a href="contact.html" id="navContact"></a>
-</nav>
-
-<div class="lang">
-<button data-lang="pl">PL</button>
-<button data-lang="en">GB</button>
-<button data-lang="de">DE</button>
-</div>
-</div>
-</header>
-
-<section class="hero">
-<h1 id="title"></h1>
-</section>
-
-<section class="profile">
-<div class="profile-inner">
-
-<div class="profile-left">
-
-<div class="profile-photo">
-<img id="profilePhoto" src="Profile_MM_PL.png" alt="Konrad Czachor">
-</div>
-
-<div class="profile-diagram">
-<img src="img/ChatGPT Image 20 lut 2026, 19_53_34.png" alt="Model działania">
-</div>
-
-</div>
-
-<div class="profile-text">
-<p id="p1"></p>
-<p id="p2"></p>
-<p id="p3"></p>
-<p id="p4"></p>
-</div>
-
-</div>
-</section>
-
-<footer>© 2026 Konrad Czachor Advisory & Partners</footer>
-
 <script>
-const dict={
+const dict = {
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
-photo:"Profile_MM_PL.png",
 text:[
 "Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
 "Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.",
@@ -243,7 +13,6 @@ text:[
 en:{
 nav:["Services","About me","Contact"],
 title:"About me",
-photo:"Profile_MM_GB.png",
 text:[
 "I have over 20 years of experience in international industrial environments.",
 "I combine operational leadership with practical change management.",
@@ -254,7 +23,6 @@ text:[
 de:{
 nav:["Leistungen","Über mich","Kontakt"],
 title:"Über mich",
-photo:"Profile_MM_GER.png",
 text:[
 "Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
 "Ich verbinde operative Führung mit pragmatischem Change-Management.",
@@ -265,6 +33,7 @@ text:[
 };
 
 function setLang(lang){
+
 localStorage.setItem("lang",lang);
 
 document.querySelectorAll(".lang button")
@@ -273,17 +42,20 @@ document.querySelectorAll(".lang button")
 document.querySelector(`[data-lang="${lang}"]`)
 .classList.add("active");
 
-document.getElementById("navServices").innerText=dict[lang].nav[0];
-document.getElementById("navAbout").innerText=dict[lang].nav[1];
-document.getElementById("navContact").innerText=dict[lang].nav[2];
+document.getElementById("navServices").innerText = dict[lang].nav[0];
+document.getElementById("navAbout").innerText = dict[lang].nav[1];
+document.getElementById("navContact").innerText = dict[lang].nav[2];
 
-document.getElementById("title").innerText=dict[lang].title;
-document.getElementById("profilePhoto").src=dict[lang].photo;
+document.getElementById("title").innerText = dict[lang].title;
 
 dict[lang].text.forEach((t,i)=>{
-document.getElementById("p"+(i+1)).innerText=t;
+document.getElementById("p"+(i+1)).innerText = t;
 });
+
 }
+
+/* Ustawiamy zdjęcie na stałe */
+document.getElementById("profilePhoto").src = "img/Konrad-Czachor.jpg";
 
 document.querySelectorAll(".lang button")
 .forEach(btn=>{
@@ -294,6 +66,3 @@ setLang(btn.dataset.lang);
 
 setLang(localStorage.getItem("lang") || "pl");
 </script>
-
-</body>
-</html>
