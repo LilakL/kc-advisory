@@ -226,30 +226,30 @@ O mnie
 <script>
 
 const content = {
-pl: {
-title: "O mnie",
-clients: "Wybrane realizacje / Klienci",
-text: `
+pl:{
+title:"O mnie",
+clients:"Wybrane realizacje / Klienci",
+text:`
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
 <p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
 <p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
 <p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
 `
 },
-en: {
-title: "About me",
-clients: "Selected Projects / Clients",
-text: `
+en:{
+title:"About me",
+clients:"Selected Projects / Clients",
+text:`
 <p>I have been working in industrial and international environments for over 20 years.</p>
 <p>I combine operational experience with a practical approach to change management.</p>
 <p>I specialize in operational transformation, quality systems and building strong management structures.</p>
 <p>My goal is real results – execution beyond presentation.</p>
 `
 },
-de: {
-title: "Über mich",
-clients: "Ausgewählte Projekte / Kunden",
-text: `
+de:{
+title:"Über mich",
+clients:"Ausgewählte Projekte / Kunden",
+text:`
 <p>Seit über 20 Jahren arbeite ich im industriellen und internationalen Umfeld.</p>
 <p>Ich verbinde operative Erfahrung mit einem praxisorientierten Ansatz im Veränderungsmanagement.</p>
 <p>Ich spezialisiere mich auf operative Transformation, Qualitätssysteme und den Aufbau starker Führungsstrukturen.</p>
@@ -258,30 +258,30 @@ text: `
 }
 };
 
-const buttons = document.querySelectorAll(".lang button");
-const profileText = document.getElementById("profile-text");
-const heroTitle = document.getElementById("hero-title");
-const clientsTitle = document.getElementById("clients-title");
+const buttons=document.querySelectorAll(".lang button");
+const profileText=document.getElementById("profile-text");
+const heroTitle=document.getElementById("hero-title");
+const clientsTitle=document.getElementById("clients-title");
 
-const images = {
-pl: document.getElementById("mm-pl"),
-en: document.getElementById("mm-en"),
-de: document.getElementById("mm-de")
+const images={
+pl:document.getElementById("mm-pl"),
+en:document.getElementById("mm-en"),
+de:document.getElementById("mm-de")
 };
 
 function setLang(lang){
 
-heroTitle.innerText = content[lang].title;
-clientsTitle.innerText = content[lang].clients;
-profileText.innerHTML = content[lang].text;
+heroTitle.innerText=content[lang].title;
+clientsTitle.innerText=content[lang].clients;
+profileText.innerHTML=content[lang].text;
 
-Object.values(images).forEach(img => img.style.display="none");
-images[lang].style.display="block;
+Object.values(images).forEach(img=>img.style.display="none");
+images[lang].style.display="block";
 
-buttons.forEach(btn => btn.classList.remove("active"));
+buttons.forEach(btn=>btn.classList.remove("active"));
 document.querySelector(`[data-lang="${lang}"]`).classList.add("active");
 
-localStorage.setItem("lang", lang);
+localStorage.setItem("lang",lang);
 }
 
 buttons.forEach(btn=>{
@@ -290,7 +290,7 @@ setLang(btn.dataset.lang);
 });
 });
 
-setLang(localStorage.getItem("lang") || "pl");
+setLang(localStorage.getItem("lang")||"pl");
 
 </script>
 
