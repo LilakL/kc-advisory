@@ -1,5 +1,7 @@
 <script>
 
+document.addEventListener("DOMContentLoaded", function(){
+
 const dict = {
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
@@ -37,32 +39,35 @@ function setLang(lang){
 
 localStorage.setItem("lang", lang);
 
-/* aktywny przycisk */
 document.querySelectorAll(".lang button")
 .forEach(btn => btn.classList.remove("active"));
 
-document.querySelector(`[data-lang="${lang}"]`)
-.classList.add("active");
+const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+if(activeBtn) activeBtn.classList.add("active");
 
-/* menu */
-document.getElementById("navServices").innerText = dict[lang].nav[0];
-document.getElementById("navAbout").innerText    = dict[lang].nav[1];
-document.getElementById("navContact").innerText  = dict[lang].nav[2];
+const navServices = document.getElementById("navServices");
+const navAbout    = document.getElementById("navAbout");
+const navContact  = document.getElementById("navContact");
+const title       = document.getElementById("title");
 
-/* nagłówek */
-document.getElementById("title").innerText = dict[lang].title;
+if(navServices) navServices.innerText = dict[lang].nav[0];
+if(navAbout)    navAbout.innerText    = dict[lang].nav[1];
+if(navContact)  navContact.innerText  = dict[lang].nav[2];
+if(title)       title.innerText       = dict[lang].title;
 
-/* tekst */
 dict[lang].text.forEach((t,i)=>{
-document.getElementById("p"+(i+1)).innerText = t;
+const p = document.getElementById("p"+(i+1));
+if(p) p.innerText = t;
 });
 
 }
 
-/* stałe zdjęcie profilowe */
-document.getElementById("profilePhoto").src = "img/Konrad-Czachor.jpg";
+/* Ustawiamy zdjęcie tylko jeśli istnieje */
+const photo = document.getElementById("profilePhoto");
+if(photo){
+photo.src = "img/Konrad-Czachor.jpg";
+}
 
-/* obsługa kliknięć języka */
 document.querySelectorAll(".lang button")
 .forEach(btn=>{
 btn.addEventListener("click",()=>{
@@ -70,7 +75,8 @@ setLang(btn.dataset.lang);
 });
 });
 
-/* start */
 setLang(localStorage.getItem("lang") || "pl");
+
+});
 
 </script>
