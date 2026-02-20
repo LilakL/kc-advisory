@@ -1,82 +1,121 @@
-<script>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mnie</title>
 
-document.addEventListener("DOMContentLoaded", function(){
+<style>
 
-const dict = {
-pl:{
-nav:["Usługi","O mnie","Kontakt"],
-title:"O mnie",
-text:[
-"Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
-"Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.",
-"Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.",
-"Moim celem jest realny rezultat – wykonanie ponad prezentację."
-]
-},
-en:{
-nav:["Services","About me","Contact"],
-title:"About me",
-text:[
-"I have over 20 years of experience in international industrial environments.",
-"I combine operational leadership with practical change management.",
-"My focus areas include operational transformation, quality systems and executive structures.",
-"My objective is measurable impact – execution over theory."
-]
-},
-de:{
-nav:["Leistungen","Über mich","Kontakt"],
-title:"Über mich",
-text:[
-"Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
-"Ich verbinde operative Führung mit pragmatischem Change-Management.",
-"Meine Schwerpunkte sind operative Transformation, Qualitätssysteme und Führungsstrukturen.",
-"Mein Ziel ist messbarer Erfolg – Umsetzung statt Theorie."
-]
-}
-};
-
-function setLang(lang){
-
-localStorage.setItem("lang", lang);
-
-document.querySelectorAll(".lang button")
-.forEach(btn => btn.classList.remove("active"));
-
-const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
-if(activeBtn) activeBtn.classList.add("active");
-
-const navServices = document.getElementById("navServices");
-const navAbout    = document.getElementById("navAbout");
-const navContact  = document.getElementById("navContact");
-const title       = document.getElementById("title");
-
-if(navServices) navServices.innerText = dict[lang].nav[0];
-if(navAbout)    navAbout.innerText    = dict[lang].nav[1];
-if(navContact)  navContact.innerText  = dict[lang].nav[2];
-if(title)       title.innerText       = dict[lang].title;
-
-dict[lang].text.forEach((t,i)=>{
-const p = document.getElementById("p"+(i+1));
-if(p) p.innerText = t;
-});
-
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background:#f4f4f4;
 }
 
-/* Ustawiamy zdjęcie tylko jeśli istnieje */
-const photo = document.getElementById("profilePhoto");
-if(photo){
-photo.src = "img/Konrad-Czachor.jpg";
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 40px;
+background:#fff;
 }
 
-document.querySelectorAll(".lang button")
-.forEach(btn=>{
-btn.addEventListener("click",()=>{
-setLang(btn.dataset.lang);
-});
-});
+.logo img{
+height:140px;
+}
 
-setLang(localStorage.getItem("lang") || "pl");
+nav{
+display:flex;
+align-items:center;
+gap:40px;
+font-weight:600;
+}
 
-});
+nav a{
+text-decoration:none;
+color:#000;
+}
 
-</script>
+.lang button{
+margin-left:10px;
+padding:6px 12px;
+border-radius:8px;
+border:1px solid #ccc;
+background:#f0f0f0;
+cursor:pointer;
+}
+
+.hero{
+height:300px;
+background:url('img/background_profile.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:48px;
+font-weight:700;
+}
+
+.content{
+max-width:1200px;
+margin:80px auto;
+display:flex;
+gap:60px;
+align-items:center;
+padding:0 40px;
+}
+
+.content img{
+width:450px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.text{
+font-size:20px;
+line-height:1.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<img src="img/logo.png" alt="Logo">
+</div>
+
+<nav>
+<a href="index.html">Usługi</a>
+<a href="profile.html">O mnie</a>
+<a href="contact.html">Kontakt</a>
+
+<div class="lang">
+<button>PL</button>
+<button>GB</button>
+<button>DE</button>
+</div>
+</nav>
+</header>
+
+<div class="hero">
+O mnie
+</div>
+
+<section class="content">
+
+<img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor">
+
+<div class="text">
+<p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
+<p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
+<p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
+<p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
+</div>
+
+</section>
+
+</body>
+</html>
