@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O mnie</title>
+<title>Profile</title>
 
 <style>
 *{box-sizing:border-box;}
@@ -146,16 +146,9 @@ transform:scale(1.05);
 }
 
 @media(max-width:768px){
-
 .section{padding:60px 20px;}
-
-.hero{
-padding:80px 20px;
-font-size:32px;
-}
-
+.hero{padding:80px 20px;font-size:32px;}
 .profile-text{font-size:18px;}
-
 .client-logos{gap:25px;}
 .client-logos img{height:45px;}
 }
@@ -170,9 +163,9 @@ font-size:32px;
 </div>
 
 <nav>
-<a href="index.html">Usługi</a>
-<a href="profile.html">O mnie</a>
-<a href="#">Kontakt</a>
+<a href="index.html" id="nav-services">Usługi</a>
+<a href="profile.html" id="nav-about">O mnie</a>
+<a href="#" id="nav-contact">Kontakt</a>
 
 <div class="lang">
 <button data-lang="pl" class="active">PL</button>
@@ -182,18 +175,13 @@ font-size:32px;
 </nav>
 </header>
 
-<div class="hero" id="hero-title">
-O mnie
-</div>
+<div class="hero" id="hero-title">O mnie</div>
 
 <section class="section">
 
 <div class="profile-grid">
-
 <img src="img/Konrad-Czachor.jpg" alt="Konrad Czachor" class="profile-photo">
-
 <div class="profile-text" id="profile-text"></div>
-
 </div>
 
 <div class="mm-section">
@@ -225,36 +213,36 @@ O mnie
 
 <script>
 
-const content = {
+const content={
 pl:{
 title:"O mnie",
 clients:"Wybrane realizacje / Klienci",
+nav:{services:"Usługi",about:"O mnie",contact:"Kontakt"},
 text:`
 <p>Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.</p>
 <p>Łączę doświadczenie operacyjne z praktycznym podejściem do zarządzania zmianą.</p>
 <p>Specjalizuję się w transformacji operacyjnej, systemach jakości oraz budowaniu silnych struktur zarządczych.</p>
-<p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>
-`
+<p>Moim celem jest realny rezultat – wykonanie ponad prezentację.</p>`
 },
 en:{
 title:"About me",
 clients:"Selected Projects / Clients",
+nav:{services:"Services",about:"About me",contact:"Contact"},
 text:`
 <p>I have been working in industrial and international environments for over 20 years.</p>
 <p>I combine operational experience with a practical approach to change management.</p>
 <p>I specialize in operational transformation, quality systems and building strong management structures.</p>
-<p>My goal is real results – execution beyond presentation.</p>
-`
+<p>My goal is real results – execution beyond presentation.</p>`
 },
 de:{
 title:"Über mich",
 clients:"Ausgewählte Projekte / Kunden",
+nav:{services:"Leistungen",about:"Über mich",contact:"Kontakt"},
 text:`
 <p>Seit über 20 Jahren arbeite ich im industriellen und internationalen Umfeld.</p>
 <p>Ich verbinde operative Erfahrung mit einem praxisorientierten Ansatz im Veränderungsmanagement.</p>
 <p>Ich spezialisiere mich auf operative Transformation, Qualitätssysteme und den Aufbau starker Führungsstrukturen.</p>
-<p>Mein Ziel ist ein reales Ergebnis – Umsetzung statt Präsentation.</p>
-`
+<p>Mein Ziel ist ein reales Ergebnis – Umsetzung statt Präsentation.</p>`
 }
 };
 
@@ -262,6 +250,10 @@ const buttons=document.querySelectorAll(".lang button");
 const profileText=document.getElementById("profile-text");
 const heroTitle=document.getElementById("hero-title");
 const clientsTitle=document.getElementById("clients-title");
+
+const navServices=document.getElementById("nav-services");
+const navAbout=document.getElementById("nav-about");
+const navContact=document.getElementById("nav-contact");
 
 const images={
 pl:document.getElementById("mm-pl"),
@@ -274,6 +266,10 @@ function setLang(lang){
 heroTitle.innerText=content[lang].title;
 clientsTitle.innerText=content[lang].clients;
 profileText.innerHTML=content[lang].text;
+
+navServices.innerText=content[lang].nav.services;
+navAbout.innerText=content[lang].nav.about;
+navContact.innerText=content[lang].nav.contact;
 
 Object.values(images).forEach(img=>img.style.display="none");
 images[lang].style.display="block";
