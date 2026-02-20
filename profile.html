@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>O mnie | Konrad Czachor Advisory & Partners</title>
 
 <style>
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial}
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f4f4f4;
+}
 
 /* HEADER */
 header{
@@ -19,10 +22,12 @@ display:flex;
 justify-content:space-between;
 align-items:flex-start;
 box-shadow:0 2px 10px rgba(0,0,0,.1);
-z-index:10
+z-index:1000;
 }
 
-.logo img{height:140px}
+.logo img{
+height:140px;
+}
 
 .right-menu{
 display:flex;
@@ -30,7 +35,9 @@ flex-direction:column;
 align-items:flex-end;
 }
 
-nav{margin-bottom:15px}
+nav{
+margin-bottom:15px;
+}
 
 nav a{
 margin-left:25px;
@@ -83,7 +90,6 @@ margin:0;
 /* PROFILE */
 .profile{
 padding:80px 40px;
-background:#f4f4f4;
 }
 
 .profile-inner{
@@ -92,13 +98,32 @@ margin:auto;
 display:grid;
 grid-template-columns:420px 1fr;
 gap:70px;
-align-items:center;
+align-items:start;
 }
 
-.profile-img img{
+.profile-left{
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+.profile-photo img{
 width:100%;
 border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.profile-diagram img{
+width:100%;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.profile-text p{
+font-size:18px;
+line-height:1.6;
+margin-bottom:20px;
+color:#222;
 }
 
 /* TRUSTED */
@@ -141,11 +166,17 @@ background:#111;
 color:#fff;
 padding:25px;
 text-align:center;
+margin-top:60px;
 }
 
+/* MOBILE */
 @media(max-width:900px){
-.profile-inner{grid-template-columns:1fr}
-.logo img{height:90px}
+.profile-inner{
+grid-template-columns:1fr;
+}
+.logo img{
+height:90px;
+}
 }
 </style>
 </head>
@@ -179,8 +210,16 @@ text-align:center;
 <section class="profile">
 <div class="profile-inner">
 
-<div class="profile-img">
+<div class="profile-left">
+
+<div class="profile-photo">
 <img id="profilePhoto" src="Profile_MM_PL.png" alt="Konrad Czachor">
+</div>
+
+<div class="profile-diagram">
+<img src="img/ChatGPT Image 20 lut 2026, 19_53_34.png" alt="Model działania">
+</div>
+
 </div>
 
 <div class="profile-text">
@@ -208,8 +247,7 @@ text-align:center;
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
 
 <script>
-
-const dict = {
+const dict={
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
@@ -257,17 +295,17 @@ document.querySelectorAll(".lang button")
 document.querySelector(`[data-lang="${lang}"]`)
 .classList.add("active");
 
-document.getElementById("navServices").innerText = dict[lang].nav[0];
-document.getElementById("navAbout").innerText = dict[lang].nav[1];
-document.getElementById("navContact").innerText = dict[lang].nav[2];
+document.getElementById("navServices").innerText=dict[lang].nav[0];
+document.getElementById("navAbout").innerText=dict[lang].nav[1];
+document.getElementById("navContact").innerText=dict[lang].nav[2];
 
-document.getElementById("title").innerText = dict[lang].title;
-document.getElementById("trustedTitle").innerText = dict[lang].trusted;
+document.getElementById("title").innerText=dict[lang].title;
+document.getElementById("trustedTitle").innerText=dict[lang].trusted;
 
-document.getElementById("profilePhoto").src = dict[lang].photo;
+document.getElementById("profilePhoto").src=dict[lang].photo;
 
-dict[lang].text.forEach((txt,i)=>{
-document.getElementById("p"+(i+1)).innerText = txt;
+dict[lang].text.forEach((t,i)=>{
+document.getElementById("p"+(i+1)).innerText=t;
 });
 }
 
@@ -279,7 +317,6 @@ setLang(btn.dataset.lang);
 });
 
 setLang(localStorage.getItem("lang") || "pl");
-
 </script>
 
 </body>
