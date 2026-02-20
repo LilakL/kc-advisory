@@ -100,21 +100,21 @@ align-items:start;
 .profile-left{
 display:flex;
 flex-direction:column;
-gap:50px;
+gap:40px;
 }
 
-/* Najpierw diagram */
-.profile-diagram img{
-width:100%;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-/* Pod nim zdjęcie profilowe */
+/* Zdjęcie profilowe */
 .profile-photo img{
 width:100%;
 border-radius:20px;
 box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+/* Diagram */
+.profile-diagram img{
+width:100%;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
 .profile-text p{
@@ -168,12 +168,8 @@ margin-top:60px;
 }
 
 @media(max-width:900px){
-.profile-inner{
-grid-template-columns:1fr;
-}
-.logo img{
-height:90px;
-}
+.profile-inner{grid-template-columns:1fr;}
+.logo img{height:90px;}
 }
 </style>
 </head>
@@ -209,12 +205,12 @@ height:90px;
 
 <div class="profile-left">
 
-<div class="profile-diagram">
-<img src="img/ChatGPT Image 20 lut 2026, 19_53_34.png" alt="Model działania">
-</div>
-
 <div class="profile-photo">
 <img id="profilePhoto" src="Profile_MM_PL.png" alt="Konrad Czachor">
+</div>
+
+<div class="profile-diagram">
+<img src="img/ChatGPT Image 20 lut 2026, 19_53_34.png" alt="Model działania">
 </div>
 
 </div>
@@ -229,18 +225,6 @@ height:90px;
 </div>
 </section>
 
-<section class="trusted">
-<h2 id="trustedTitle"></h2>
-<div class="logos">
-<img src="img/BMW.png" alt="BMW">
-<img src="img/Delphi.png" alt="Delphi">
-<img src="img/Garmin.png" alt="Garmin">
-<img src="img/Magna.jpg" alt="Magna">
-<img src="img/Nidec.png" alt="Nidec">
-<img src="img/OC.png" alt="OC">
-</div>
-</section>
-
 <footer>© 2026 Konrad Czachor Advisory & Partners</footer>
 
 <script>
@@ -248,7 +232,6 @@ const dict={
 pl:{
 nav:["Usługi","O mnie","Kontakt"],
 title:"O mnie",
-trusted:"Zaufali mi",
 photo:"Profile_MM_PL.png",
 text:[
 "Od ponad 20 lat pracuję w środowisku przemysłowym i międzynarodowym.",
@@ -260,7 +243,6 @@ text:[
 en:{
 nav:["Services","About me","Contact"],
 title:"About me",
-trusted:"Trusted by",
 photo:"Profile_MM_GB.png",
 text:[
 "I have over 20 years of experience in international industrial environments.",
@@ -272,7 +254,6 @@ text:[
 de:{
 nav:["Leistungen","Über mich","Kontakt"],
 title:"Über mich",
-trusted:"Vertraut von",
 photo:"Profile_MM_GER.png",
 text:[
 "Seit über 20 Jahren arbeite ich im internationalen Industrieumfeld.",
@@ -297,8 +278,6 @@ document.getElementById("navAbout").innerText=dict[lang].nav[1];
 document.getElementById("navContact").innerText=dict[lang].nav[2];
 
 document.getElementById("title").innerText=dict[lang].title;
-document.getElementById("trustedTitle").innerText=dict[lang].trusted;
-
 document.getElementById("profilePhoto").src=dict[lang].photo;
 
 dict[lang].text.forEach((t,i)=>{
