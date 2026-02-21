@@ -28,7 +28,10 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
 transition:.3s;
+line-height:1.65;
 }
+
+/* HEADER */
 
 header{
 display:flex;
@@ -38,15 +41,11 @@ padding:40px 60px;
 background:var(--card);
 }
 
-.logo img{
-height:420px;
-transition:.3s;
-}
+.logo img{height:200px;}
 
 nav{
 display:flex;
-align-items:center;
-gap:28px;
+gap:30px;
 }
 
 nav a{
@@ -64,15 +63,81 @@ font-weight:600;
 color:var(--text);
 }
 
-.section{
-max-width:900px;
+/* HERO */
+
+.hero{
+padding:140px 20px 100px;
+text-align:center;
+}
+
+.hero h1{
+font-size:40px;
+max-width:800px;
 margin:auto;
-padding:130px 20px;
+}
+
+/* PROFILE GRID */
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:120px 20px;
+}
+
+.profile-grid{
+display:flex;
+gap:80px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.profile-photo{
+width:420px;
+border-radius:20px;
+box-shadow:0 30px 60px rgba(0,0,0,.15);
+}
+
+.profile-text{
+flex:1;
+font-size:18px;
+}
+
+.profile-text p{
+margin-bottom:25px;
+color:var(--muted);
+}
+
+/* IMPACT */
+
+.impact{
+margin-top:120px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:60px;
+text-align:center;
+}
+
+.impact-item{
+flex:1;
+min-width:200px;
+}
+
+.impact-item h3{
+font-size:42px;
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.impact-item p{
+color:var(--muted);
+font-size:15px;
 }
 
 @media(max-width:768px){
-header{padding:20px;}
-.logo img{height:180px;}
+.logo img{height:120px;}
+.profile-grid{gap:40px;}
+.profile-photo{width:100%;}
 }
 </style>
 </head>
@@ -82,7 +147,6 @@ header{padding:20px;}
 <div class="logo">
 <img src="img/logo.png">
 </div>
-
 <nav>
 <a href="index.html">← Back</a>
 <a href="contact.html">Contact</a>
@@ -90,11 +154,60 @@ header{padding:20px;}
 </nav>
 </header>
 
-<section class="section">
+<section class="hero">
 <h1>Board-Level Operational Leadership</h1>
-<p style="margin-top:30px;color:var(--muted);font-size:18px;">
-Executive advisor specializing in turnaround and enterprise value protection.
+</section>
+
+<section class="section">
+
+<div class="profile-grid">
+
+<img src="img/Konrad-Czachor.jpg" class="profile-photo">
+
+<div class="profile-text">
+<p>
+Executive interim leader focused on manufacturing turnaround, stabilization and enterprise value protection across Central and Eastern Europe.
 </p>
+
+<p>
+Supporting Private Equity funds, supervisory boards and Tier 1–2 suppliers in critical operational phases including restructuring, liquidity pressure and post-acquisition integration.
+</p>
+
+<p>
+Hands-on plant execution combined with disciplined board-level reporting, KPI transparency and governance alignment.
+</p>
+
+<a href="contact.html" style="display:inline-block;margin-top:20px;padding:14px 36px;background:var(--primary);color:#fff;border-radius:30px;text-decoration:none;font-weight:600;">
+Schedule Executive Discussion
+</a>
+
+</div>
+</div>
+
+<div class="impact">
+
+<div class="impact-item">
+<h3>25+</h3>
+<p>Operational Projects Delivered</p>
+</div>
+
+<div class="impact-item">
+<h3>12</h3>
+<p>Manufacturing Plants Stabilized</p>
+</div>
+
+<div class="impact-item">
+<h3>80+</h3>
+<p>Interim Experts Network</p>
+</div>
+
+<div class="impact-item">
+<h3>CEE</h3>
+<p>Cross-Border Execution</p>
+</div>
+
+</div>
+
 </section>
 
 <script>
