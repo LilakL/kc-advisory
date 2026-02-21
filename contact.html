@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Executive Contact | Konrad Czachor</title>
+<title>Executive Contact</title>
 
 <style>
 :root{
 --primary:#0f2e4f;
 --text:#111827;
---muted:#6b7280;
 --bg:#f7f8fa;
 --card:#ffffff;
 --border:#e5e7eb;
@@ -18,23 +17,18 @@
 body.dark{
 --primary:#1e3a5f;
 --text:#e5e7eb;
---muted:#9ca3af;
 --bg:#0b1220;
 --card:#111827;
 --border:#1f2937;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-
 body{
+margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:.3s ease;
-line-height:1.6;
+transition:.3s;
 }
-
-/* HEADER */
 
 header{
 display:flex;
@@ -42,18 +36,10 @@ justify-content:space-between;
 align-items:center;
 padding:40px 60px;
 background:var(--card);
-border-bottom:1px solid var(--border);
 }
 
 .logo img{
-height:168px;
-transition:.3s ease;
-}
-
-nav{
-display:flex;
-align-items:center;
-gap:28px;
+height:420px;
 }
 
 nav a{
@@ -62,173 +48,61 @@ font-size:14px;
 color:var(--text);
 }
 
-.mode-toggle{
-border:none;
-background:none;
-cursor:pointer;
-font-size:13px;
-font-weight:600;
-color:var(--text);
-}
-
-/* SECTION */
-
 .section{
-max-width:720px;
+max-width:700px;
 margin:auto;
-padding:170px 20px;
-text-align:center;
-}
-
-.section h1{
-font-size:38px;
-margin-bottom:25px;
-}
-
-.section p{
-color:var(--muted);
-margin-bottom:60px;
-}
-
-/* FORM */
-
-form{
-display:flex;
-flex-direction:column;
-gap:24px;
+padding:140px 20px;
 }
 
 input,textarea{
+width:100%;
 padding:16px;
-border-radius:12px;
+margin-bottom:20px;
+border-radius:10px;
 border:1px solid var(--border);
-font-size:16px;
 background:var(--card);
 color:var(--text);
-transition:.3s;
-}
-
-input:focus,textarea:focus{
-outline:none;
-border-color:var(--primary);
-}
-
-textarea{
-min-height:160px;
-resize:vertical;
 }
 
 button{
 padding:16px;
-border:none;
 background:var(--primary);
 color:#fff;
-border-radius:40px;
-font-size:16px;
+border:none;
+border-radius:30px;
 cursor:pointer;
 font-weight:600;
-transition:.3s;
 }
-
-button:hover{
-transform:translateY(-2px);
-}
-
-/* FADE */
-
-.fade{
-opacity:0;
-transform:translateY(30px);
-transition:all .9s cubic-bezier(.22,1,.36,1);
-}
-
-.fade.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-/* MOBILE */
 
 @media(max-width:768px){
-header{padding:20px;}
-.logo img{height:110px;}
-.section h1{font-size:28px;}
+.logo img{height:180px;}
 }
 </style>
 </head>
-
 <body>
 
 <header>
 <div class="logo">
-<img src="img/logo.png" alt="Konrad Czachor">
+<img src="img/logo.png">
 </div>
-
 <nav>
-<a href="index.html">← Back to Executive Overview</a>
-<button class="mode-toggle" id="modeToggle">Dark</button>
+<a href="index.html">← Back</a>
 </nav>
 </header>
 
-<section class="section fade">
+<section class="section">
 
 <h1>Executive Contact</h1>
-<p>
-Confidential discussion regarding turnaround, stabilization or enterprise value creation.
-</p>
 
 <form action="https://formspree.io/f/mjgeengy" method="POST">
-
 <input type="hidden" name="_subject" value="Confidential Executive Inquiry">
-<input type="hidden" name="_captcha" value="false">
-
 <input type="text" name="name" placeholder="Full Name" required>
 <input type="email" name="email" placeholder="Email Address" required>
-<input type="text" name="company" placeholder="Company / Fund">
 <textarea name="message" placeholder="Brief description of your situation" required></textarea>
-
-<button type="submit">
-Request Executive Discussion
-</button>
-
+<button type="submit">Request Executive Discussion</button>
 </form>
 
 </section>
-
-<script>
-
-/* Fade-in animation */
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-});
-},{threshold:.15});
-
-document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
-
-/* Dark mode */
-const toggle=document.getElementById("modeToggle");
-
-if(localStorage.getItem("mode")==="dark"){
-document.body.classList.add("dark");
-toggle.textContent="Light";
-}
-
-toggle.addEventListener("click",()=>{
-document.body.classList.toggle("dark");
-
-if(document.body.classList.contains("dark")){
-localStorage.setItem("mode","dark");
-toggle.textContent="Light";
-}else{
-localStorage.setItem("mode","light");
-toggle.textContent="Dark";
-}
-});
-
-</script>
 
 </body>
 </html>
