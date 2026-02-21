@@ -12,7 +12,7 @@
 --muted:#6b7280;
 --bg:#f7f8fa;
 --card:#ffffff;
---border:#d1d5db;
+--border:#e5e7eb;
 }
 
 body.dark{
@@ -21,7 +21,7 @@ body.dark{
 --muted:#9ca3af;
 --bg:#0b1220;
 --card:#111827;
---border:#374151;
+--border:#1f2937;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -40,12 +40,15 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:24px 60px;
+padding:40px 60px;
 background:var(--card);
-border-bottom:1px solid rgba(0,0,0,.05);
+border-bottom:1px solid var(--border);
 }
 
-.logo img{height:56px;}
+.logo img{
+height:168px;
+transition:.3s ease;
+}
 
 nav{
 display:flex;
@@ -59,36 +62,26 @@ font-size:14px;
 color:var(--text);
 }
 
-.lang button,.mode-toggle{
+.mode-toggle{
 border:none;
 background:none;
 cursor:pointer;
 font-size:13px;
-opacity:.6;
+font-weight:600;
 color:var(--text);
-}
-
-.lang button.active{
-opacity:1;
-font-weight:600;
-}
-
-.mode-toggle{
-opacity:1;
-font-weight:600;
 }
 
 /* SECTION */
 
 .section{
-max-width:700px;
+max-width:720px;
 margin:auto;
-padding:160px 20px;
+padding:170px 20px;
 text-align:center;
 }
 
 .section h1{
-font-size:36px;
+font-size:38px;
 margin-bottom:25px;
 }
 
@@ -97,10 +90,12 @@ color:var(--muted);
 margin-bottom:60px;
 }
 
+/* FORM */
+
 form{
 display:flex;
 flex-direction:column;
-gap:25px;
+gap:24px;
 }
 
 input,textarea{
@@ -110,10 +105,16 @@ border:1px solid var(--border);
 font-size:16px;
 background:var(--card);
 color:var(--text);
+transition:.3s;
+}
+
+input:focus,textarea:focus{
+outline:none;
+border-color:var(--primary);
 }
 
 textarea{
-min-height:150px;
+min-height:160px;
 resize:vertical;
 }
 
@@ -146,8 +147,11 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
 header{padding:20px;}
+.logo img{height:110px;}
 .section h1{font-size:28px;}
 }
 </style>
@@ -157,41 +161,35 @@ header{padding:20px;}
 
 <header>
 <div class="logo">
-<img src="img/logo.png">
+<img src="img/logo.png" alt="Konrad Czachor">
 </div>
 
 <nav>
-<a href="index.html" data-i18n="nav_back">← Back</a>
-
-<div class="lang">
-<button data-lang="pl">PL</button>
-<button data-lang="en" class="active">EN</button>
-<button data-lang="de">DE</button>
-</div>
-
+<a href="index.html">← Back to Executive Overview</a>
 <button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
 <section class="section fade">
 
-<h1 data-i18n="title">Executive Contact</h1>
-<p data-i18n="subtitle">
-Confidential discussion regarding turnaround, stabilization or value creation.
+<h1>Executive Contact</h1>
+<p>
+Confidential discussion regarding turnaround, stabilization or enterprise value creation.
 </p>
 
 <form action="https://formspree.io/f/mjgeengy" method="POST">
 
 <input type="hidden" name="_subject" value="Confidential Executive Inquiry">
 <input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_redirect" value="https://kc-adp.com/thankyou.html">
 
 <input type="text" name="name" placeholder="Full Name" required>
 <input type="email" name="email" placeholder="Email Address" required>
-<input type="text" name="company" placeholder="Company">
+<input type="text" name="company" placeholder="Company / Fund">
 <textarea name="message" placeholder="Brief description of your situation" required></textarea>
 
-<button type="submit" data-i18n="btn">Request Executive Discussion</button>
+<button type="submit">
+Request Executive Discussion
+</button>
 
 </form>
 
@@ -199,22 +197,28 @@ Confidential discussion regarding turnaround, stabilization or value creation.
 
 <script>
 
-/* Fade */
+/* Fade-in animation */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("visible");}
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
 });
 },{threshold:.15});
+
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
 /* Dark mode */
 const toggle=document.getElementById("modeToggle");
+
 if(localStorage.getItem("mode")==="dark"){
 document.body.classList.add("dark");
 toggle.textContent="Light";
 }
+
 toggle.addEventListener("click",()=>{
 document.body.classList.toggle("dark");
+
 if(document.body.classList.contains("dark")){
 localStorage.setItem("mode","dark");
 toggle.textContent="Light";
@@ -222,34 +226,6 @@ toggle.textContent="Light";
 localStorage.setItem("mode","light");
 toggle.textContent="Dark";
 }
-});
-
-/* Translations */
-
-const translations={
-pl:{
-nav_back:"← Powrót",
-title:"Kontakt Executive",
-subtitle:"Poufna rozmowa dotycząca stabilizacji, turnaroundu lub wzrostu wartości.",
-btn:"Wyślij Zapytanie"
-},
-de:{
-nav_back:"← Zurück",
-title:"Executive Kontakt",
-subtitle:"Vertrauliches Gespräch zu Turnaround, Stabilisierung oder Wertsteigerung.",
-btn:"Anfrage Senden"
-}
-};
-
-document.querySelectorAll(".lang button").forEach(btn=>{
-btn.addEventListener("click",()=>{
-document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-const lang=btn.dataset.lang;
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.textContent=translations[lang][el.dataset.i18n];
-});
-});
 });
 
 </script>
