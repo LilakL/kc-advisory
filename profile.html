@@ -12,6 +12,7 @@
 --muted:#6b7280;
 --bg:#f7f8fa;
 --card:#ffffff;
+--border:#e5e7eb;
 }
 
 body.dark{
@@ -20,6 +21,7 @@ body.dark{
 --muted:#9ca3af;
 --bg:#0b1220;
 --card:#111827;
+--border:#1f2937;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -32,16 +34,21 @@ transition:.3s ease;
 line-height:1.65;
 }
 
+/* HEADER */
+
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:24px 60px;
+padding:40px 60px;
 background:var(--card);
-border-bottom:1px solid rgba(0,0,0,.05);
+border-bottom:1px solid var(--border);
 }
 
-.logo img{height:56px;}
+.logo img{
+height:168px;
+transition:.3s ease;
+}
 
 nav{
 display:flex;
@@ -55,11 +62,6 @@ font-size:14px;
 color:var(--text);
 }
 
-.back-link{
-font-size:13px;
-opacity:.7;
-}
-
 .lang button,.mode-toggle{
 border:none;
 background:none;
@@ -70,6 +72,7 @@ color:var(--text);
 }
 
 .lang button.active{opacity:1;font-weight:600;}
+.mode-toggle{opacity:1;font-weight:600;}
 
 .hero{
 padding:150px 20px 100px;
@@ -124,22 +127,22 @@ transition:.8s ease;
 opacity:1;
 transform:translateY(0);
 }
+
+@media(max-width:768px){
+header{padding:20px;}
+.logo img{height:110px;}
+.profile-grid{gap:40px;}
+.hero h1{font-size:28px;}
+}
 </style>
 </head>
 <body>
 
 <header>
 <div class="logo"><img src="img/logo.png"></div>
-
 <nav>
-<a href="index.html" class="back-link">← Back to Executive Overview</a>
-
-<div class="lang">
-<button data-lang="pl">PL</button>
-<button data-lang="en" class="active">EN</button>
-<button data-lang="de">DE</button>
-</div>
-
+<a href="index.html">← Back to Executive Overview</a>
+<a href="contact.html">Contact</a>
 <button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
@@ -156,7 +159,7 @@ transform:translateY(0);
 <div class="profile-text">
 <p>Executive advisor specializing in manufacturing turnaround and enterprise value protection.</p>
 <p>Support for Private Equity and Tier 1–2 suppliers during restructuring and integration phases.</p>
-<p>Plant-level execution combined with board-level reporting discipline.</p>
+<p>Plant-level execution combined with disciplined board-level reporting.</p>
 
 <a href="contact.html" class="cta">Schedule Executive Discussion</a>
 </div>
