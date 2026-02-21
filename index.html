@@ -11,7 +11,7 @@
 --text:#111827;
 --muted:#6b7280;
 --bg:#f7f8fa;
---glass:rgba(255,255,255,.6);
+--glass:rgba(255,255,255,.65);
 }
 
 body.dark{
@@ -19,7 +19,7 @@ body.dark{
 --text:#e5e7eb;
 --muted:#9ca3af;
 --bg:#0b1220;
---glass:rgba(15,23,42,.6);
+--glass:rgba(15,23,42,.65);
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -44,7 +44,8 @@ justify-content:flex-end;
 align-items:center;
 padding:25px 60px;
 background:var(--glass);
-backdrop-filter:blur(14px);
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
 z-index:1000;
 transition:.3s ease;
 }
@@ -56,7 +57,7 @@ padding:12px 60px;
 nav{
 display:flex;
 align-items:center;
-gap:28px;
+gap:30px;
 }
 
 nav a{
@@ -128,10 +129,57 @@ transform:translateY(-3px);
 
 .section{
 padding:160px 20px;
-max-width:900px;
+max-width:1000px;
 margin:auto;
 text-align:center;
 }
+
+.section h2{
+font-size:34px;
+margin-bottom:70px;
+}
+
+.service{
+margin-bottom:60px;
+}
+
+.service h3{
+font-size:20px;
+margin-bottom:15px;
+}
+
+.service p{
+color:var(--muted);
+font-size:17px;
+}
+
+/* IMPACT */
+
+.impact{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:60px;
+margin-top:80px;
+}
+
+.impact-item{
+flex:1;
+min-width:220px;
+}
+
+.impact-item h3{
+font-size:42px;
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.impact-item p{
+color:var(--muted);
+font-size:15px;
+}
+
+/* FADE */
 
 .fade{
 opacity:0;
@@ -151,9 +199,11 @@ header{padding:15px 20px;}
 .hero-logo{height:240px;}
 .hero-logo.shrink{height:110px;}
 .hero h1{font-size:28px;}
+.impact{flex-direction:column;}
 }
 </style>
 </head>
+
 <body>
 
 <header id="header">
@@ -169,6 +219,7 @@ header{padding:15px 20px;}
 <img src="img/logo.png" class="hero-logo" id="heroLogo">
 
 <h1>Executive Interim & Value Creation in Manufacturing</h1>
+
 <p>
 Operational stabilization, EBITDA protection and performance acceleration
 for Private Equity and Automotive Tier 1–2.
@@ -180,18 +231,64 @@ Schedule Executive Discussion
 </section>
 
 <section class="section fade" id="services">
+
 <h2>Core Engagement Areas</h2>
-<p style="margin-top:30px;color:var(--muted);font-size:18px;">
-Turnaround. Stabilization. Governance. Enterprise Value Protection.
-</p>
+
+<div class="service">
+<h3>Turnaround & Stabilization</h3>
+<p>Rapid plant assessment, liquidity protection and operational reset within 90 days.</p>
+</div>
+
+<div class="service">
+<h3>Private Equity Operations Support</h3>
+<p>Operational due diligence, integration and enterprise value acceleration.</p>
+</div>
+
+<div class="service">
+<h3>Tier 1 / Tier 2 Performance Recovery</h3>
+<p>Cost reduction, KPI governance and OEM alignment.</p>
+</div>
+
+</section>
+
+<section class="section fade">
+
+<h2>Selected Impact</h2>
+
+<div class="impact">
+
+<div class="impact-item">
+<h3>25+</h3>
+<p>Operational Projects Delivered</p>
+</div>
+
+<div class="impact-item">
+<h3>12</h3>
+<p>Manufacturing Plants Stabilized</p>
+</div>
+
+<div class="impact-item">
+<h3>90 Days</h3>
+<p>Structured Turnaround Framework</p>
+</div>
+
+<div class="impact-item">
+<h3>CEE</h3>
+<p>Cross-Border Execution</p>
+</div>
+
+</div>
+
 </section>
 
 <script>
 
-/* Fade */
+/* Fade-in */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("visible");}
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
 });
 },{threshold:.15});
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
@@ -204,13 +301,8 @@ toggle.textContent="Light";
 }
 toggle.addEventListener("click",()=>{
 document.body.classList.toggle("dark");
-if(document.body.classList.contains("dark")){
-localStorage.setItem("mode","dark");
-toggle.textContent="Light";
-}else{
-localStorage.setItem("mode","light");
-toggle.textContent="Dark";
-}
+localStorage.setItem("mode",
+document.body.classList.contains("dark")?"dark":"light");
 });
 
 /* Scroll shrink */
