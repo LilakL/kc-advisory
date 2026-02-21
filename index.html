@@ -40,12 +40,11 @@ top:0;
 left:0;
 width:100%;
 display:flex;
-justify-content:space-between;
+justify-content:flex-end;
 align-items:center;
 padding:25px 60px;
 background:var(--glass);
 backdrop-filter:blur(14px);
--webkit-backdrop-filter:blur(14px);
 z-index:1000;
 transition:.3s ease;
 }
@@ -89,12 +88,12 @@ padding:20px;
 }
 
 .hero-logo{
-height:280px;
+height:420px;
 transition:.4s cubic-bezier(.22,1,.36,1);
 }
 
 .hero-logo.shrink{
-height:120px;
+height:160px;
 }
 
 .hero h1{
@@ -137,7 +136,7 @@ text-align:center;
 .fade{
 opacity:0;
 transform:translateY(30px);
-transition:all .9s cubic-bezier(.22,1,.36,1);
+transition:.9s cubic-bezier(.22,1,.36,1);
 }
 
 .fade.visible{
@@ -149,8 +148,8 @@ transform:translateY(0);
 
 @media(max-width:768px){
 header{padding:15px 20px;}
-.hero-logo{height:180px;}
-.hero-logo.shrink{height:90px;}
+.hero-logo{height:240px;}
+.hero-logo.shrink{height:110px;}
 .hero h1{font-size:28px;}
 }
 </style>
@@ -189,12 +188,10 @@ Turnaround. Stabilization. Governance. Enterprise Value Protection.
 
 <script>
 
-/* Fade-in */
+/* Fade */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
+if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
 },{threshold:.15});
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
@@ -216,7 +213,7 @@ toggle.textContent="Dark";
 }
 });
 
-/* Scroll behavior */
+/* Scroll shrink */
 const header=document.getElementById("header");
 const heroLogo=document.getElementById("heroLogo");
 
