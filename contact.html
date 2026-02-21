@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Executive Contact</title>
+<title>Confidential Executive Inquiry | Konrad Czachor</title>
 
 <style>
 :root{
 --primary:#0f2e4f;
 --text:#111827;
+--muted:#6b7280;
 --bg:#f7f8fa;
 --card:#ffffff;
 --border:#e5e7eb;
@@ -17,29 +18,39 @@
 body.dark{
 --primary:#1e3a5f;
 --text:#e5e7eb;
+--muted:#9ca3af;
 --bg:#0b1220;
 --card:#111827;
 --border:#1f2937;
 }
 
+*{box-sizing:border-box;margin:0;padding:0;}
+
 body{
-margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
-transition:.3s;
+transition:.3s ease;
+line-height:1.6;
 }
+
+/* HEADER */
 
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:40px 60px;
+padding:30px 60px;
 background:var(--card);
+border-bottom:1px solid var(--border);
 }
 
-.logo img{
-height:420px;
+.logo img{height:160px;}
+
+nav{
+display:flex;
+gap:28px;
+align-items:center;
 }
 
 nav a{
@@ -48,61 +59,242 @@ font-size:14px;
 color:var(--text);
 }
 
+.lang button,.mode-toggle{
+border:none;
+background:none;
+cursor:pointer;
+font-size:13px;
+color:var(--text);
+opacity:.6;
+}
+
+.lang button.active{
+opacity:1;
+font-weight:600;
+}
+
+/* SECTION */
+
 .section{
-max-width:700px;
+max-width:850px;
 margin:auto;
 padding:140px 20px;
 }
 
-input,textarea{
-width:100%;
-padding:16px;
+.section h1{
+font-size:36px;
 margin-bottom:20px;
-border-radius:10px;
+}
+
+.section p{
+color:var(--muted);
+margin-bottom:60px;
+}
+
+/* FORM */
+
+form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.full{
+grid-column:1/3;
+}
+
+input,select,textarea{
+padding:16px;
+border-radius:12px;
 border:1px solid var(--border);
+font-size:15px;
 background:var(--card);
 color:var(--text);
 }
 
+textarea{
+min-height:140px;
+resize:vertical;
+}
+
 button{
-padding:16px;
+grid-column:1/3;
+padding:18px;
 background:var(--primary);
 color:#fff;
 border:none;
-border-radius:30px;
-cursor:pointer;
+border-radius:40px;
 font-weight:600;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+}
+
+.notice{
+margin-top:25px;
+font-size:13px;
+color:var(--muted);
 }
 
 @media(max-width:768px){
-.logo img{height:180px;}
+header{padding:20px;}
+.logo img{height:110px;}
+form{grid-template-columns:1fr;}
+.full{grid-column:1;}
+button{grid-column:1;}
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">
 <img src="img/logo.png">
 </div>
+
 <nav>
-<a href="index.html">← Back</a>
+<a href="index.html" data-i18n="back">← Back</a>
+
+<div class="lang">
+<button data-lang="en">EN</button>
+<button data-lang="pl">PL</button>
+<button data-lang="de">DE</button>
+</div>
+
+<button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
 <section class="section">
 
-<h1>Executive Contact</h1>
+<h1 data-i18n="title">Confidential Executive Inquiry</h1>
+
+<p data-i18n="subtitle">
+All inquiries are treated with strict confidentiality. Please provide high-level context to enable structured evaluation.
+</p>
 
 <form action="https://formspree.io/f/mjgeengy" method="POST">
+
 <input type="hidden" name="_subject" value="Confidential Executive Inquiry">
+
 <input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email Address" required>
-<textarea name="message" placeholder="Brief description of your situation" required></textarea>
-<button type="submit">Request Executive Discussion</button>
+<input type="email" name="email" placeholder="Business Email" required>
+
+<input type="text" name="company" placeholder="Company / Fund">
+<select name="role">
+<option value="">Your Role</option>
+<option>Board Member</option>
+<option>Private Equity Partner</option>
+<option>CEO / COO</option>
+<option>Advisor</option>
+</select>
+
+<select name="revenue">
+<option value="">Annual Revenue Range</option>
+<option>< €50M</option>
+<option>€50M – €200M</option>
+<option>€200M – €1B</option>
+<option>> €1B</option>
+</select>
+
+<select name="situation">
+<option value="">Primary Situation</option>
+<option>Turnaround</option>
+<option>Operational Stabilization</option>
+<option>Post-Merger Integration</option>
+<option>Cost & Performance Recovery</option>
+</select>
+
+<select name="timeline">
+<option value="">Expected Engagement Timeline</option>
+<option>Immediate (0–30 days)</option>
+<option>1–3 months</option>
+<option>3–6 months</option>
+<option>Exploratory</option>
+</select>
+
+<textarea name="message" class="full" placeholder="Brief strategic context (EBITDA pressure, operational challenges, liquidity constraints, OEM exposure, etc.)" required></textarea>
+
+<button type="submit" data-i18n="cta">
+Submit Confidential Inquiry
+</button>
+
 </form>
 
+<div class="notice" data-i18n="notice">
+All submissions are reviewed personally. No automated distribution. Direct executive contact only.
+</div>
+
 </section>
+
+<script>
+
+/* Dark Mode */
+const toggle=document.getElementById("modeToggle");
+if(localStorage.getItem("mode")==="dark"){
+document.body.classList.add("dark");
+toggle.textContent="Light";
+}
+toggle.addEventListener("click",()=>{
+document.body.classList.toggle("dark");
+localStorage.setItem("mode",
+document.body.classList.contains("dark")?"dark":"light");
+});
+
+/* Language */
+
+const translations={
+en:{
+back:"← Back",
+title:"Confidential Executive Inquiry",
+subtitle:"All inquiries are treated with strict confidentiality. Please provide high-level context to enable structured evaluation.",
+cta:"Submit Confidential Inquiry",
+notice:"All submissions are reviewed personally. No automated distribution. Direct executive contact only."
+},
+pl:{
+back:"← Powrót",
+title:"Poufne Zapytanie Executive",
+subtitle:"Wszystkie zapytania są traktowane poufnie. Prosimy o przedstawienie ogólnego kontekstu strategicznego.",
+cta:"Wyślij Zapytanie",
+notice:"Każde zgłoszenie analizowane jest osobiście. Bez automatycznej dystrybucji."
+},
+de:{
+back:"← Zurück",
+title:"Vertrauliche Executive Anfrage",
+subtitle:"Alle Anfragen werden streng vertraulich behandelt. Bitte geben Sie einen strategischen Überblick.",
+cta:"Vertrauliche Anfrage Senden",
+notice:"Jede Anfrage wird persönlich geprüft. Keine automatische Weiterleitung."
+}
+};
+
+function setLanguage(lang){
+localStorage.setItem("lang",lang);
+document.querySelectorAll(".lang button").forEach(b=>{
+b.classList.remove("active");
+if(b.dataset.lang===lang) b.classList.add("active");
+});
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.textContent=translations[lang][el.dataset.i18n];
+});
+}
+
+let savedLang=localStorage.getItem("lang");
+if(!savedLang){
+let browserLang=navigator.language.slice(0,2);
+savedLang=translations[browserLang]?browserLang:"en";
+}
+setLanguage(savedLang);
+
+document.querySelectorAll(".lang button").forEach(btn=>{
+btn.addEventListener("click",()=>setLanguage(btn.dataset.lang));
+});
+
+</script>
 
 </body>
 </html>
