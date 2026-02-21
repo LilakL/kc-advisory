@@ -11,8 +11,7 @@
 --text:#111827;
 --muted:#6b7280;
 --bg:#f7f8fa;
---card:#ffffff;
---border:#e5e7eb;
+--glass:rgba(255,255,255,.6);
 }
 
 body.dark{
@@ -20,8 +19,7 @@ body.dark{
 --text:#e5e7eb;
 --muted:#9ca3af;
 --bg:#0b1220;
---card:#111827;
---border:#1f2937;
+--glass:rgba(15,23,42,.6);
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -37,17 +35,23 @@ line-height:1.6;
 /* HEADER */
 
 header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:40px 60px;
-background:var(--card);
-border-bottom:1px solid var(--border);
+padding:25px 60px;
+background:var(--glass);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+z-index:1000;
+transition:.3s ease;
 }
 
-.logo img{
-height:168px;
-transition:.3s ease;
+header.scrolled{
+padding:12px 60px;
 }
 
 nav{
@@ -63,96 +67,72 @@ letter-spacing:.5px;
 color:var(--text);
 }
 
-.lang button,.mode-toggle{
+.mode-toggle{
 border:none;
 background:none;
 cursor:pointer;
 font-size:13px;
+font-weight:600;
 color:var(--text);
-opacity:.6;
 }
-
-.lang button.active{opacity:1;font-weight:600;}
-.mode-toggle{opacity:1;font-weight:600;}
 
 /* HERO */
 
 .hero{
-padding:170px 20px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-max-width:1000px;
-margin:auto;
+padding:20px;
 }
 
-.hero h1{font-size:46px;margin-bottom:28px;}
-.hero p{font-size:19px;color:var(--muted);margin-bottom:48px;}
+.hero-logo{
+height:280px;
+transition:.4s cubic-bezier(.22,1,.36,1);
+}
+
+.hero-logo.shrink{
+height:120px;
+}
+
+.hero h1{
+margin-top:50px;
+font-size:44px;
+max-width:900px;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+color:var(--muted);
+max-width:700px;
+}
 
 .cta{
-display:inline-block;
-padding:15px 40px;
+margin-top:50px;
+padding:15px 42px;
 background:var(--primary);
 color:#fff;
-text-decoration:none;
 border-radius:40px;
+text-decoration:none;
 font-weight:600;
 transition:.3s;
 }
 
-.cta:hover{transform:translateY(-3px);}
-
-/* METRICS */
-
-.metrics{
-display:flex;
-justify-content:center;
-gap:120px;
-padding:120px 20px;
-background:var(--card);
+.cta:hover{
+transform:translateY(-3px);
 }
 
-.metric{text-align:center;}
-.metric h3{font-size:40px;color:var(--primary);}
-.metric p{margin-top:12px;font-size:14px;color:var(--muted);}
-
-/* SERVICES */
+/* SECTION */
 
 .section{
-padding:150px 20px;
+padding:160px 20px;
 max-width:900px;
 margin:auto;
-}
-
-.section h2{
 text-align:center;
-font-size:32px;
-margin-bottom:80px;
 }
-
-.service{margin-bottom:70px;}
-.service h3{font-size:20px;margin-bottom:14px;}
-.service p{color:var(--muted);font-size:17px;}
-
-/* FOOTER */
-
-.footer{
-background:var(--primary);
-color:#fff;
-text-align:center;
-padding:140px 20px;
-}
-
-.footer a{
-display:inline-block;
-margin-top:30px;
-padding:14px 36px;
-background:#fff;
-color:var(--primary);
-text-decoration:none;
-border-radius:30px;
-font-weight:600;
-}
-
-/* FADE */
 
 .fade{
 opacity:0;
@@ -165,77 +145,61 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
-header{padding:20px;}
-.logo img{height:110px;}
-.metrics{flex-direction:column;gap:60px;}
-.hero h1{font-size:32px;}
+header{padding:15px 20px;}
+.hero-logo{height:180px;}
+.hero-logo.shrink{height:90px;}
+.hero h1{font-size:28px;}
 }
 </style>
 </head>
 <body>
 
-<header>
-<div class="logo"><img src="img/logo.png"></div>
+<header id="header">
 <nav>
 <a href="#services">Services</a>
 <a href="profile.html">Profile</a>
 <a href="contact.html">Contact</a>
-
-<div class="lang">
-<button data-lang="pl">PL</button>
-<button data-lang="en" class="active">EN</button>
-<button data-lang="de">DE</button>
-</div>
-
 <button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
-<section class="hero fade">
-<h1>Executive Interim & Value Creation in Manufacturing</h1>
-<p>Operational stabilization, EBITDA protection and performance acceleration for Private Equity and Automotive Tier 1–2.</p>
-<a href="contact.html" class="cta">Schedule Executive Discussion</a>
-</section>
+<section class="hero">
+<img src="img/logo.png" class="hero-logo" id="heroLogo">
 
-<section class="metrics fade">
-<div class="metric"><h3>80+</h3><p>Interim Experts Network</p></div>
-<div class="metric"><h3>CEE</h3><p>Cross-Border Plant Execution</p></div>
-<div class="metric"><h3>Board</h3><p>Board-Level Governance</p></div>
+<h1>Executive Interim & Value Creation in Manufacturing</h1>
+<p>
+Operational stabilization, EBITDA protection and performance acceleration
+for Private Equity and Automotive Tier 1–2.
+</p>
+
+<a href="contact.html" class="cta">
+Schedule Executive Discussion
+</a>
 </section>
 
 <section class="section fade" id="services">
 <h2>Core Engagement Areas</h2>
-
-<div class="service">
-<h3>Turnaround & Stabilization</h3>
-<p>Rapid plant assessment, liquidity protection and operational reset within 90 days.</p>
-</div>
-
-<div class="service">
-<h3>Private Equity Operations Support</h3>
-<p>Operational due diligence and post-acquisition value creation execution.</p>
-</div>
-
-<div class="service">
-<h3>Tier 1 / Tier 2 Performance Recovery</h3>
-<p>Cost reduction, KPI governance and OEM alignment.</p>
-</div>
-</section>
-
-<section class="footer fade">
-<h2>Ready to protect and scale enterprise value?</h2>
-<a href="contact.html">Contact Directly</a>
+<p style="margin-top:30px;color:var(--muted);font-size:18px;">
+Turnaround. Stabilization. Governance. Enterprise Value Protection.
+</p>
 </section>
 
 <script>
+
+/* Fade-in */
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("visible");}
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
 });
 },{threshold:.15});
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
+/* Dark mode */
 const toggle=document.getElementById("modeToggle");
 if(localStorage.getItem("mode")==="dark"){
 document.body.classList.add("dark");
@@ -249,6 +213,20 @@ toggle.textContent="Light";
 }else{
 localStorage.setItem("mode","light");
 toggle.textContent="Dark";
+}
+});
+
+/* Scroll behavior */
+const header=document.getElementById("header");
+const heroLogo=document.getElementById("heroLogo");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>100){
+header.classList.add("scrolled");
+heroLogo.classList.add("shrink");
+}else{
+header.classList.remove("scrolled");
+heroLogo.classList.remove("shrink");
 }
 });
 </script>
