@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konrad Czachor | Executive Interim & Advisory</title>
+<title>Konrad Czachor | Growth & Stabilization</title>
 
 <style>
 :root{
 --primary:#0f2e4f;
+--accent:#c8a96a;
 --text:#111827;
 --muted:#6b7280;
 --bg:#f7f8fa;
---glass:rgba(255,255,255,.7);
+--glass:rgba(255,255,255,.75);
 }
 
 body.dark{
@@ -32,51 +33,38 @@ transition:.3s;
 line-height:1.6;
 }
 
-/* HEADER */
-
 header{
 position:fixed;
-top:0;
-left:0;
 width:100%;
+padding:18px 40px;
+background:var(--glass);
+backdrop-filter:blur(14px);
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:25px 60px;
-background:var(--glass);
-backdrop-filter:blur(16px);
 z-index:1000;
-transition:.3s;
 }
-
-header.scrolled{padding:12px 60px;}
 
 nav{
 display:flex;
+gap:25px;
 align-items:center;
-gap:28px;
 }
 
 nav a{
 text-decoration:none;
 font-size:14px;
-letter-spacing:.5px;
 color:var(--text);
 }
 
-.lang button,.mode-toggle{
+.lang button{
 border:none;
 background:none;
 cursor:pointer;
 font-size:13px;
-color:var(--text);
 opacity:.6;
 }
 
 .lang button.active{opacity:1;font-weight:600;}
-.mode-toggle{opacity:1;font-weight:600;}
-
-/* HERO */
 
 .hero{
 height:100vh;
@@ -88,15 +76,7 @@ text-align:center;
 padding:20px;
 }
 
-.hero-logo{
-height:420px;
-transition:.4s cubic-bezier(.22,1,.36,1);
-}
-
-.hero-logo.shrink{height:160px;}
-
 .hero h1{
-margin-top:50px;
 font-size:44px;
 max-width:900px;
 }
@@ -105,12 +85,12 @@ max-width:900px;
 margin-top:20px;
 font-size:20px;
 color:var(--muted);
-max-width:800px;
+max-width:750px;
 }
 
 .cta{
-margin-top:50px;
-padding:15px 42px;
+margin-top:40px;
+padding:14px 40px;
 background:var(--primary);
 color:#fff;
 border-radius:40px;
@@ -121,296 +101,122 @@ transition:.3s;
 
 .cta:hover{transform:translateY(-3px);}
 
-/* SECTION */
-
 .section{
-padding:160px 20px;
+padding:120px 20px;
 max-width:1100px;
 margin:auto;
 text-align:center;
 }
 
-.section h2{
-font-size:34px;
-margin-bottom:50px;
+.grid-3{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:50px;
+margin-top:60px;
 }
 
-.section p{
-max-width:900px;
-margin:20px auto 0;
-font-size:19px;
-color:var(--muted);
+.card{
+padding:35px;
+background:var(--glass);
+border-radius:20px;
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
 }
 
-/* IMPACT */
+.card.visible{
+opacity:1;
+transform:translateY(0);
+}
 
-.impact{
+.segment{
 display:flex;
-justify-content:space-between;
+gap:40px;
+margin-top:60px;
 flex-wrap:wrap;
-gap:60px;
-margin-top:80px;
+justify-content:center;
 }
 
-.impact-item{
-flex:1;
-min-width:220px;
-}
-
-.impact-item h3{
-font-size:42px;
+.segment a{
+padding:18px 40px;
+border:1px solid var(--primary);
+border-radius:40px;
+text-decoration:none;
 color:var(--primary);
-}
-
-/* CLIENTS */
-
-.clients{
-overflow:hidden;
-margin-top:120px;
-}
-
-.marquee{
-display:flex;
-gap:80px;
-animation:scroll 25s linear infinite;
-}
-
-.marquee img{
-height:60px;
-opacity:.7;
+font-weight:600;
 transition:.3s;
 }
 
-.marquee img:hover{
-opacity:1;
-transform:scale(1.1);
+.segment a:hover{
+background:var(--primary);
+color:#fff;
 }
 
-@keyframes scroll{
-0%{transform:translateX(0);}
-100%{transform:translateX(-50%);}
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-header{padding:15px 20px;}
-.hero-logo{height:240px;}
-.hero-logo.shrink{height:110px;}
-.hero h1{font-size:28px;}
-.impact{flex-direction:column;}
+footer{
+padding:60px;
+text-align:center;
+color:var(--muted);
+font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header id="header">
+<header>
 <nav>
-<a href="#services" data-i18n="nav_services"></a>
-<a href="profile.html" data-i18n="nav_profile"></a>
-<a href="contact.html" data-i18n="nav_contact"></a>
+<a href="#growth">Growth</a>
+<a href="#segment">Engagement</a>
+<a href="contact.html">Contact</a>
 
 <div class="lang">
 <button data-lang="en">EN</button>
 <button data-lang="pl">PL</button>
 <button data-lang="de">DE</button>
 </div>
-
-<button class="mode-toggle" id="modeToggle">Dark</button>
 </nav>
 </header>
 
 <section class="hero">
-<img src="img/logo.png" class="hero-logo" id="heroLogo">
-
-<h1 data-i18n="hero_title"></h1>
-<p data-i18n="hero_sub"></p>
-
-<a href="contact.html" class="cta" data-i18n="hero_cta"></a>
+<h1>Operational Stabilization & Revenue Acceleration</h1>
+<p>From EBITDA protection to structured revenue growth systems for industrial and mid-sized platforms.</p>
+<a href="contact.html" class="cta">Schedule Strategic Consultation</a>
 </section>
 
-<section class="section fade">
-<h2 data-i18n="industry_title"></h2>
-<p data-i18n="industry_sub"></p>
-</section>
+<section class="section" id="growth">
+<h2>Enterprise Growth Framework</h2>
 
-<section class="section fade">
-<h2 data-i18n="systems_title"></h2>
-<p data-i18n="systems_sub"></p>
-</section>
-
-<section class="section fade">
-<h2 data-i18n="impact_title"></h2>
-<div class="impact">
-<div class="impact-item">
-<h3 class="counter" data-target="25">0</h3>
-<p data-i18n="impact1"></p>
-</div>
-<div class="impact-item">
-<h3 class="counter" data-target="12">0</h3>
-<p data-i18n="impact2"></p>
-</div>
-<div class="impact-item">
-<h3>90</h3>
-<p data-i18n="impact3"></p>
-</div>
+<div class="grid-3">
+<div class="card"> <h3>Lead Generation</h3><p>Structured B2B acquisition aligned with operational capacity.</p></div>
+<div class="card"> <h3>Branding & Positioning</h3><p>Strategic positioning increasing margins and reducing price pressure.</p></div>
+<div class="card"> <h3>Growth & Sales Optimization</h3><p>Turning marketing into measurable revenue performance.</p></div>
 </div>
 </section>
 
-<section class="section clients fade">
-<h2 data-i18n="clients_title"></h2>
-<div class="marquee">
-<img src="img/BMW.png">
-<img src="img/Magna.jpg">
-<img src="img/Nidec.png">
-<img src="img/Delphi.png">
-<img src="img/Garmin.png">
-<img src="img/BMW.png">
-<img src="img/Magna.jpg">
-<img src="img/Nidec.png">
-<img src="img/Delphi.png">
-<img src="img/Garmin.png">
+<section class="section" id="segment">
+<h2>Engagement Path</h2>
+
+<div class="segment">
+<a href="pe-landing.html">Private Equity & Portfolio Companies</a>
+<a href="msp-landing.html">Mid-Sized Industrial Companies</a>
 </div>
 </section>
+
+<footer>
+© 2026 Konrad Czachor Advisory
+</footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-
-const translations = {
-
-en:{
-nav_services:"Services",
-nav_profile:"Profile",
-nav_contact:"Contact",
-hero_title:"Executive Interim & Enterprise Value Protection",
-hero_sub:"Operational stabilization and EBITDA protection for Private Equity, Automotive and Industrial Platforms.",
-hero_cta:"Schedule Executive Discussion",
-industry_title:"Industrial Sector Focus",
-industry_sub:"Supporting heavy and light industry, defense, rail and aerospace organizations. Structured stabilization and governance alignment in complex industrial environments.",
-systems_title:"Management Systems & Certification",
-systems_sub:"Implementation, modification and certification readiness of ISO 9001, 14001, 45001, 27001, TISAX, FSC, PEFC, EUDR, IFS, BRCGS and German OEM (VDA) requirements. Collaboration with automation, digital transformation and cybersecurity partners. Executive workshops and co-founder of the podcast 'Jakość bez kompleksów'.",
-impact_title:"Selected Impact",
-impact1:"Operational Projects",
-impact2:"Plants Stabilized",
-impact3:"Days Turnaround Framework",
-clients_title:"Selected Clients"
-},
-
-pl:{
-nav_services:"Usługi",
-nav_profile:"Profil",
-nav_contact:"Kontakt",
-hero_title:"Executive Interim i Ochrona Wartości",
-hero_sub:"Stabilizacja operacyjna i ochrona EBITDA dla Private Equity, Automotive oraz platform przemysłowych.",
-hero_cta:"Umów Rozmowę Zarządczą",
-industry_title:"Zakres Sektorowy",
-industry_sub:"Wsparcie organizacji przemysłu ciężkiego i lekkiego, sektora obronności, kolei oraz lotnictwa. Ustrukturyzowana stabilizacja i wzmocnienie ładu korporacyjnego.",
-systems_title:"Systemy Zarządzania i Certyfikacja",
-systems_sub:"Wdrażanie, modyfikacja i przygotowanie do certyfikacji systemów ISO 9001, 14001, 45001, 27001, TISAX, FSC, PEFC, EUDR, IFS, BRCGS oraz wymagań OEM (VDA). Współpraca z partnerami automatyzacji, transformacji cyfrowej i cyberbezpieczeństwa. Szkolenia executive oraz współzałożyciel podcastu 'Jakość bez kompleksów'.",
-impact_title:"Wybrane Realizacje",
-impact1:"Projektów Operacyjnych",
-impact2:"Ustabilizowanych Zakładów",
-impact3:"Dni Modelu Turnaround",
-clients_title:"Wybrani Klienci"
-},
-
-de:{
-nav_services:"Leistungen",
-nav_profile:"Profil",
-nav_contact:"Kontakt",
-hero_title:"Executive Interim & Sicherung des Unternehmenswerts",
-hero_sub:"Operative Stabilisierung und EBITDA-Sicherung für Private Equity, Automotive und Industrieplattformen.",
-hero_cta:"Strategisches Gespräch Vereinbaren",
-industry_title:"Industrieschwerpunkt",
-industry_sub:"Unterstützung von Schwer- und Leichtindustrie, Verteidigungs-, Bahn- und Luftfahrtunternehmen. Strukturierte Stabilisierung und Governance-Ausrichtung.",
-systems_title:"Managementsysteme & Zertifizierung",
-systems_sub:"Implementierung, Anpassung und Zertifizierungsvorbereitung von ISO 9001, 14001, 45001, 27001, TISAX, FSC, PEFC, EUDR, IFS, BRCGS und VDA-Anforderungen. Zusammenarbeit mit Automatisierungs-, Digitalisierungs- und Cybersecurity-Partnern. Executive Workshops und Mitbegründer des Podcasts 'Jakość bez kompleksów'.",
-impact_title:"Ausgewählte Projekte",
-impact1:"Operative Projekte",
-impact2:"Stabilisierte Werke",
-impact3:"Tage Turnaround Modell",
-clients_title:"Ausgewählte Kunden"
-}
-
-};
-
-function setLanguage(lang){
-if(!translations[lang]) lang="en";
-localStorage.setItem("lang",lang);
-document.documentElement.lang=lang;
-
-document.querySelectorAll(".lang button").forEach(btn=>{
-btn.classList.remove("active");
-if(btn.dataset.lang===lang) btn.classList.add("active");
-});
-
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.textContent=translations[lang][el.dataset.i18n];
-});
-}
-
-let savedLang=localStorage.getItem("lang");
-if(!savedLang){
-let browserLang=navigator.language.slice(0,2);
-savedLang=translations[browserLang]?browserLang:"en";
-}
-setLanguage(savedLang);
-
-document.querySelectorAll(".lang button").forEach(btn=>{
-btn.addEventListener("click",()=>setLanguage(btn.dataset.lang));
-});
-
-/* Dark Mode */
-const toggle=document.getElementById("modeToggle");
-if(localStorage.getItem("mode")==="dark"){
-document.body.classList.add("dark");
-toggle.textContent="Light";
-}
-toggle.addEventListener("click",()=>{
-document.body.classList.toggle("dark");
-localStorage.setItem("mode",
-document.body.classList.contains("dark")?"dark":"light");
-});
-
-/* Scroll Shrink */
-const header=document.getElementById("header");
-const heroLogo=document.getElementById("heroLogo");
-window.addEventListener("scroll",()=>{
-if(window.scrollY>100){
-header.classList.add("scrolled");
-heroLogo.classList.add("shrink");
-}else{
-header.classList.remove("scrolled");
-heroLogo.classList.remove("shrink");
-}
-});
-
-/* Counter */
-const counters=document.querySelectorAll(".counter");
-const counterObserver=new IntersectionObserver(entries=>{
+const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
-const el=entry.target;
-let target=+el.dataset.target;
-let count=0;
-let step=target/60;
-function update(){
-count+=step;
-if(count<target){
-el.innerText=Math.ceil(count);
-requestAnimationFrame(update);
-}else{
-el.innerText=target+"+";
-}
-}
-update();
-counterObserver.unobserve(el);
+entry.target.classList.add("visible");
 }
 });
-},{threshold:.6});
-counters.forEach(c=>counterObserver.observe(c));
+},{threshold:.3});
 
+document.querySelectorAll(".card").forEach(card=>{
+observer.observe(card);
 });
 </script>
 
